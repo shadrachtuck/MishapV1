@@ -1,5 +1,6 @@
 import React from 'react';
+import Layout from '../components/Layout';
 
-export default (): JSX.Element => {
-  return <>hello</>;
+export default ({ location }: PageProps): JSX.Element => {
+  return <Layout location={location}>hello world</Layout>;
 };
