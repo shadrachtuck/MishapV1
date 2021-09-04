@@ -1,0 +1,73 @@
+root: true
+
+parser: '@typescript-eslint/parser'
+
+settings:
+  react:
+    version: 'detect'
+
+plugins:
+  # - 'react'
+  - 'prettier'
+  - '@typescript-eslint/eslint-plugin'
+
+extends:
+  # - 'react'
+  - 'eslint:recommended'
+  - 'prettier'
+  # - 'plugin:react/recommended'
+  - 'plugin:prettier/recommended'
+  # - 'plugin:@typescript-eslint/recommended'
+
+parserOptions:
+  ecmaVersion: 2017
+  sourceType: 'module'
+  allowImportExportEverywhere: false
+  ecmaFeatures:
+    experimentalObjectRestSpread: true
+    arrowFunctions: true
+    binaryLiterals: true
+    blockBindings: true
+    classes: true
+    defaultParams: true
+    destructuring: true
+    forOf: true
+    generators: true
+    modules: true
+    objectLiteralComputedProperties: true
+    objectLiteralDuplicateProperties: true
+    objectLiteralShorthandMethods: true
+    objectLiteralShorthandProperties: true
+    octalLiterals: true
+    regexUFlag: true
+    regexYFlag: true
+    spread: true
+    superInFunctions: true
+    templateStrings: true
+    unicodeCodePointEscapes: true
+    globalReturn: true
+    jsx: true
+
+env:
+  browser: true
+  commonjs: true
+  es6: true
+  node: true
+
+globals:
+  strapi: true
+
+rules:
+  no-undef: 0
+  prettier/prettier: 2
+  no-console: 1
+  no-unused-vars: 2
+  linebreak-style:
+    - 'error'
+    - 'unix'
+  quotes:
+    - 'error'
+    - 'single'
+  semi:
+    - 'error'
+    - 'always'
