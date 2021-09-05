@@ -33,42 +33,20 @@ module.exports = {
       },
     },
 
-    // {
-    //   resolve: 'gatsby-plugin-react-svg',
-    //   options: {
-    //     rule: {
-    //       include: `${__dirname}/src/assets/images/svg`,
-    //     },
-    //   },
-    // },
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          path: `${__dirname}/src/assets/images`,
+        },
+      },
 
-    // {
-    //   // browser tab thumbnail
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: 'colleen-fletcher.com',
-    //     short_name: 'Colleen Fletcher',
-    //     start_url: '/',
-    //     icon: `${__dirname}/static/blue-flower-colleen-fletcher.png`,
-    //   },
-    // },
-
-    // {
-    //   resolve: 'gatsby-source-filesystem',
-    //   options: {
-    //     path: `${__dirname}/src/assets/images`,
-    //   },
-    // },
-
-    // TODO: Remove once gatsby-source-strapi is fixed
-    // https://forum.strapi.io/t/gatsby-source-strapi-plugin-not-processing-images-in-dynamic-zones/5838/5
-    // {
-    //   resolve: 'gatsby-source-graphql',
-    //   options: {
-    //     typeName: 'STRAPI',
-    //     fieldName: 'strapi',
-    //     url: `${process.env.GRAPHQL_ENDPOINT}`,
-    //   },
-    // },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: `${__dirname}/src/assets/images/svg`,
+        },
+      },
+    },
   ],
 };
