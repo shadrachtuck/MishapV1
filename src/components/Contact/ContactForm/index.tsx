@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors, pxToRem } from '../../styled-components/mixins';
+import { colors, pxToRem } from '../../../styled-components/mixins';
 
 const Form = styled.form`
   display: flex;
