@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop -p 3000",
+    "develop": "gatsby develop -p 3000 -o",
     "prettier-format": "prettier --config .prettierrc.yaml 'src/**/*.tsx' --write",
     "format": "prettier-eslint --eslint-config-path ./.eslintrc.yaml --write '**/*.js **/*.ts **/*.tsx'",
     "lint": "yarn format && eslint . --ext .tsx --ext .ts --ext .js",
