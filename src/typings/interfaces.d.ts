@@ -4,7 +4,6 @@ interface DefaultProps
     React.RefAttributes<any> {
   id?: string;
   title?: string;
-  className?: string | string[];
   style?: React.CSSProperties;
   children?: React.ReactNode;
 }

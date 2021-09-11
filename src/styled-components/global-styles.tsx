@@ -1,10 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
-/* html, body, #___gatsby, #gatsby-focus-wrapper {
-  min-height: 100vh;
-} */
-
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -89,8 +85,8 @@ input, select, textarea {
 		font-family: 'Lato', sans-serif;
 		font-size: 15pt;
 		font-weight: 300;
-		letter-spacing: 0.025em;
-		line-height: 1.75em;
+		letter-spacing: 0.025rem;
+		line-height: 1.75rem;
 	}
 
 	a {
@@ -108,15 +104,12 @@ input, select, textarea {
 		font-weight: 400;
 	}
 
-	p, ul, ol, dl, table, blockquote {
-		margin: 0 0 2em 0;
-	}
 
 	h1, h2, h3, h4, h5, h6 {
 		color: inherit;
 		font-weight: 300;
-		line-height: 1.75em;
-		margin-bottom: 1em;
+		line-height: 1.75rem;
+		margin-bottom: 1rem;
 		text-transform: uppercase;
 	}
 
@@ -127,37 +120,37 @@ input, select, textarea {
 		}
 
 	h2 {
-		font-size: 1.5em;
-		letter-spacing: 0.1em;
+		font-size: 1.5rem;
+		letter-spacing: 0.1rem;
 	}
 
 	h3 {
-		font-size: 1.15em;
-		letter-spacing: 0.025em;
+		font-size: 1.15rem;
+		letter-spacing: 0.025rem;
 	}
 
 	sub {
-		font-size: 0.8em;
+		font-size: 0.8rem;
 		position: relative;
-		top: 0.5em;
+		top: 0.5rem;
 	}
 
 	sup {
-		font-size: 0.8em;
+		font-size: 0.8rem;
 		position: relative;
-		top: -0.5em;
+		top: -0.5rem;
 	}
 
 	hr {
 		border-top: solid 1px rgba(124, 128, 129, 0.2);
 		border: 0;
-		margin-bottom: 1.5em;
+		margin-bottom: 1.5rem;
 	}
 
 	blockquote {
-		border-left: solid 0.5em rgba(124, 128, 129, 0.2);
+		border-left: solid 0.5rem rgba(124, 128, 129, 0.2);
 		font-style: italic;
-		padding: 1em 0 1em 2em;
+		padding: 1rem 0 1rem 2rem;
 	}
 `;
 

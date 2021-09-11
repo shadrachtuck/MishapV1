@@ -1,8 +1,11 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const ContactInformation = (): JSX.Element => {
+const ContactInformation = ({
+  className,
+}: Pick<PageProps, 'className'>): JSX.Element => {
   return (
-    <div>
+    <div className={className}>
       <h2>Contact</h2>
       <div>
         <h3>Address</h3>
@@ -19,4 +22,4 @@ const ContactInformation = (): JSX.Element => {
   );
 };
 
-export default ContactInformation;
+export default styled(ContactInformation)``;

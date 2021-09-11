@@ -9,8 +9,12 @@ const PageSection = styled.section`
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+
+  .negative-top {
+    margin-top: 100px;
+  }
 `;
+
 const SiteTitle = styled.h1`
   text-transform: uppercase;
   font-style: normal;

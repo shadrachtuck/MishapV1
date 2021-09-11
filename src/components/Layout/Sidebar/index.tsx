@@ -10,15 +10,16 @@ export const SidebarElement = styled.aside`
   justify-content: space-between;
 `;
 
-const Sidebar = (): JSX.Element => {
+const LeftSidebar = (): JSX.Element => {
   const mishapLogo = '../../assets/images/mishap-logo-design-4-jetblack.png';
 
   return (
     <SidebarElement>
       <StaticImage src={mishapLogo} alt="mishap records" />
+
       <SocialMediaLinks />
     </SidebarElement>
   );
 };
 
-export default Sidebar;
+export default LeftSidebar;

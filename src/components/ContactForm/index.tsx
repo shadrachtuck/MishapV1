@@ -1,30 +1,44 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors } from '../../styled-components/mixins';
+import { colors, pxToRem } from '../../styled-components/mixins';
 
 const Form = styled.form`
   display: flex;
+  flex-flow: column nowrap;
   background: ${colors('black')};
+  padding: ${pxToRem(74)};
 `;
 
-const ContactForm = (): JSX.Element => {
+const ContactForm = ({
+  className,
+}: Pick<PageProps, 'className'>): JSX.Element => {
   return (
-    <Form action="">
-      <label htmlFor="full-name">Full Name</label>
-      <input type="text" name="full-name" />
+    <Form action="" className={className}>
+      <h2>What's up?</h2>
 
-      <label htmlFor="email-address">Email Address</label>
-      <input type="text" name="email-address" />
+      <div>
+        <label htmlFor="full-name">Full Name</label>
+        <input type="text" name="full-name" />
+      </div>
 
-      <label htmlFor="phone-number">Phone No.</label>
-      <input type="text" name="phone-number" />
+      <div>
+        <label htmlFor="email-address">Email Address</label>
+        <input type="text" name="email-address" />
+      </div>
 
-      <label htmlFor="subject">Subject</label>
-      <input type="text" name="subject" />
+      <div>
+        <label htmlFor="phone-number">Phone No.</label>
+        <input type="text" name="phone-number" />
+      </div>
+
+      <div>
+        <label htmlFor="subject">Subject</label>
+        <input type="text" name="subject" />
+      </div>
 
       <button>Send Message</button>
     </Form>
   );
 };
 
-export default ContactForm;
+export default styled(ContactForm)``;

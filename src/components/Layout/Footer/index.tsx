@@ -7,12 +7,17 @@ export const FooterElement = styled.footer`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  ${ContactForm}, ${ContactInformation} {
+    flex: 1 0 50%;
+  }
 `;
 
 const Footer = (): JSX.Element => {
   return (
     <FooterElement>
       <ContactInformation />
+
       <ContactForm />
     </FooterElement>
   );
