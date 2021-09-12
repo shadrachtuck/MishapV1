@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import ContactForm from '../../ContactForm';
-import ContactInformation from '../../ContactInformation';
+import ContactForm from './ContactForm';
+import ContactInformation from './ContactInformation';
 
 export const FooterElement = styled.footer`
   display: flex;
@@ -13,7 +13,7 @@ export const FooterElement = styled.footer`
   }
 `;
 
-const Footer = (): JSX.Element => {
+const Contact = (): JSX.Element => {
   return (
     <FooterElement>
       <ContactInformation />
@@ -23,4 +23,4 @@ const Footer = (): JSX.Element => {
   );
 };
 
-export default Footer;
+export default Contact;

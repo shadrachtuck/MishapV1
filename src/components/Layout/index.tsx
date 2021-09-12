@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer, { FooterElement } from './Footer';
 import Header, { HeaderElement } from './Header';
 import LeftSidebar, { SidebarElement } from './Sidebar';
 import styled, { ThemeProvider } from 'styled-components';
@@ -26,13 +25,6 @@ const SiteLayout = styled.div`
     grid-column: middle;
     grid-row: content;
   }
-
-  ${FooterElement} {
-    grid-column: middle;
-    grid-row: footer;
-  }
-
-  background: ${props => props.theme.colors.white};
 `;
 
 const Layout = ({ children }: PageProps): JSX.Element => {
@@ -45,8 +37,6 @@ const Layout = ({ children }: PageProps): JSX.Element => {
         <Header />
 
         <MainContent>{children}</MainContent>
-
-        <Footer />
       </SiteLayout>
     </ThemeProvider>
   );

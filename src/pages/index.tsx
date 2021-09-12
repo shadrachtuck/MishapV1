@@ -3,16 +3,13 @@ import Layout from '../components/Layout';
 import { StaticImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { pxToRem } from '../styled-components/mixins';
+import Contact from '../components/Contact';
 
 const PageSection = styled.section`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-
-  .negative-top {
-    margin-top: 100px;
-  }
 `;
 
 const SiteTitle = styled.h1`
@@ -32,6 +29,18 @@ export default ({ location }: PageProps): JSX.Element => {
       <PageSection>
         <StaticImage src={bunny} alt="" />
         <SiteTitle>Mishap Records</SiteTitle>
+      </PageSection>
+
+      <PageSection>
+        <SiteTitle>Artists</SiteTitle>
+      </PageSection>
+
+      <PageSection>
+        <SiteTitle>Store</SiteTitle>
+      </PageSection>
+
+      <PageSection>
+        <Contact />
       </PageSection>
     </Layout>
   );
