@@ -31,6 +31,8 @@ const SiteLayout = styled.div`
     grid-column: middle;
     grid-row: footer;
   }
+
+  background: ${props => props.theme.colors.white};
 `;
 
 const Layout = ({ children }: PageProps): JSX.Element => {
