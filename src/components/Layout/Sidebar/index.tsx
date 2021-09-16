@@ -12,7 +12,7 @@ export const SidebarElement = styled.aside`
 
 const LeftSidebar = (): JSX.Element => {
   const mishapLogo =
-    '../../../src/assets/static/images/mishap-logo-design-4-jetblack.png';
+    '../../src/assets/mishap-designs/mishap-logo-design-4-jetblack.png';
 
   return (
     <SidebarElement>

@@ -23,7 +23,7 @@ const SiteTitle = styled.h1`
 `;
 
 export default (props: PageProps): JSX.Element => {
-  const bunny = '../assets/images/rabbit-clear-bg-tall.png';
+  const bunny = '../assets/mishap-designs/rabbit-clear-bg-tall.png';
 
   return (
     <Layout {...props}>
