@@ -1,7 +1,6 @@
-
 arrowParens: avoid
 bracketSpacing: true
-endOfLine: lf
+endOfLine: auto
 htmlWhitespaceSensitivity: css
 insertPragma: false
 jsxBracketSameLine: false

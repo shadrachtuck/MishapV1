@@ -59,7 +59,9 @@ globals:
 
 rules:
   no-undef: 0
-  prettier/prettier: 2
+  prettier/prettier: # 2
+    - 'error'
+    - endOfLine: 'auto'
   no-console: 1
   no-unused-vars: 1
   linebreak-style:
