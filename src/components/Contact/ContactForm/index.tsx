@@ -1,4 +1,3 @@
-import { PageProps } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import { colors, pxToRem } from '../../../styled-components/mixins';
@@ -10,8 +9,8 @@ const Form = styled.form`
   padding: ${pxToRem(74)};
 `;
 
-type ContactFormProps = PageProps & {
-  className: string;
+type ContactFormProps = {
+  className?: string;
 };
 
 const ContactForm = ({ className }: ContactFormProps): JSX.Element => {

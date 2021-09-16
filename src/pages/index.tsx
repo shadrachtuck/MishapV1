@@ -22,11 +22,11 @@ const SiteTitle = styled.h1`
   letter-spacing: 0.25rem;
 `;
 
-export default ({ location }: PageProps): JSX.Element => {
+export default (props: PageProps): JSX.Element => {
   const bunny = '../assets/images/rabbit-clear-bg-tall.png';
 
   return (
-    <Layout location={location}>
+    <Layout {...props}>
       <PageSection>
         <StaticImage src={bunny} alt="" />
         <SiteTitle>Mishap Records</SiteTitle>
