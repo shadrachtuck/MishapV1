@@ -63,7 +63,9 @@ rules:
     - 'error'
     - endOfLine: 'auto'
   no-console: 1
-  no-unused-vars: 1
+  no-unused-vars:
+    - 'warn'
+    - argsIgnorePattern: '^_'
   linebreak-style:
     - 'error'
     - 'unix'

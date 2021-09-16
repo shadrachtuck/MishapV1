@@ -5,7 +5,7 @@ type CSSParams = Parameters<typeof css>;
 
 type StyleFnMap = Record<
   keyof DefaultTheme['breakpoints'],
-  (...args: CSSParams) => any
+  (..._args: CSSParams) => any
 >;
 
 const typedKeys = <T extends DefaultTheme['breakpoints']>(

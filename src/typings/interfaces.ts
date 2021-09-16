@@ -1,4 +1,4 @@
-interface DefaultProps
+export interface DefaultProps
   extends React.HTMLAttributes<any>,
     React.DOMAttributes<any>,
     React.RefAttributes<any> {
@@ -8,6 +8,6 @@ interface DefaultProps
   children?: React.ReactNode;
 }
 
-interface PageProps extends DefaultProps {
+export interface PageProps extends DefaultProps {
   location: Location;
 }
