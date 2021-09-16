@@ -5,6 +5,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../../styled-components/defaultTheme';
 import GlobalStyles from '../../styled-components/global-styles';
 import MainContent from '../Sections/MainContent';
+import { PageProps } from 'gatsby';
 
 const SiteLayout = styled.div`
   display: grid;
@@ -31,6 +32,7 @@ const Layout = ({ children }: PageProps): JSX.Element => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
+
       <SiteLayout>
         <LeftSidebar />
 

@@ -1,13 +1,16 @@
+import {
+  CSSProperties,
+  DOMAttributes,
+  HTMLAttributes,
+  ReactNode,
+  RefAttributes,
+} from 'react';
 export interface DefaultProps
-  extends React.HTMLAttributes<any>,
-    React.DOMAttributes<any>,
-    React.RefAttributes<any> {
+  extends HTMLAttributes<any>,
+    DOMAttributes<any>,
+    RefAttributes<any> {
   id?: string;
   title?: string;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
-}
-
-export interface PageProps extends DefaultProps {
-  location: Location;
+  style?: CSSProperties;
+  children?: ReactNode;
 }
