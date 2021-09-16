@@ -4,6 +4,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { pxToRem } from '../styled-components/mixins';
 import Contact from '../components/Contact';
+import { PageProps } from 'gatsby';
 
 const PageSection = styled.section`
   display: flex;

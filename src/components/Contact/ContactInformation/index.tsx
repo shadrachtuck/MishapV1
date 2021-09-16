@@ -1,9 +1,14 @@
+import { PageProps } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 
+type ContactInformationProps = PageProps & {
+  className: string;
+};
+
 const ContactInformation = ({
   className,
-}: Pick<PageProps, 'className'>): JSX.Element => {
+}: ContactInformationProps): JSX.Element => {
   return (
     <div className={className}>
       <h2>Contact</h2>
