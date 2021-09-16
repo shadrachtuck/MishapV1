@@ -28,7 +28,11 @@ const SiteLayout = styled.div`
   }
 `;
 
-const Layout = ({ children }: PageProps): JSX.Element => {
+type LayoutProps = Omit<PageProps, 'children'> & {
+  children: JSX.Element;
+};
+
+const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />

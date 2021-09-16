@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 type ContactInformationProps = PageProps & {
-  className: string;
+  className?: string;
 };
 
 const ContactInformation = ({
