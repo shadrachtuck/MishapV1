@@ -11,7 +11,8 @@ export const SidebarElement = styled.aside`
 `;
 
 const LeftSidebar = (): JSX.Element => {
-  const mishapLogo = '../../assets/images/mishap-logo-design-4-jetblack.png';
+  const mishapLogo =
+    '../../../src/assets/static/images/mishap-logo-design-4-jetblack.png';
 
   return (
     <SidebarElement>
