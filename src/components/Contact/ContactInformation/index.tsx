@@ -1,8 +1,7 @@
-import { PageProps } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 
-type ContactInformationProps = PageProps & {
+type ContactInformationProps = {
   className?: string;
 };
 

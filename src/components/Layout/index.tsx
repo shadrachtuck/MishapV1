@@ -29,7 +29,7 @@ const SiteLayout = styled.div`
 `;
 
 type LayoutProps = Omit<PageProps, 'children'> & {
-  children: JSX.Element;
+  children: Array<JSX.Element>;
 };
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
