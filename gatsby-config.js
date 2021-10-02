@@ -36,7 +36,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/assets/static/images`,
+        path: `${__dirname}/src/assets/mishap-designs`,
       },
     },
 
@@ -44,7 +44,7 @@ module.exports = {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: `${__dirname}/src/assets/images/svg`,
+          include: `${__dirname}/src/assets/svg`,
         },
       },
     },

@@ -26,5 +26,5 @@
     "forceConsistentCasingInFileNames": true,
     "preserveConstEnums": true
   },
-  "include": ["./src/**/*", "typings"]
+  "include": ["./src/**/*", "typings", "gatsby-node.js"]
 }
