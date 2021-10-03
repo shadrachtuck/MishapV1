@@ -8,11 +8,15 @@ export const SidebarElement = styled.aside`
   flex-flow: column nowrap;
   align-items: center;
   justify-content: space-between;
+
+  position: sticky;
+  height: 100vh;
+  top: 0;
+  left: 0;
 `;
 
 const LeftSidebar = (): JSX.Element => {
-  const mishapLogo =
-    '../../assets/mishap-designs/mishap-logo-design-4-jetblack.pdf';
+  const mishapLogo = '../../../assets/svg/mishap-text-logo.svg';
 
   return (
     <SidebarElement>

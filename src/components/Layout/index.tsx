@@ -9,16 +9,16 @@ import { PageProps } from 'gatsby';
 
 const SiteLayout = styled.div`
   display: grid;
-  grid-template-columns: [left] 10% [middle] 80% [right] 10%;
-  grid-template-rows: [header] 5vh [right-spacer] 2rem [content] auto [left-spacer] 2rem [footer] auto;
+  grid-template-columns: [gutter-left] 2rem [content-left] 8% [middle] 84% [content-right] 8% [gutter-right] 2rem;
+  grid-template-rows: [header] 10vh [right-spacer] 2rem [content] auto [left-spacer] 2rem [footer] auto;
 
   ${SidebarElement} {
-    grid-column: left;
+    grid-column: content-left;
     grid-row: header / span footer-end;
   }
 
   ${HeaderElement} {
-    grid-column: middle / span right-end;
+    grid-column: middle;
     grid-row: header / span right-spacer;
   }
 
