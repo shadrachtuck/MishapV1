@@ -23,7 +23,6 @@ module.exports = {
     `gatsby-plugin-postcss`,
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-sharp`,
-
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {
@@ -32,20 +31,26 @@ module.exports = {
         namespace: 'mishap',
       },
     },
-
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/assets/mishap-designs`,
       },
     },
-
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
           include: `${__dirname}/src/assets/svg`,
         },
+      },
+    },
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'STRAPI',
+        fieldName: 'strapi',
+        url: 'http://localhost:1337/graphql',
       },
     },
   ],
