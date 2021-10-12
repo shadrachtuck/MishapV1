@@ -5,7 +5,6 @@ import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../../styled-components/defaultTheme';
 import GlobalStyles from '../../styled-components/global-styles';
 import MainContent from '../Sections/MainContent';
-import { PageProps } from 'gatsby';
 
 const SiteLayout = styled.div`
   display: grid;
@@ -28,8 +27,9 @@ const SiteLayout = styled.div`
   }
 `;
 
-type LayoutProps = Omit<PageProps, 'children'> & {
-  children: Array<JSX.Element>;
+type LayoutProps = {
+  children: Array<JSX.Element> | JSX.Element;
+  location: Location;
 };
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {

@@ -1,5 +1,5 @@
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
-const path = require('path');
+const { resolve } = require('path');
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -7,6 +7,7 @@ require('dotenv').config({
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
+  const { panicOnBuild } = reporter;
 
   await graphql(`
     query {
@@ -19,16 +20,67 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       }
     }
   `).then(({ error, data }) => {
-    if (error) return reporter.panicOnBuild(`Error while running graphql`);
+    if (error) return panicOnBuild('Error while running graphql');
+    if (!data || !data.strapi)
+      return panicOnBuild('Error while running graphql. No data found');
+
+    const { artists } = data.strapi;
 
     // Create artist pages
-    data.strapi.artists.forEach(({ id, slug }) => {
+    artists.forEach(({ id, slug }) => {
+      const path = `artists/${slug}`;
+      const component = resolve(`${__dirname}/src/templates/artist.tsx`);
+      const context = { id };
       const pageData = {
-        path: `artists/${slug}`,
-        component: path.resolve(`${__dirname}/src/templates/artist.tsx`),
-        context: { id },
+        path,
+        component,
+        context,
       };
+
       createPage(pageData);
     });
   });
+};
+
+exports.createResolvers = async ({
+  actions,
+  cache,
+  createNodeId,
+  createResolvers,
+  store,
+  reporter,
+}) => {
+  const { createNode } = actions;
+  const resolvers = {
+    STRAPI_UploadFile: {
+      imageFile: {
+        type: `File`,
+        resolve: async ({ url, name }) => {
+          if (!url) return null;
+          const fileNodeData = {
+            url,
+            store,
+            cache,
+            createNode,
+            createNodeId,
+            reporter,
+          };
+          let result;
+
+          try {
+            result = await createRemoteFileNode(fileNodeData);
+          } catch (err) {
+            console.error(
+              `[createResolvers] error in fetching remote image ${url} (${name}):`,
+              err,
+            );
+            throw err;
+          }
+          return result;
+        },
+      },
+    },
+  };
+
+  createResolvers(resolvers);
 };

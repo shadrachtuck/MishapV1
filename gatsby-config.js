@@ -18,11 +18,20 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
-    `gatsby-plugin-ts`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-ts`,
+      options: {
+        // disable codegen in favor of custom types
+        codegen: false,
+        forkTsCheckerPlugin: {
+          eslint: true,
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {
