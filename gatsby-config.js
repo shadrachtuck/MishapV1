@@ -27,9 +27,6 @@ module.exports = {
       options: {
         // disable codegen in favor of custom types
         codegen: false,
-        forkTsCheckerPlugin: {
-          eslint: true,
-        },
       },
     },
     {

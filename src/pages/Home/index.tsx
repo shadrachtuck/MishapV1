@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import Contact from '../../components/Contact';
 import Layout from '../../components/Layout';
 import { pxToRem } from '../../styled-components/mixins';
-import { Strapi } from '../../typings/strapi';
 
 type HomePageProps = PageProps & {
   data: Array<Strapi.Data['artists']>;

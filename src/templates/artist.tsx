@@ -22,7 +22,6 @@ export default (props: TemplateProps): JSX.Element => {
     data: {
       strapi: {
         artist: {
-          id,
           name: artistName,
           profile: { bio, profilePicture },
         },

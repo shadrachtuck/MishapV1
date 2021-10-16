@@ -1,7 +1,5 @@
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
-/* eslint-disable */
-
 export = Strapi;
 export as namespace Strapi;
 declare namespace Strapi {

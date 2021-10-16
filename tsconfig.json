@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "*": ["types/*", "*"]
+      "@test-utils": ["test/test-utils.tsx"],
+      "@/*": ["src/*"]
     },
     "target": "ES2020",
     "module": "ESNext",

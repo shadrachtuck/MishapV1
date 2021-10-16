@@ -1,5 +1,4 @@
 import { Maybe, Scalars } from './helpers';
-/* eslint-disable no-unused-vars */
 
 type File = Node & {
   sourceInstanceName: Scalars['String'];
