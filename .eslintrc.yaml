@@ -27,8 +27,6 @@ extends:
   - 'plugin:prettier/recommended'
   # - 'prettier/@typescript-eslint'
   # - 'prettier/react'
-  - 'plugin:import/recommended'
-  - 'plugin:import/typescript'
 
 env:
   browser: true
