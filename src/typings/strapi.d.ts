@@ -1,9 +1,9 @@
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
+/* eslint-disable */
+
 export = Strapi;
 export as namespace Strapi;
-
-/* eslint-disable no-unused-vars */
 declare namespace Strapi {
   /**
    *  The Strapi object. All data coming from the api
