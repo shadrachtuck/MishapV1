@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "*": ["types/*", "*"]
+    },
     "target": "ES2020",
     "module": "ESNext",
     "declaration": true,

@@ -5,48 +5,30 @@ parser: '@typescript-eslint/parser'
 settings:
   react:
     version: 'detect'
+  import/resolver:
+    node:
+      moduleDirectory:
+        - 'node_modules'
+        - 'src'
+      extensions:
+        - '.js'
+        - '.jsx'
+        - '.ts'
+        - '.tsx'
 
 plugins:
-  # - 'react'
+  - '@typescript-eslint'
   - 'prettier'
-  - '@typescript-eslint/eslint-plugin'
 
 extends:
-  # - 'react'
-  - 'eslint:recommended'
-  - 'prettier'
-  # - 'plugin:react/recommended'
+  - 'plugin:react/recommended'
+  - 'plugin:@typescript-eslint/recommended'
+  - 'plugin:react-hooks/recommended'
   - 'plugin:prettier/recommended'
-  # - 'plugin:@typescript-eslint/recommended'
-
-parserOptions:
-  ecmaVersion: 2017
-  sourceType: 'module'
-  allowImportExportEverywhere: false
-  ecmaFeatures:
-    experimentalObjectRestSpread: true
-    arrowFunctions: true
-    binaryLiterals: true
-    blockBindings: true
-    classes: true
-    defaultParams: true
-    destructuring: true
-    forOf: true
-    generators: true
-    modules: true
-    objectLiteralComputedProperties: true
-    objectLiteralDuplicateProperties: true
-    objectLiteralShorthandMethods: true
-    objectLiteralShorthandProperties: true
-    octalLiterals: true
-    regexUFlag: true
-    regexYFlag: true
-    spread: true
-    superInFunctions: true
-    templateStrings: true
-    unicodeCodePointEscapes: true
-    globalReturn: true
-    jsx: true
+  # - 'prettier/@typescript-eslint'
+  # - 'prettier/react'
+  - 'plugin:import/recommended'
+  - 'plugin:import/typescript'
 
 env:
   browser: true
@@ -58,12 +40,23 @@ globals:
   strapi: true
 
 rules:
+  react/no-unescaped-entities: 'off'
+  # allow 'default' exports
+  react/display-name: 'off'
+  react/prop-types: 'off'
+  # turn off base rule to avoid conflicts
+  no-use-before-define: 'off'
+  '@typescript-eslint/no-use-before-define': 'error'
+  '@typescript-eslint/explicit-function-return-type':
+    - 'error'
+    - allowExpressions: true
+      allowTypedFunctionExpressions: true
   no-undef: 0
   prettier/prettier: # 2
     - 'error'
     - endOfLine: 'auto'
-  no-console: 1
-  no-unused-vars:
+  no-console: 'warn'
+  '@typescript-eslint/no-unused-vars':
     - 'warn'
     - argsIgnorePattern: '^_'
   linebreak-style:
