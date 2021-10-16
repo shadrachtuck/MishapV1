@@ -14,14 +14,17 @@ const menuItems: MenuItems = [
   {
     id: 1,
     name: 'artists',
+    href: '#artists',
   },
   {
     id: 2,
     name: 'contact',
+    href: '#contact',
   },
   {
     id: 3,
     name: 'store',
+    href: '#store',
   },
 ];
 

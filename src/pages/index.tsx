@@ -27,20 +27,20 @@ export default (props: PageProps): JSX.Element => {
 
   return (
     <Layout {...props}>
-      <PageSection>
+      <PageSection id="home">
         <StaticImage src={bunny} alt="" />
         <SiteTitle>Mishap Records</SiteTitle>
       </PageSection>
 
-      <PageSection>
+      <PageSection id="artists">
         <SiteTitle>Artists</SiteTitle>
       </PageSection>
 
-      <PageSection>
+      <PageSection id="store">
         <SiteTitle>Store</SiteTitle>
       </PageSection>
 
-      <PageSection>
+      <PageSection id="contact">
         <Contact />
       </PageSection>
     </Layout>
