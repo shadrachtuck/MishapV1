@@ -43,65 +43,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   });
 };
 
-exports.onCreateWebpackConfig = ({ getConfig, actions, stage }) => {
-  const existingConfig = getConfig();
-
-  const rules = existingConfig.module.rules.map(rule => {
-    if (
-      String(rule.test) ===
-      String(/\.(ico|svg|jpg|jpeg|png|gif|webp|avif)(\?.*)?$/)
-    ) {
-      return {
-        ...rule,
-        exclude: path.resolve(__dirname, './src/assets/icons'),
-      };
-    }
-    return rule;
-  });
-
-  actions.replaceWebpackConfig({
-    ...existingConfig,
-    module: {
-      ...existingConfig.module,
-      rules,
-    },
-  });
-
-  actions.setWebpackConfig({
-    module: {
-      rules: [
-        {
-          test: /\.svg$/,
-          include: path.resolve(__dirname, './src/assets/icons'),
-          issuer: /\.((j|t)sx?)$/,
-          use: {
-            loader: require.resolve(`@svgr/webpack`),
-            options: {
-              titleProp: true,
-            },
-          },
-        },
-      ],
-    },
-    plugins:
-      stage === 'build-javascript'
-        ? [
-            new BundleAnalyzerPlugin({
-              analyzerMode: 'static',
-              defaultSizes: 'gzip',
-              openAnalyzer: false,
-              generateStatsFile: true,
-            }),
-          ]
-        : [],
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, 'src'),
-      },
-    },
-  });
-};
-
 // Resolvers add custom fields to graphql schema
 exports.createResolvers = async ({
   actions,

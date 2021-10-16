@@ -30,7 +30,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-styled-components`,
+      resolve: 'gatsby-plugin-styled-components',
       options: {
         displayName: true,
         fileName: false, // only use DisplayName

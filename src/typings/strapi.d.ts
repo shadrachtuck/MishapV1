@@ -19,6 +19,7 @@ declare namespace Strapi {
   type Artist = {
     id: string;
     name: string;
+    slug: string;
     profile: ArtistComponents['Profile'];
   };
 

@@ -10,12 +10,6 @@ module.exports = {
     react: {
       version: 'detect',
     },
-    'import/resolver': {
-      alias: {
-        map: [['@', './src']],
-        extensions: ['.tsx', '.ts', '.js', '.jsx'],
-      },
-    },
   },
   plugins: ['@typescript-eslint', 'prettier'],
   extends: [

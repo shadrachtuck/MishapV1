@@ -1,34 +1,29 @@
-import { PageProps } from 'gatsby';
+import { graphql, PageProps, useStaticQuery } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
-import styled from 'styled-components';
 import Contact from '../../components/Contact';
 import Layout from '../../components/Layout';
-import { pxToRem } from '../../styled-components/mixins';
+import { Strapi } from '../../typings/strapi';
+import { PageSection, SiteTitle } from './styles';
 
-type HomePageProps = PageProps & {
-  data: Array<Strapi.Data['artists']>;
-};
-
-const PageSection = styled.section`
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
+export const query = graphql`
+  query GET_ARTISTS {
+    strapi {
+      artists {
+        name
+        profile {
+          ...StrapiArtistProfile
+        }
+      }
+    }
+  }
 `;
 
-const SiteTitle = styled.h1`
-  text-transform: uppercase;
-  font-style: normal;
-  font-weight: bold;
-  font-size: ${pxToRem(64)};
-  line-height: ${pxToRem(75)};
-  letter-spacing: 0.25rem;
-`;
-
-const Home = (props: HomePageProps): JSX.Element => {
-  const bunny = '../assets/svg/rabbit_black.svg';
-  console.log(props.data);
+const Home = (props: PageProps): JSX.Element => {
+  const bunny = '../../assets/svg/rabbit_black.svg';
+  const {
+    strapi: { artists },
+  } = useStaticQuery<Strapi>(query);
 
   return (
     <Layout {...props}>
@@ -39,6 +34,12 @@ const Home = (props: HomePageProps): JSX.Element => {
 
       <PageSection id="artists">
         <SiteTitle>Artists</SiteTitle>
+        {artists.map(({ id, profile: { name, bio }, slug }) => (
+          <div key={`${name}${id}`}>
+            <a href={`/artists/${slug}`}>{name}</a>
+            <p>{bio}</p>
+          </div>
+        ))}
       </PageSection>
 
       <PageSection id="store">
