@@ -16,6 +16,7 @@ export const query = graphql`
     }
   }
 `;
+
 export default (props: TemplateProps): JSX.Element => {
   const {
     data: {
