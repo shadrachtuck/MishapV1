@@ -12,4 +12,47 @@ export const theme: DefaultTheme = {
     black: '#000000',
     white: '#ffffff',
   },
+  spacing: {
+    xxlarge: '4rem',
+    xlarge: '3rem',
+    large: '2.5rem',
+    medium: '2rem',
+    small: '1.5rem',
+    xsmall: '1rem',
+    xxsmall: '0.5rem',
+  },
+  padding: {
+    xxlarge: '4rem',
+    xlarge: '3rem',
+    large: '2.5rem',
+    medium: '2rem',
+    small: '1.5rem',
+    xsmall: '1rem',
+    xxsmall: '0.5rem',
+  },
+  font: {
+    size: {
+      xl: '1.75rem', // 28px
+      lg: '1.375rem', // 22px
+      md: '1.125rem', // 18px
+      base: '1rem', // 16px
+      sm: '0.875rem', // 14px
+    },
+    weight: {
+      bolder: 700,
+      bold: 500,
+      normal: 400,
+      light: 300,
+    },
+    family: {
+      primary: 'RobotoMono',
+      secondary: 'Roboto',
+      bold: 'RobotoBold',
+    },
+    letterSpacing: {
+      tight: '',
+      middle: '',
+      spread: '',
+    },
+  },
 };

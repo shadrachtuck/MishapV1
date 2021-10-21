@@ -1,3 +1,4 @@
+import ArtistCards from '../../components/ArtistCards';
 import { graphql, PageProps, useStaticQuery } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
@@ -10,17 +11,23 @@ export const query = graphql`
   query GET_ARTISTS {
     strapi {
       artists {
+        slug
         name
-        profile {
-          ...StrapiArtistProfile
+        bio
+        socialMedia: social_media {
+          ...StrapiArtistSocialMedia
+        }
+        profilePicture: profile_picture {
+          ...StrapiUploadFile
         }
       }
     }
   }
 `;
 
+const BUNNY = '../../assets/svg/rabbit_black.svg';
+
 const Home = (props: PageProps): JSX.Element => {
-  const bunny = '../../assets/svg/rabbit_black.svg';
   const {
     strapi: { artists },
   } = useStaticQuery<Strapi>(query);
@@ -28,18 +35,13 @@ const Home = (props: PageProps): JSX.Element => {
   return (
     <Layout {...props}>
       <PageSection id="home">
-        <StaticImage src={bunny} alt="" />
+        <StaticImage src={BUNNY} alt="" />
         <SiteTitle>Mishap Records</SiteTitle>
       </PageSection>
 
       <PageSection id="artists">
         <SiteTitle>Artists</SiteTitle>
-        {artists.map(({ id, profile: { name, bio }, slug }) => (
-          <div key={`${name}${id}`}>
-            <a href={`/artists/${slug}`}>{name}</a>
-            <p>{bio}</p>
-          </div>
-        ))}
+        <ArtistCards artists={artists} />
       </PageSection>
 
       <PageSection id="store">

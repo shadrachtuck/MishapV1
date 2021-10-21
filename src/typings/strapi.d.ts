@@ -20,27 +20,20 @@ declare namespace Strapi {
     id: string;
     name: string;
     slug: string;
-    profile: ArtistComponents['Profile'];
+    bio: string;
+    profilePicture: UploadFile;
+    socialMedia: ArtistComponents['socialMedia'];
   };
 
   // components
   type ArtistComponents = {
-    Profile: Profile;
-    SocialMedia: SocialMedia;
+    socialMedia: SocialMedia;
   };
 
   type SocialMedia = {
     id: string;
     name: string;
     url: string;
-  };
-
-  type Profile = {
-    id: string;
-    name: string;
-    bio: string;
-    profilePicture: UploadFile;
-    socialMedia: ArtistComponents['SocialMedia'];
   };
 
   type UploadFile = {

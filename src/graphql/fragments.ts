@@ -58,16 +58,3 @@ export const StrapiArtistSocialMedia = graphql`
     url
   }
 `;
-
-export const StrapiArtistProfile = graphql`
-  fragment StrapiArtistProfile on STRAPI_ComponentArtistsProfile {
-    name
-    bio
-    socialMedia: social_media {
-      ...StrapiArtistSocialMedia
-    }
-    profilePicture: profile_picture {
-      ...StrapiUploadFile
-    }
-  }
-`;

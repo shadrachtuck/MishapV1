@@ -9,8 +9,12 @@ export const query = graphql`
     strapi {
       artist(id: $id) {
         name
-        profile {
-          ...StrapiArtistProfile
+        bio
+        socialMedia: social_media {
+          ...StrapiArtistSocialMedia
+        }
+        profilePicture: profile_picture {
+          ...StrapiUploadFile
         }
       }
     }
@@ -21,10 +25,7 @@ export default (props: TemplateProps): JSX.Element => {
   const {
     data: {
       strapi: {
-        artist: {
-          name: artistName,
-          profile: { bio, profilePicture },
-        },
+        artist: { name: artistName, bio, profilePicture },
       },
     },
     location,
