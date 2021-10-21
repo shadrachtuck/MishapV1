@@ -4,3 +4,6 @@ declare module '*.jpeg';
 declare module '*.svg';
 declare module '*.gif';
 declare module '*.bmp';
+declare module '*.woff';
+declare module '*.woff2';
+declare module '*.ttf';

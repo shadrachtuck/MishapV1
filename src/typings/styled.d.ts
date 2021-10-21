@@ -11,6 +11,7 @@ declare module 'styled-components' {
     colors: {
       black: string;
       white: string;
+      gray: string;
     };
     spacing: {
       xxlarge: string;
@@ -32,6 +33,7 @@ declare module 'styled-components' {
     };
     font: {
       size: {
+        xxl: string;
         xl: string;
         lg: string;
         md: string;
@@ -45,12 +47,15 @@ declare module 'styled-components' {
         light: number;
       };
       family: {
-        primary: string;
-        secondary: string;
+        light: string;
+        italic: string;
+        regular: string;
+        semiBold: string;
         bold: string;
       };
       letterSpacing: {
         tight: string;
+        base: string;
         middle: string;
         spread: string;
       };

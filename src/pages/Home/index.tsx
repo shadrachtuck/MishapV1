@@ -5,7 +5,7 @@ import React from 'react';
 import Contact from '../../components/Contact';
 import Layout from '../../components/Layout';
 import { Strapi } from '../../typings/strapi';
-import { PageSection, SiteTitle } from './styles';
+import { PageSection } from './styles';
 
 export const query = graphql`
   query GET_ARTISTS {
@@ -36,16 +36,16 @@ const Home = (props: PageProps): JSX.Element => {
     <Layout {...props}>
       <PageSection id="home">
         <StaticImage src={BUNNY} alt="" />
-        <SiteTitle>Mishap Records</SiteTitle>
+        <h1>Mishap Records</h1>
       </PageSection>
 
       <PageSection id="artists">
-        <SiteTitle>Artists</SiteTitle>
+        <h2>Artists</h2>
         <ArtistCards artists={artists} />
       </PageSection>
 
       <PageSection id="store">
-        <SiteTitle>Store</SiteTitle>
+        <h2>Store</h2>
       </PageSection>
 
       <PageSection id="contact">

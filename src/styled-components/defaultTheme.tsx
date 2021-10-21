@@ -11,6 +11,7 @@ export const theme: DefaultTheme = {
   colors: {
     black: '#000000',
     white: '#ffffff',
+    gray: '#7c8081',
   },
   spacing: {
     xxlarge: '4rem',
@@ -32,9 +33,10 @@ export const theme: DefaultTheme = {
   },
   font: {
     size: {
-      xl: '1.75rem', // 28px
-      lg: '1.375rem', // 22px
-      md: '1.125rem', // 18px
+      xxl: '4rem', // 64px
+      xl: '3rem', // 48px
+      lg: '2rem', // 32px
+      md: '1.375rem', // 22px
       base: '1rem', // 16px
       sm: '0.875rem', // 14px
     },
@@ -45,14 +47,17 @@ export const theme: DefaultTheme = {
       light: 300,
     },
     family: {
-      primary: 'RobotoMono',
-      secondary: 'Roboto',
-      bold: 'RobotoBold',
+      light: 'RobotoMonoLight',
+      italic: 'RobotoMonoItalic',
+      regular: 'RobotoMonoRegular',
+      semiBold: 'RobotoMonoSemiBold',
+      bold: 'RobotoMonoBold',
     },
     letterSpacing: {
-      tight: '',
-      middle: '',
-      spread: '',
+      tight: '0rem',
+      base: '0.05rem',
+      middle: '0.25rem',
+      spread: '0.5rem',
     },
   },
 };
