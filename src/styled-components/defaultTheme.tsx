@@ -60,4 +60,7 @@ export const theme: DefaultTheme = {
       spread: '0.5rem',
     },
   },
+  timing: {
+    fast: 300,
+  },
 };

@@ -5,7 +5,7 @@ import RobotoMonoItalic from '../assets/fonts/RobotoMono-Italic.ttf';
 import RobotoMonoRegular from '../assets/fonts/RobotoMono-Regular.ttf';
 import RobotoMonoSemiBold from '../assets/fonts/RobotoMono-SemiBold.ttf';
 import RobotoMonoBold from '../assets/fonts/RobotoMono-Bold.ttf';
-import { colors, font } from './mixins';
+import { color, font } from './mixins';
 
 const GlobalStyles = styled.createGlobalStyle`
   @font-face {
@@ -101,8 +101,8 @@ const GlobalStyles = styled.createGlobalStyle`
   input,
   select,
   textarea {
-    color: ${colors('black')};
-    font-family: ${font('family', 'regular')}, serif;
+    color: ${color('black')};
+    font-family: ${font('family', 'regular')}, sans-serif;
     font-weight: ${font('weight', 'normal')};
     font-size: ${font('size', 'md')};
     letter-spacing: ${font('letterSpacing', 'base')};
@@ -197,13 +197,13 @@ const GlobalStyles = styled.createGlobalStyle`
   }
 
   hr {
-    border-top: solid 1px ${colors('gray')};
+    border-top: solid 1px ${color('gray')};
     border: 0;
     margin-bottom: 1.5rem;
   }
 
   blockquote {
-    border-left: solid 0.5rex ${colors('gray')};
+    border-left: solid 0.5rex ${color('gray')};
     font-style: italic;
     padding: 1rem 0 1rem 2rem;
   }

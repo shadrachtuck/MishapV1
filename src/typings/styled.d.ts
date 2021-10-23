@@ -60,5 +60,8 @@ declare module 'styled-components' {
         spread: string;
       };
     };
+    timing: {
+      fast: number;
+    };
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { ArtistCardsWrapper, ArtistCard, ArtistCardLink } from './styles';
+import ROUTES from '../../../config/routes';
 
 type ArtistCardProps = {
   artists: Strapi.Data['artists'];
@@ -16,7 +17,9 @@ const ArtistCards = ({ artists }: ArtistCardProps): JSX.Element => {
             alt={profilePicture.alternativeText}
           />
           {/* TODO: Replace with modal button */}
-          <ArtistCardLink href={`/artists/${slug}`}>{name}</ArtistCardLink>
+          <ArtistCardLink href={`${ROUTES.artists}/${slug}`}>
+            {name}
+          </ArtistCardLink>
         </ArtistCard>
       ))}
     </ArtistCardsWrapper>

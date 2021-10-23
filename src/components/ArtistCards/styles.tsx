@@ -1,5 +1,5 @@
 import {
-  colors,
+  color,
   padding,
   pxToRem,
   spacing,
@@ -24,14 +24,15 @@ export const ArtistCard = styled.div`
   align-items: center;
   gap: 1rem;
   max-width: ${pxToRem(350)};
-  border: 2px solid ${colors('black')};
+  border: 2px solid ${color('black')};
   padding: ${padding('medium')};
+  padding-bottom: 0;
 `;
 
 export const ArtistCardLink = styled.a`
   text-transform: uppercase;
   text-decoration: none;
-  color: ${colors('black')};
+  color: ${color('black')};
   border: none;
   letter-spacing: 0.25rem;
 `;

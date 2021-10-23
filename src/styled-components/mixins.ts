@@ -37,7 +37,7 @@ export const above = typedKeys(breakpoints).reduce((accumulator, label) => {
   way to access props.theme variables
 */
 
-export const colors =
+export const color =
   (label: keyof DefaultTheme['colors']) =>
   (props: ThemeProps<DefaultTheme>): string =>
     props.theme.colors[label];
@@ -51,6 +51,22 @@ export const padding =
   (label: keyof DefaultTheme['padding']) =>
   (props: ThemeProps<DefaultTheme>): string =>
     props.theme.padding[label];
+
+export const timing =
+  (
+    label: keyof DefaultTheme['timing'],
+    themeProps?: ThemeProps<DefaultTheme>,
+    addMillisecondSuffix = true,
+  ) =>
+  (
+    props: ThemeProps<DefaultTheme> | undefined = themeProps,
+  ): string | number | null => {
+    if (!props) return null;
+
+    return addMillisecondSuffix
+      ? `${props.theme.timing[label]}ms`
+      : props.theme.timing[label];
+  };
 
 export const font =
   <

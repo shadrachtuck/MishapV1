@@ -1,6 +1,6 @@
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { resolve } = require('path');
+const ROUTES = require('./config/routes');
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -29,8 +29,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
     // Create artist pages
     artists.forEach(({ id, slug }) => {
-      const path = `artists/${slug}`;
-      const component = resolve(`${__dirname}/src/templates/artist.tsx`);
+      const path = `${ROUTES.artists}/${slug}`;
+      const component = resolve(`${__dirname}/src/templates/Artist/index.tsx`);
       const context = { id };
       const pageData = {
         path,

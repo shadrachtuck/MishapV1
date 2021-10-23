@@ -4,7 +4,6 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
-    allowImportFromAnywhere: true,
   },
   settings: {
     react: {
@@ -17,8 +16,6 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
-    'plugin:import/warnings',
-    'plugin:import/typescript',
     // 'prettier/@typescript-eslint',
     // 'prettier/react',
   ],
@@ -37,7 +34,6 @@ module.exports = {
     // allow 'default' exports
     'react/display-name': 'off',
     'react/prop-types': 'off',
-    'import/no-named-as-default': 'off',
     // turn off base rule to avoid conflicts
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': 'error',
