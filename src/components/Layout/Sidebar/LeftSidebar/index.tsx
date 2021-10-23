@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StaticImage } from 'gatsby-plugin-image';
-import SocialMediaLinks from '../../SocialMediaLinks';
+import SocialMediaLinks from '../../../SocialMediaLinks';
 
-export const SidebarElement = styled.aside`
+export const LeftSidebarElement = styled.aside`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -16,14 +16,14 @@ export const SidebarElement = styled.aside`
 `;
 
 const LeftSidebar = (): JSX.Element => {
-  const mishapLogo = '../../../assets/svg/mishap-text-logo.svg';
+  const mishapLogo = '../../../../assets/svg/mishap-text-logo.svg';
 
   return (
-    <SidebarElement>
+    <LeftSidebarElement>
       <StaticImage src={mishapLogo} alt="mishap records" />
 
       <SocialMediaLinks />
-    </SidebarElement>
+    </LeftSidebarElement>
   );
 };
 

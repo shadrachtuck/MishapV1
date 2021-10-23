@@ -1,18 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import Times from '../../assets/svg/times.svg';
+import Times from '../../../assets/svg/times.svg';
 
 type CloseButtonProps = {
   className?: string;
 };
 
-const HiddenButton = styled.button`
+export const HiddenButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
   border: 0;
   background: transparent;
-
   svg {
     width: 65%;
     height: 65%;

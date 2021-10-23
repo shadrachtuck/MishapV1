@@ -1,12 +1,12 @@
 import React, { createContext } from 'react';
-import Header, { HeaderElement } from './Header';
-import LeftSidebar, { SidebarElement } from './Sidebar';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../../styled-components/defaultTheme';
 import GlobalStyles from '../../styled-components/globalStyles';
 import MainContent from '../Sections/MainContent';
-import ThemeWrapper from '../ThemeWrapper';
 import Footer from './Footer';
+import Header, { HeaderElement } from './Header';
+import LeftSidebar, { LeftSidebarElement } from './Sidebar/LeftSidebar';
+import RightSidebar, { RightSidebarElement } from './Sidebar/RightSidebar';
 
 const SiteLayout = styled.div`
   display: grid;
@@ -26,8 +26,13 @@ const SiteLayout = styled.div`
     [footer] auto
     [whitespace-bottom] minmax(6vh, 10vh);
 
-  ${SidebarElement} {
+  ${LeftSidebarElement} {
     grid-column: content-left;
+    grid-row: header / span footer-end;
+  }
+
+  ${RightSidebarElement} {
+    grid-column: content-right;
     grid-row: header / span footer-end;
   }
 
@@ -62,19 +67,21 @@ const Layout = ({
 }: LayoutProps): JSX.Element => (
   <LocaleContext.Provider value={locale}>
     <ThemeProvider theme={theme}>
-      <ThemeWrapper>
-        <GlobalStyles />
-        <SiteLayout>
-          <LeftSidebar />
+      <GlobalStyles />
+      <SiteLayout>
+        <LeftSidebar />
 
-          <Header />
+        <Header />
 
-          {/* 'children' will always either come from a 'page' or a 'template' */}
-          <MainContent>{children}</MainContent>
+        {/*
+         * 'children' will always either come
+         * from a 'page' or a 'template'
+         */}
+        <MainContent>{children}</MainContent>
 
-          <Footer />
-        </SiteLayout>
-      </ThemeWrapper>
+        <Footer />
+        <RightSidebar />
+      </SiteLayout>
     </ThemeProvider>
   </LocaleContext.Provider>
 );

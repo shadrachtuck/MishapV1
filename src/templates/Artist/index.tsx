@@ -1,11 +1,11 @@
-import { graphql, navigate, PageRenderer } from 'gatsby';
+import { graphql } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import React, { useEffect, useState } from 'react';
-import { color, timing } from '../../styled-components/mixins';
+import React from 'react';
+import { color } from '../../styled-components/mixins';
 import styled from 'styled-components';
 import { TemplateProps } from '../types';
 import SocialMediaLinks from '../../components/SocialMediaLinks';
-import CloseButton from '../../components/CloseButton';
+import CloseButton from '../../components/Buttons/CloseButton';
 
 export const query = graphql`
   query GET_ARTIST($id: ID!) {
@@ -99,26 +99,7 @@ export default (props: TemplateProps): JSX.Element => {
         artist: { name: artistName, bio, profilePicture },
       },
     },
-    theme,
   } = props;
-
-  // const building = typeof window === 'undefined';
-  // const [indexPageData, setIndexPageData] = useState(
-  //   !building && window.indexPageData,
-  // );
-  // useEffect(() => {
-  //   window.setIndexPageData = () => {
-  //     setIndexPageData(window.indexPageData);
-  //   };
-  // }, []);
-
-  // const [modalOpen, setModalOpen] = useState(true);
-  const modalCloseTimeout = timing('fast', theme, false)();
-
-  // const closeModal = (): void => {
-  //   setModalOpen(false);
-  //   setTimeout(() => navigate(`/`), modalCloseTimeout);
-  // };
 
   return (
     <ArtistPageWrapper>
