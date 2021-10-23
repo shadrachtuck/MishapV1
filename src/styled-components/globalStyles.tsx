@@ -5,7 +5,7 @@ import RobotoMonoItalic from '../assets/fonts/RobotoMono-Italic.ttf';
 import RobotoMonoRegular from '../assets/fonts/RobotoMono-Regular.ttf';
 import RobotoMonoSemiBold from '../assets/fonts/RobotoMono-SemiBold.ttf';
 import RobotoMonoBold from '../assets/fonts/RobotoMono-Bold.ttf';
-import { color, font } from './mixins';
+import { color, font, timing } from './mixins';
 
 const GlobalStyles = styled.createGlobalStyle`
   @font-face {
@@ -57,9 +57,13 @@ const GlobalStyles = styled.createGlobalStyle`
     -webkit-text-size-adjust: none;
   }
 
-  ol,
   ul {
     list-style: none;
+
+    li {
+      border: none;
+      text-decoration: none;
+    }
   }
 
   blockquote,
@@ -110,16 +114,31 @@ const GlobalStyles = styled.createGlobalStyle`
   }
 
   a {
+    color: ${color('black')};
+    font-size: ${font('size', 'md')};
+    letter-spacing: ${font('letterSpacing', 'spread')};
+    text-transform: uppercase;
     background-color: transparent;
     text-decoration: none;
-    border-bottom: dotted 1px;
-    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out,
-      background-color 0.2s ease-in-out;
+
+    transition: color ${timing('fast')} ease-in-out,
+      border-color ${timing('fast')} ease-in-out,
+      background-color ${timing('fast')} ease-in-out;
 
     &:active,
-    &:hover {
+    &:hover,
+    &:visited {
+      text-decoration: none;
       outline: 0;
       border-bottom-color: transparent;
+    }
+
+    &:visited {
+      color: ${color('black')};
+    }
+
+    &:hover {
+      color: ${color('gray')};
     }
   }
 

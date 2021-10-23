@@ -1,6 +1,8 @@
 import React from 'react';
 import config from '../../../config/metaData';
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaBandcamp } from 'react-icons/fa';
+
 const SocialMediaLinks = (): JSX.Element => {
   return (
     <nav className="footer-nav">
@@ -25,8 +27,7 @@ const SocialMediaLinks = (): JSX.Element => {
 
         <li>
           <a href={config.socials.bandcamp} target="_blank" rel="noreferrer">
-            bandcamp
-            {/* <FaBandcamp /> */}
+            <FaBandcamp />
           </a>
         </li>
       </ul>
