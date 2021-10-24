@@ -17,9 +17,12 @@
     "cypress": "node_modules/.bin/cypress open"
   },
   "lint-staged": {
-    "*.{tsx,ts,js}": [
-      "yarn lint",
-      "yarn format"
+    "*.{js,ts,tsx}": [
+      "prettier --write",
+      "eslint --cache --fix"
+    ],
+    "*.{json,md,graphql}": [
+      "prettier --write"
     ]
   },
   "dependencies": {
