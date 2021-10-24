@@ -16,6 +16,11 @@
     "cleanDependencies": "rm -rf .cache node_modules yarn.lock && yarn",
     "cypress": "node_modules/.bin/cypress open"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.{js,ts,tsx}": [
       "prettier --write",
