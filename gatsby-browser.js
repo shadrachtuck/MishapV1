@@ -4,3 +4,6 @@ const Layout = require('./src/components/Layout').default;
 exports.wrapPageElement = ({ element, props }) => (
   <Layout {...props}>{element}</Layout>
 );
+
+// Fonts
+import '@fontsource/roboto-mono';

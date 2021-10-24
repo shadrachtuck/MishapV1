@@ -4,12 +4,17 @@ import ContactForm from './ContactForm';
 import ContactInformation from './ContactInformation';
 
 export const FooterElement = styled.footer`
-  display: flex;
+  display: grid;
+  grid-template-columns: [left] 1fr [right] 1fr;
   align-items: center;
   justify-content: center;
 
-  ${ContactForm}, ${ContactInformation} {
-    flex: 1 0 50%;
+  ${ContactInformation} {
+    grid-column: left;
+  }
+
+  ${ContactForm} {
+    grid-column: right;
   }
 `;
 

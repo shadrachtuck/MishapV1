@@ -41,17 +41,12 @@ export const theme: DefaultTheme = {
       sm: '0.875rem', // 14px
     },
     weight: {
-      bolder: 700,
-      bold: 500,
+      bold: 700,
       normal: 400,
       light: 300,
     },
     family: {
-      light: 'RobotoMonoLight',
-      italic: 'RobotoMonoItalic',
-      regular: 'RobotoMonoRegular',
-      semiBold: 'RobotoMonoSemiBold',
-      bold: 'RobotoMonoBold',
+      roboto: 'Roboto Mono',
     },
     letterSpacing: {
       tight: '0rem',

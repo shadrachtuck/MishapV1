@@ -41,17 +41,12 @@ declare module 'styled-components' {
         sm: string;
       };
       weight: {
-        bolder: number;
         bold: number;
         normal: number;
         light: number;
       };
       family: {
-        light: string;
-        italic: string;
-        regular: string;
-        semiBold: string;
-        bold: string;
+        roboto: string;
       };
       letterSpacing: {
         tight: string;

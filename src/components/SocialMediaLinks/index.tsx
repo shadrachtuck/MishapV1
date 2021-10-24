@@ -1,6 +1,7 @@
 import React from 'react';
 import config from '../../../config/metaData';
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+// TODO: Import custom bandcamp logo
 import { FaBandcamp } from 'react-icons/fa';
 
 const SocialMediaLinks = (): JSX.Element => {

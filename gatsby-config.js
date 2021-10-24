@@ -14,14 +14,14 @@ module.exports = {
   },
 
   plugins: [
-    `gatsby-plugin-image`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sitemap`,
-    `gatsby-plugin-catch-links`,
-    `gatsby-plugin-sharp`,
+    'gatsby-plugin-image',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-sharp',
     {
-      resolve: `gatsby-plugin-ts`,
+      resolve: 'gatsby-plugin-ts',
       options: {
         // disable codegen in favor of custom types
         codegen: false,

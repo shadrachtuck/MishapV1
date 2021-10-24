@@ -1,34 +1,8 @@
 // import styled identifier for prettier to know how to format/lint
 import * as styled from 'styled-components';
-import RobotoMonoLight from '../assets/fonts/RobotoMono-Light.ttf';
-import RobotoMonoItalic from '../assets/fonts/RobotoMono-Italic.ttf';
-import RobotoMonoRegular from '../assets/fonts/RobotoMono-Regular.ttf';
-import RobotoMonoSemiBold from '../assets/fonts/RobotoMono-SemiBold.ttf';
-import RobotoMonoBold from '../assets/fonts/RobotoMono-Bold.ttf';
 import { color, font, timing } from './mixins';
 
 const GlobalStyles = styled.createGlobalStyle`
-  @font-face {
-    font-family: 'RobotoMonoLight';
-    src: local('RobotoMonoLight'), url(${RobotoMonoLight}) format('ttf');
-  }
-  @font-face {
-    font-family: 'RobotoMonoItalic';
-    src: local('RobotoMonoItalic'), url(${RobotoMonoItalic}) format('ttf');
-  }
-  @font-face {
-    font-family: 'RobotoMonoRegular';
-    src: local('RobotoMonoRegular'), url(${RobotoMonoRegular}) format('ttf');
-  }
-  @font-face {
-    font-family: 'RobotoMonoSemiBold';
-    src: local('RobotoMonoSemiBold'), url(${RobotoMonoSemiBold}) format('ttf');
-  }
-  @font-face {
-    font-family: 'RobotoMonoBold';
-    src: local('RobotoMonoBold'), url(${RobotoMonoBold}) format('ttf');
-  }
-
   // Reset
   *,
   *:before,
@@ -106,8 +80,8 @@ const GlobalStyles = styled.createGlobalStyle`
   select,
   textarea {
     color: ${color('black')};
-    font-family: ${font('family', 'regular')}, sans-serif;
-    font-weight: ${font('weight', 'normal')};
+    font-family: ${font('family', 'roboto')};
+    font-weight: ${font('weight', 'light')};
     font-size: ${font('size', 'md')};
     letter-spacing: ${font('letterSpacing', 'base')};
     line-height: 1.75rem;
@@ -142,12 +116,13 @@ const GlobalStyles = styled.createGlobalStyle`
     }
   }
 
-  b {
-    font-weight: ${font('weight', 'bold')};
+  p {
+    font-weight: ${font('weight', 'light')};
   }
 
+  b,
   strong {
-    font-weight: ${font('weight', 'bolder')};
+    font-weight: ${font('weight', 'bold')};
   }
 
   small {
@@ -160,6 +135,7 @@ const GlobalStyles = styled.createGlobalStyle`
   h4,
   h5,
   h6 {
+    font-weight: ${font('weight', 'bold')};
     color: inherit;
     text-transform: uppercase;
     letter-spacing: ${font('letterSpacing', 'middle')};
@@ -184,6 +160,7 @@ const GlobalStyles = styled.createGlobalStyle`
   }
 
   h3 {
+    text-decoration: underline;
     font-size: ${font('size', 'lg')};
   }
 

@@ -5,24 +5,32 @@ type ContactInformationProps = {
   className?: string;
 };
 
+const ContactInformationWrapper = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+`;
+
 const ContactInformation = ({
   className,
 }: ContactInformationProps): JSX.Element => {
   return (
-    <div className={className}>
+    <ContactInformationWrapper className={className}>
       <h2>Contact</h2>
-      <div>
-        <h3>Address</h3>
-        <p>3119 E. Bonview Dr. Boise</p>
-        <p>Boise, 83716, Us</p>
 
-        <h3>Phone</h3>
-        <p>(208) 283-3045</p>
+      <h3>Address</h3>
 
-        <h3>Email</h3>
-        <p>info@mishaprecords.com</p>
-      </div>
-    </div>
+      <p>3119 E. Bonview Dr. Boise</p>
+
+      <p>Boise, 83712, US</p>
+
+      <h3>Phone</h3>
+
+      <p>(208) 283-3045</p>
+
+      <h3>Email</h3>
+
+      <p>info@mishaprecords.com</p>
+    </ContactInformationWrapper>
   );
 };
 
