@@ -23,7 +23,7 @@ const SiteLayout = styled.div`
     [top-spacer] 2rem
     [content] auto
     [bottom-spacer] 2rem
-    [footer] auto
+    [footer] minmax(20rem, 30rem)
     [whitespace-bottom] minmax(6vh, 10vh);
 
   ${LeftSidebarElement} {

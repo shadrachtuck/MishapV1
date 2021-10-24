@@ -8,6 +8,15 @@ type ContactInformationProps = {
 const ContactInformationWrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const ContactInformationSection = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const ContactInformation = ({
@@ -19,9 +28,11 @@ const ContactInformation = ({
 
       <h3>Address</h3>
 
-      <p>3119 E. Bonview Dr. Boise</p>
+      <ContactInformationSection>
+        <p>3119 E. Bonview Dr. Boise</p>
 
-      <p>Boise, 83712, US</p>
+        <p>Boise, 83712, US</p>
+      </ContactInformationSection>
 
       <h3>Phone</h3>
 

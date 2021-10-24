@@ -1,6 +1,6 @@
 // import styled identifier for prettier to know how to format/lint
 import * as styled from 'styled-components';
-import { color, font, timing } from './mixins';
+import { color, font, padding, timing } from './mixins';
 
 const GlobalStyles = styled.createGlobalStyle`
   // Reset
@@ -174,6 +174,13 @@ const GlobalStyles = styled.createGlobalStyle`
 
   h6 {
     font-size: ${font('size', 'sm')};
+  }
+
+  button {
+    border-radius: 2px;
+    font-family: ${font('family', 'roboto')};
+    letter-spacing: ${font('letterSpacing', 'middle')};
+    padding: ${padding('xxsmall')};
   }
 
   sub,
