@@ -6,4 +6,4 @@ export const wrapPageElement = ({ element, props }) => (
 );
 
 // Fonts
-import '@fontsource/roboto-mono';
+import '@fontsource/roboto-mono/variable.css';

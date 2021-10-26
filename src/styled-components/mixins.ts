@@ -1,4 +1,9 @@
-import { css, DefaultTheme, ThemeProps } from 'styled-components';
+import {
+  css,
+  DefaultTheme,
+  FlattenInterpolation,
+  ThemeProps,
+} from 'styled-components';
 import { theme } from './defaultTheme';
 
 type CSSParams = Parameters<typeof css>;
@@ -86,3 +91,49 @@ export const pxToRem = (px: number): string | number => {
 
   return String(remValue) + 'rem';
 };
+
+// TODO: guard against using other font-size values such as 'em' or 'percentage'
+export const remToPx = (rem: string): number => {
+  const baseFontSize = 16;
+  const letterIndex = rem.indexOf('r');
+  const numRem = rem.slice(0, letterIndex);
+
+  return Number(numRem) * baseFontSize;
+};
+
+export const calculateLineHeightFromPxValue = (
+  px: number,
+  fontSize: string,
+): number => {
+  const newLineHeight =
+    px / (typeof fontSize === 'string' ? remToPx(fontSize) : fontSize);
+
+  return newLineHeight;
+};
+
+type FontStyles = {
+  family: keyof DefaultTheme['font']['family'];
+  size: keyof DefaultTheme['font']['size'];
+  fontColor: keyof DefaultTheme['colors'];
+  weight: keyof DefaultTheme['font']['weight'];
+  lineHeight: number;
+  letterSpacing: keyof DefaultTheme['font']['letterSpacing'];
+};
+
+// TODO: Add fallback case for browsers not in support of variable fonts https://fontsource.org/docs/variable-fonts
+export const getFontStyles = ({
+  family,
+  size,
+  fontColor,
+  weight,
+  lineHeight,
+  letterSpacing,
+}: FontStyles): FlattenInterpolation<ThemeProps<DefaultTheme>> => css`
+  font-family: ${font('family', family)};
+  font-size: ${font('size', size)};
+  color: ${color(fontColor)};
+  font-weight: ${font('weight', weight)};
+  line-height: ${props =>
+    calculateLineHeightFromPxValue(lineHeight, font('size', size)(props))};
+  letter-spacing: ${font('letterSpacing', letterSpacing)};
+`;

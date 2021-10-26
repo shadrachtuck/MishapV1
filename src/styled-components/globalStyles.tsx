@@ -1,6 +1,6 @@
 // import styled identifier for prettier to know how to format/lint
 import * as styled from 'styled-components';
-import { color, font, padding, timing } from './mixins';
+import { color, font, getFontStyles, padding, timing } from './mixins';
 
 const GlobalStyles = styled.createGlobalStyle`
   // Reset
@@ -79,12 +79,14 @@ const GlobalStyles = styled.createGlobalStyle`
   input,
   select,
   textarea {
-    color: ${color('black')};
-    font-family: ${font('family', 'roboto')};
-    font-weight: ${font('weight', 'light')};
-    font-size: ${font('size', 'md')};
-    letter-spacing: ${font('letterSpacing', 'base')};
-    line-height: 1.75rem;
+    ${getFontStyles({
+      family: 'roboto',
+      size: 'md',
+      fontColor: 'black',
+      weight: 'light',
+      lineHeight: 28,
+      letterSpacing: 'base',
+    })}
   }
 
   a {

@@ -46,7 +46,7 @@ export const theme: DefaultTheme = {
       light: 300,
     },
     family: {
-      roboto: 'Roboto Mono',
+      roboto: 'Roboto MonoVariable',
     },
     letterSpacing: {
       tight: '0rem',
