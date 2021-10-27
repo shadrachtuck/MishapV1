@@ -111,29 +111,49 @@ export const calculateLineHeightFromPxValue = (
   return newLineHeight;
 };
 
-type FontStyles = {
-  family: keyof DefaultTheme['font']['family'];
-  size: keyof DefaultTheme['font']['size'];
-  fontColor: keyof DefaultTheme['colors'];
-  weight: keyof DefaultTheme['font']['weight'];
-  lineHeight: number;
-  letterSpacing: keyof DefaultTheme['font']['letterSpacing'];
+type FontProperties = {
+  family?: keyof DefaultTheme['font']['family'];
+  size?: keyof DefaultTheme['font']['size'];
+  fontColor?: keyof DefaultTheme['colors'];
+  weight?: keyof DefaultTheme['font']['weight'];
+  lineHeight?: number;
+  letterSpacing?: keyof DefaultTheme['font']['letterSpacing'];
 };
 
 // TODO: Add fallback case for browsers not in support of variable fonts https://fontsource.org/docs/variable-fonts
-export const getFontStyles = ({
+export const getFontProperties = ({
   family,
   size,
   fontColor,
   weight,
   lineHeight,
   letterSpacing,
-}: FontStyles): FlattenInterpolation<ThemeProps<DefaultTheme>> => css`
-  font-family: ${font('family', family)};
-  font-size: ${font('size', size)};
-  color: ${color(fontColor)};
-  font-weight: ${font('weight', weight)};
-  line-height: ${props =>
-    calculateLineHeightFromPxValue(lineHeight, font('size', size)(props))};
-  letter-spacing: ${font('letterSpacing', letterSpacing)};
+}: FontProperties): FlattenInterpolation<ThemeProps<DefaultTheme>> => css`
+  ${family &&
+  css`
+    font-family: ${font('family', family)};
+  `}
+  ${size &&
+  css`
+    font-size: ${font('size', size)};
+  `}
+    ${lineHeight &&
+  css`
+    line-height: ${props =>
+      size
+        ? calculateLineHeightFromPxValue(lineHeight, font('size', size)(props))
+        : lineHeight};
+  `}
+  ${fontColor &&
+  css`
+    color: ${color(fontColor)};
+  `}
+  ${weight &&
+  css`
+    font-weight: ${font('weight', weight)};
+  `}
+${letterSpacing &&
+  css`
+    letter-spacing: ${font('letterSpacing', letterSpacing)};
+  `}
 `;

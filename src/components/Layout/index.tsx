@@ -20,10 +20,9 @@ const SiteLayout = styled.div`
 
   grid-template-rows:
     [header] minmax(6vh, 10vh)
-    [top-spacer] 2rem
     [content] auto
     [bottom-spacer] 2rem
-    [footer] minmax(20rem, 30rem)
+    [footer] auto
     [whitespace-bottom] minmax(6vh, 10vh);
 
   ${LeftSidebarElement} {
@@ -38,7 +37,7 @@ const SiteLayout = styled.div`
 
   ${HeaderElement} {
     grid-column: middle;
-    grid-row: header / span top-spacer;
+    grid-row: header;
   }
 
   ${MainContent} {

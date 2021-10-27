@@ -38,12 +38,7 @@ const Home = (): JSX.Element => {
       </PageSection>
 
       <PageSection id="artists">
-        <h2>Artists</h2>
         <ArtistCards artists={artists} />
-      </PageSection>
-
-      <PageSection id="store">
-        <h2>Store</h2>
       </PageSection>
     </>
   );

@@ -10,6 +10,7 @@ const ContactInformationWrapper = styled.div`
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
+  gap: 3rem;
 `;
 
 const ContactInformationSection = styled.div`
@@ -17,6 +18,11 @@ const ContactInformationSection = styled.div`
   flex-flow: column nowrap;
   align-items: center;
   justify-content: space-between;
+  gap: 2rem;
+`;
+
+const ContactInformationSubSection = styled.div`
+  text-align: center;
 `;
 
 const ContactInformation = ({
@@ -26,21 +32,26 @@ const ContactInformation = ({
     <ContactInformationWrapper className={className}>
       <h2>Contact</h2>
 
-      <h3>Address</h3>
-
       <ContactInformationSection>
-        <p>3119 E. Bonview Dr. Boise</p>
+        <h3>Address</h3>
+        <ContactInformationSubSection>
+          <p>3119 E. Bonview Dr. Boise</p>
 
-        <p>Boise, 83712, US</p>
+          <p>Boise, 83712, US</p>
+        </ContactInformationSubSection>
       </ContactInformationSection>
 
-      <h3>Phone</h3>
+      <ContactInformationSection>
+        <h3>Phone</h3>
 
-      <p>(208) 283-3045</p>
+        <p>(208) 283-3045</p>
+      </ContactInformationSection>
 
-      <h3>Email</h3>
+      <ContactInformationSection>
+        <h3>Email</h3>
 
-      <p>info@mishaprecords.com</p>
+        <p>info@mishaprecords.com</p>
+      </ContactInformationSection>
     </ContactInformationWrapper>
   );
 };

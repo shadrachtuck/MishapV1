@@ -16,7 +16,6 @@ export const FooterElement = styled.footer`
 
   ${ContactInformation} {
     grid-column: left;
-
     padding: ${pxToRem(48)};
   }
 

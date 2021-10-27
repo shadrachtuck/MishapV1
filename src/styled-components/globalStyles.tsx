@@ -1,6 +1,6 @@
 // import styled identifier for prettier to know how to format/lint
 import * as styled from 'styled-components';
-import { color, font, getFontStyles, padding, timing } from './mixins';
+import { color, font, getFontProperties, padding, timing } from './mixins';
 
 const GlobalStyles = styled.createGlobalStyle`
   // Reset
@@ -79,7 +79,7 @@ const GlobalStyles = styled.createGlobalStyle`
   input,
   select,
   textarea {
-    ${getFontStyles({
+    ${getFontProperties({
       family: 'roboto',
       size: 'md',
       fontColor: 'black',
@@ -90,9 +90,12 @@ const GlobalStyles = styled.createGlobalStyle`
   }
 
   a {
-    color: ${color('black')};
-    font-size: ${font('size', 'md')};
-    letter-spacing: ${font('letterSpacing', 'spread')};
+    ${getFontProperties({
+      fontColor: 'black',
+      size: 'md',
+      lineHeight: 32,
+      letterSpacing: 'spread',
+    })}
     text-transform: uppercase;
     background-color: transparent;
     text-decoration: none;
@@ -180,9 +183,21 @@ const GlobalStyles = styled.createGlobalStyle`
 
   button {
     border-radius: 2px;
-    font-family: ${font('family', 'roboto')};
-    letter-spacing: ${font('letterSpacing', 'middle')};
     padding: ${padding('xxsmall')};
+    ${getFontProperties({
+      family: 'roboto',
+      letterSpacing: 'middle',
+    })}
+
+    &:hover {
+      background: ${color('gray')};
+      transform: scale(1.01);
+      transition-duration: ${timing('fast')};
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
   }
 
   sub,

@@ -6,7 +6,6 @@ import SocialMediaLinks from '../../../SocialMediaLinks';
 export const LeftSidebarElement = styled.aside`
   display: flex;
   flex-flow: column nowrap;
-  align-items: center;
   justify-content: space-between;
 
   position: sticky;

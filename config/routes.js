@@ -1,6 +1,6 @@
 module.exports = {
   home: '/',
   artists: '/artists',
-  store: '/#store',
+  store: 'https://bandcamp.com',
   contact: '/#contact',
 };
