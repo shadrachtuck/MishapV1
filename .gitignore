@@ -1,3 +1,5 @@
 node_modules/
 .cache/
+.eslintcache
 public
+.env.*
