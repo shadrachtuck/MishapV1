@@ -11,6 +11,7 @@ module.exports = {
   routes: {
     home: '/',
     artists: 'artists',
+    shows: 'shows',
     store: 'https://mishaprecordings.bandcamp.com/',
     contact: 'contact',
   },

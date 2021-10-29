@@ -6,7 +6,6 @@ import SocialMediaLinks, {
 } from '../../../SocialMediaLinks';
 import config from '../../../../../config';
 // TODO: Import custom bandcamp logo
-import { FaFacebook, FaInstagram, FaBandcamp } from 'react-icons/fa';
 
 export const LeftSidebarElement = styled.aside`
   display: flex;
@@ -23,17 +22,14 @@ const socialMediaLinks: SocialMediaLinksProps['links'] = [
   {
     name: 'facebook',
     href: config.socials.facebook,
-    Icon: FaFacebook,
   },
   {
     name: 'instagram',
     href: config.socials.instagram,
-    Icon: FaInstagram,
   },
   {
     name: 'bandcamp',
     href: config.socials.bandcamp,
-    Icon: FaBandcamp,
   },
 ];
 

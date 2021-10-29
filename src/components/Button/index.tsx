@@ -12,6 +12,7 @@ type ButtonProps = {
 
 export const Button = styled.button<ButtonProps>`
   border-radius: 2px;
+  cursor: pointer;
   padding: ${padding('xxsmall')};
   ${getFontProperties({
     family: 'roboto',
@@ -38,6 +39,8 @@ export const HiddenButton = styled(Button)`
   align-items: center;
   justify-content: center;
   border: 0;
+  padding: 0;
+  margin: 0;
   background: transparent;
 
   svg {

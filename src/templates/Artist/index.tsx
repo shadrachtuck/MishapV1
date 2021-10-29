@@ -1,12 +1,21 @@
 import { graphql } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import moment from 'moment';
 import React from 'react';
-import { color } from '../../styled-components/mixins';
-import styled from 'styled-components';
-import { TemplateProps } from '../types';
-import SocialMediaLinks from '../../components/SocialMediaLinks';
 import { CloseButton } from '../../components/Button/';
-import { FaAccusoft } from 'react-icons/fa';
+import Paragraph from '../../components/Paragraph';
+import SocialMediaLinks from '../../components/SocialMediaLinks';
+import { TemplateProps } from '../types';
+import {
+  ArtistPageWrapper,
+  BandcampSection,
+  ImageWrapper,
+  LeftSide,
+  Profile,
+  RightSide,
+  ShowsSection,
+  WatchSection,
+} from './styles';
 
 export const query = graphql`
   query GET_ARTIST($id: ID!) {
@@ -14,6 +23,22 @@ export const query = graphql`
       artist(id: $id) {
         name
         bio
+        genres {
+          id
+          name
+          slug
+        }
+        shows {
+          name
+          location
+          date
+          description
+          # poster {
+          #   ...StrapiUploadFile
+          # }
+        }
+        bandcampEmbed: bandcamp_embed
+        videoEmbed: video_embed
         socialMedia: social_media {
           ...StrapiArtistSocialMedia
         }
@@ -25,129 +50,96 @@ export const query = graphql`
   }
 `;
 
-const GRID_BORDER = '2rem';
-
-const Profile = styled.div``;
-
-const BandcampSection = styled.div`
-  grid-row: bandcamp;
-`;
-const ListenSection = styled.div`
-  grid-row: listen;
-`;
-const WatchSection = styled.div`
-  grid-row: watch;
-`;
-const ShowsSection = styled.div`
-  grid-row: shows;
-`;
-const MerchSection = styled.div`
-  grid-row: merch;
-`;
-const PressSection = styled.div`
-  grid-row: press;
-`;
-
-const LeftSide = styled.div`
-  display: grid;
-  grid-template-rows: auto auto;
-`;
-
-const RightSide = styled.div`
-  display: grid;
-  grid-template-rows:
-    [bandcamp] minmax(100px, auto)
-    [listen] minmax(100px, auto)
-    [watch] minmax(100px, auto)
-    [shows] minmax(100px, auto)
-    [merch] minmax(100px, auto)
-    [press] minmax(100px, auto);
-`;
-
-const ArtistPageWrapper = styled.article`
-  display: grid;
-  grid-template-columns:
-    [border-left] ${GRID_BORDER}
-    [left-side] 1fr
-    [right-side] 1fr
-    [border-right] ${GRID_BORDER};
-  grid-template-rows:
-    [border-top] ${GRID_BORDER}
-    [content] auto
-    [border-bottom] ${GRID_BORDER};
-  border: 4px solid ${color('black')};
-
-  ${CloseButton} {
-    grid-row: border-top;
-    grid-column: border-right;
-  }
-
-  ${LeftSide} {
-    grid-column: left-side;
-    grid-row: content;
-  }
-
-  ${RightSide} {
-    grid-column: right-side;
-    grid-row: content;
-  }
-`;
-
 export default (props: TemplateProps): JSX.Element => {
   const {
     data: {
       strapi: {
-        artist: { name: artistName, bio, profilePicture },
+        artist: {
+          name: artistName,
+          bio,
+          shows,
+          profilePicture,
+          socialMedia,
+          bandcampEmbed,
+          genres,
+          videoEmbed,
+        },
       },
     },
   } = props;
 
+  const links = socialMedia.map(({ name, url }) => ({
+    name,
+    href: url,
+  }));
+
   return (
     <ArtistPageWrapper>
       <CloseButton />
-      {/* top */}
+
       <LeftSide>
         <Profile>
-          <GatsbyImage
-            alt={profilePicture.alternativeText ?? ''}
-            title={profilePicture.caption ?? ''}
-            image={profilePicture.imageFile?.childImageSharp?.gatsbyImageData}
-          />
-          <SocialMediaLinks
-            links={[{ name: 'test', Icon: FaAccusoft, href: 'd' }]}
-          />
+          <ImageWrapper>
+            <GatsbyImage
+              alt={profilePicture.alternativeText ?? ''}
+              title={profilePicture.caption ?? ''}
+              image={profilePicture.imageFile?.childImageSharp?.gatsbyImageData}
+            />
+            <SocialMediaLinks links={links} />
+          </ImageWrapper>
+
           <h2>{artistName}</h2>
-          {/* Add genre tags here */}
+
+          {/* Add link to genres page? */}
+          {genres && (
+            <p>
+              {genres.map(({ id, name }, idx) => (
+                <strong key={`${id}-${name}`}>
+                  {name}
+                  {idx !== genres.length - 1 && ' / '}
+                </strong>
+              ))}
+            </p>
+          )}
 
           {bio}
         </Profile>
       </LeftSide>
 
       <RightSide>
-        <BandcampSection>
-          <h2>bandcamp</h2>
-        </BandcampSection>
+        {bandcampEmbed && (
+          <BandcampSection>
+            <h2>Listen: </h2>
+            <div dangerouslySetInnerHTML={{ __html: bandcampEmbed }} />
+          </BandcampSection>
+        )}
 
-        <ListenSection>
-          <h2>listen: </h2>
-        </ListenSection>
+        {videoEmbed && (
+          <WatchSection>
+            <h2>Watch: </h2>
+            <div dangerouslySetInnerHTML={{ __html: videoEmbed }} />
+          </WatchSection>
+        )}
 
-        <WatchSection>
-          <h2>watch: </h2>
-        </WatchSection>
+        {shows.length > 0 && (
+          <ShowsSection>
+            <h2>Shows: </h2>
 
-        <ShowsSection>
-          <h2>shows: </h2>
-        </ShowsSection>
+            {shows.map(({ id, name, location, date, description }) => (
+              <div key={`${id}-${name}`}>
+                <p>{name}</p>
 
-        <MerchSection>
-          <h2>merch: </h2>
-        </MerchSection>
+                <p>{location}</p>
 
-        <PressSection>
-          <h2>press: </h2>
-        </PressSection>
-        {/* bottom */}
+                <p> {moment(date).format('DD MM YYYY hh:mm:ss')}</p>
+
+                {description && <Paragraph text={description} />}
+              </div>
+            ))}
+          </ShowsSection>
+        )}
+
+        {/* // TODO: add merch and press */}
       </RightSide>
     </ArtistPageWrapper>
   );

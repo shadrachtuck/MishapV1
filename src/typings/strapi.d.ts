@@ -1,4 +1,18 @@
+/**
+ * This file adds type-safety and structure to all entities
+ * coming from the Strapi Headless CMS Api.
+ * If any api additions were made to the CMS,
+ * add their type declarations here.
+ */
+
 import { IGatsbyImageData } from 'gatsby-plugin-image';
+
+// types all collections share
+type CommonTypes = {
+  id: string;
+  name: string;
+  slug: string;
+};
 
 export = Strapi;
 export as namespace Strapi;
@@ -7,6 +21,8 @@ declare namespace Strapi {
    *  The Strapi object. All data coming from the api
    * is defined here.
    */
+
+  // all graphql queries begin with a 'strapi' object
   type Strapi = {
     strapi: Data;
   };
@@ -14,15 +30,31 @@ declare namespace Strapi {
   type Data = {
     artist: Artist;
     artists: Array<Artist>;
+    genre: Genre;
+    genres: Array<Genre>;
   };
 
-  type Artist = {
-    id: string;
-    name: string;
-    slug: string;
+  // collections
+  type Artist = CommonTypes & {
     bio: string;
+    socialMedia: Array<ArtistComponents['socialMedia']>;
     profilePicture: UploadFile;
-    socialMedia: ArtistComponents['socialMedia'];
+    genres?: Array<Genre>;
+    shows: Array<Show>;
+    bandcampEmbed?: string;
+    videoEmbed?: string;
+  };
+
+  type Genre = CommonTypes & {
+    artists?: Array<Artist>;
+  };
+
+  type Show = CommonTypes & {
+    location: string;
+    date: string;
+    artists?: Array<Artist>;
+    poster?: UploadFile;
+    description?: string;
   };
 
   // components

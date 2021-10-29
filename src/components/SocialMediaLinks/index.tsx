@@ -1,23 +1,40 @@
 import React from 'react';
-import { IconType } from 'react-icons';
+import { TiSocialInstagram, TiSocialTwitter } from 'react-icons/ti';
+import { FaFacebook, FaBandcamp, FaTwitch } from 'react-icons/fa';
 
 type Link = {
   name: string;
   href: string;
-  Icon: IconType;
 };
 
 export type SocialMediaLinksProps = {
   links: Array<Link>;
 };
 
+const Icon = ({ name }: { name: string }): JSX.Element => {
+  switch (name.toLowerCase()) {
+    case 'facebook':
+      return <FaFacebook />;
+    case 'instagram':
+      return <TiSocialInstagram />;
+    case 'twitter':
+      return <TiSocialTwitter />;
+    case 'twitch':
+      return <FaTwitch />;
+    case 'bandcamp':
+      return <FaBandcamp />;
+    default:
+      return <></>;
+  }
+};
+
 const SocialMediaLinks = ({ links }: SocialMediaLinksProps): JSX.Element => (
-  <nav className="footer-nav">
-    <ul className="footer-navbar">
-      {links.map(({ name, href, Icon }) => (
+  <nav>
+    <ul>
+      {links.map(({ name, href }) => (
         <li key={name}>
           <a href={href} target="_blank" rel="noreferrer">
-            <Icon />
+            <Icon name={name} />
           </a>
         </li>
       ))}

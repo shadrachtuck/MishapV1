@@ -51,6 +51,7 @@
     "gatsby-source-graphql": "^3.9.0",
     "gatsby-source-strapi": "^1.0.2",
     "gatsby-transformer-sharp": "^3.9.0",
+    "html-react-parser": "^1.4.0",
     "js-search": "^2.0.0",
     "moment": "^2.29.1",
     "react": "^17.0.2",
