@@ -1,4 +1,4 @@
-const config = require('./config/metaData.js');
+const config = require('./config');
 const path = require('path');
 
 require('dotenv').config({

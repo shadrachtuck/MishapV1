@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StaticImage } from 'gatsby-plugin-image';
-import SocialMediaLinks from '../../../SocialMediaLinks';
+import SocialMediaLinks, {
+  SocialMediaLinksProps,
+} from '../../../SocialMediaLinks';
+import config from '../../../../../config';
+// TODO: Import custom bandcamp logo
+import { FaFacebook, FaInstagram, FaBandcamp } from 'react-icons/fa';
 
 export const LeftSidebarElement = styled.aside`
   display: flex;
@@ -14,6 +19,24 @@ export const LeftSidebarElement = styled.aside`
   left: 0;
 `;
 
+const socialMediaLinks: SocialMediaLinksProps['links'] = [
+  {
+    name: 'facebook',
+    href: config.socials.facebook,
+    Icon: FaFacebook,
+  },
+  {
+    name: 'instagram',
+    href: config.socials.instagram,
+    Icon: FaInstagram,
+  },
+  {
+    name: 'bandcamp',
+    href: config.socials.bandcamp,
+    Icon: FaBandcamp,
+  },
+];
+
 const LeftSidebar = (): JSX.Element => {
   const mishapLogo = '../../../../assets/svg/mishap-text-logo.svg';
 
@@ -21,7 +44,7 @@ const LeftSidebar = (): JSX.Element => {
     <LeftSidebarElement>
       <StaticImage src={mishapLogo} alt="mishap records" />
 
-      <SocialMediaLinks />
+      <SocialMediaLinks links={socialMediaLinks} />
     </LeftSidebarElement>
   );
 };

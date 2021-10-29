@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { TemplateProps } from '../types';
 import SocialMediaLinks from '../../components/SocialMediaLinks';
 import { CloseButton } from '../../components/Button/';
+import { FaAccusoft } from 'react-icons/fa';
 
 export const query = graphql`
   query GET_ARTIST($id: ID!) {
@@ -112,7 +113,9 @@ export default (props: TemplateProps): JSX.Element => {
             title={profilePicture.caption ?? ''}
             image={profilePicture.imageFile?.childImageSharp?.gatsbyImageData}
           />
-          <SocialMediaLinks />
+          <SocialMediaLinks
+            links={[{ name: 'test', Icon: FaAccusoft, href: 'd' }]}
+          />
           <h2>{artistName}</h2>
           {/* Add genre tags here */}
 

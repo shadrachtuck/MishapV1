@@ -1,39 +1,28 @@
 import React from 'react';
-import config from '../../../config/metaData';
-import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
-// TODO: Import custom bandcamp logo
-import { FaBandcamp } from 'react-icons/fa';
+import { IconType } from 'react-icons';
 
-const SocialMediaLinks = (): JSX.Element => {
-  return (
-    <nav className="footer-nav">
-      <ul className="footer-navbar">
-        <li>
-          <a href={config.socials.instagram} target="_blank" rel="noreferrer">
-            <FaInstagram />
-          </a>
-        </li>
-
-        <li>
-          <a href={config.socials.facebook} target="_blank" rel="noreferrer">
-            <FaFacebook />
-          </a>
-        </li>
-
-        <li>
-          <a href={config.socials.twitter} target="_blank" rel="noreferrer">
-            <FaTwitter />
-          </a>
-        </li>
-
-        <li>
-          <a href={config.socials.bandcamp} target="_blank" rel="noreferrer">
-            <FaBandcamp />
-          </a>
-        </li>
-      </ul>
-    </nav>
-  );
+type Link = {
+  name: string;
+  href: string;
+  Icon: IconType;
 };
+
+export type SocialMediaLinksProps = {
+  links: Array<Link>;
+};
+
+const SocialMediaLinks = ({ links }: SocialMediaLinksProps): JSX.Element => (
+  <nav className="footer-nav">
+    <ul className="footer-navbar">
+      {links.map(({ name, href, Icon }) => (
+        <li key={name}>
+          <a href={href} target="_blank" rel="noreferrer">
+            <Icon />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+);
 
 export default SocialMediaLinks;
