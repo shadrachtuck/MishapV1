@@ -5,7 +5,7 @@ import { color } from '../../styled-components/mixins';
 import styled from 'styled-components';
 import { TemplateProps } from '../types';
 import SocialMediaLinks from '../../components/SocialMediaLinks';
-import CloseButton from '../../components/Buttons/CloseButton';
+import { CloseButton } from '../../components/Button/';
 
 export const query = graphql`
   query GET_ARTIST($id: ID!) {

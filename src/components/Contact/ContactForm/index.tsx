@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { DefaultTheme } from 'styled-components';
 import { color } from '../../../styled-components/mixins';
+import { Button } from '../../Button';
 
 type InputProps = {
   backgroundTheme?: keyof DefaultTheme['colors'];
@@ -64,7 +65,7 @@ const ContactForm = ({ className }: ContactFormProps): JSX.Element => {
         <Input as="textarea" name="subject" />
       </InputSection>
 
-      <button>Send Message</button>
+      <Button addHoverStyles>Send Message</Button>
     </Form>
   );
 };

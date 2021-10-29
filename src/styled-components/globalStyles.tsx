@@ -1,6 +1,6 @@
 // import styled identifier for prettier to know how to format/lint
 import * as styled from 'styled-components';
-import { color, font, getFontProperties, padding, timing } from './mixins';
+import { color, font, getFontProperties, timing } from './mixins';
 
 const GlobalStyles = styled.createGlobalStyle`
   // Reset
@@ -179,25 +179,6 @@ const GlobalStyles = styled.createGlobalStyle`
 
   h6 {
     font-size: ${font('size', 'sm')};
-  }
-
-  button {
-    border-radius: 2px;
-    padding: ${padding('xxsmall')};
-    ${getFontProperties({
-      family: 'roboto',
-      letterSpacing: 'middle',
-    })}
-
-    &:hover {
-      background: ${color('gray')};
-      transform: scale(1.01);
-      transition-duration: ${timing('fast')};
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
   }
 
   sub,

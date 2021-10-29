@@ -1,5 +1,5 @@
 import React from 'react';
-import ScrollButton from '../../../Buttons/ScrollButton';
+import { ScrollButton } from '../../../Button/';
 import styled from 'styled-components';
 
 export const RightSidebarElement = styled.aside`
