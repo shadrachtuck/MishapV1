@@ -40,7 +40,7 @@ declare namespace Strapi {
     socialMedia: Array<ArtistComponents['socialMedia']>;
     profilePicture: UploadFile;
     genres?: Array<Genre>;
-    shows: Array<Show>;
+    shows?: Array<Show>;
     bandcampEmbed?: string;
     videoEmbed?: string;
   };

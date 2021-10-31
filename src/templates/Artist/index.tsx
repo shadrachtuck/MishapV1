@@ -91,7 +91,7 @@ export default (props: TemplateProps): JSX.Element => {
           <h2>{artistName}</h2>
 
           {/* Add link to genres page? */}
-          {genres && (
+          {genres && genres.length > 0 && (
             <p>
               {genres.map(({ id, name }, idx) => (
                 <strong key={`${id}-${name}`}>
@@ -121,7 +121,7 @@ export default (props: TemplateProps): JSX.Element => {
           </WatchSection>
         )}
 
-        {shows.length > 0 && (
+        {shows && shows.length > 0 && (
           <ShowsSection>
             <h2>Shows: </h2>
 
