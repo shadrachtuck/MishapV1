@@ -1,6 +1,6 @@
-const React = require('react');
-const Layout = require('./src/components/Layout').default;
+import React from 'react';
+import Layout from './src/components/Layout';
 
-exports.wrapPageElement = ({ element, props }) => (
+export const wrapPageElement = ({ element, props }) => (
   <Layout {...props}>{element}</Layout>
 );
