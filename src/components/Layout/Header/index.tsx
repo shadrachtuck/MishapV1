@@ -7,6 +7,7 @@ export const HeaderElement = styled.header`
   align-items: center;
   justify-content: flex-end;
 `;
+
 const Header = (): JSX.Element => {
   return (
     <HeaderElement>
