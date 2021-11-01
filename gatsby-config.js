@@ -6,6 +6,9 @@ require('dotenv').config({
 });
 
 module.exports = {
+  flags: {
+    DEV_SSR: false,
+  },
   siteMetadata: {
     siteUrl: config.siteURl,
     title: config.siteTitle,
