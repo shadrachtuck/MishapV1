@@ -3,6 +3,7 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import moment from 'moment';
 import React from 'react';
 import { CloseButton } from '../../components/Button/';
+import Layout from '../../components/Layout';
 import Paragraph from '../../components/Paragraph';
 import SocialMediaLinks from '../../components/SocialMediaLinks';
 import { TemplateProps } from '../types';
@@ -74,73 +75,77 @@ export default (props: TemplateProps): JSX.Element => {
   }));
 
   return (
-    <ArtistPageWrapper>
-      <CloseButton />
+    <Layout>
+      <ArtistPageWrapper>
+        <CloseButton />
 
-      <LeftSide>
-        <Profile>
-          <ImageWrapper>
-            <GatsbyImage
-              alt={profilePicture.alternativeText ?? ''}
-              title={profilePicture.caption ?? ''}
-              image={profilePicture.imageFile?.childImageSharp?.gatsbyImageData}
-            />
-            <SocialMediaLinks links={links} />
-          </ImageWrapper>
+        <LeftSide>
+          <Profile>
+            <ImageWrapper>
+              <GatsbyImage
+                alt={profilePicture.alternativeText ?? ''}
+                title={profilePicture.caption ?? ''}
+                image={
+                  profilePicture.imageFile?.childImageSharp?.gatsbyImageData
+                }
+              />
+              <SocialMediaLinks links={links} />
+            </ImageWrapper>
 
-          <h2>{artistName}</h2>
+            <h2>{artistName}</h2>
 
-          {/* Add link to genres page? */}
-          {genres && genres.length > 0 && (
-            <p>
-              {genres.map(({ id, name }, idx) => (
-                <strong key={`${id}-${name}`}>
-                  {name}
-                  {idx !== genres.length - 1 && ' / '}
-                </strong>
-              ))}
-            </p>
+            {/* Add link to genres page? */}
+            {genres && genres.length > 0 && (
+              <p>
+                {genres.map(({ id, name }, idx) => (
+                  <strong key={`${id}-${name}`}>
+                    {name}
+                    {idx !== genres.length - 1 && ' / '}
+                  </strong>
+                ))}
+              </p>
+            )}
+
+            {bio}
+          </Profile>
+        </LeftSide>
+
+        <RightSide>
+          {bandcampEmbed && (
+            <BandcampSection>
+              <h2>Listen: </h2>
+              <div dangerouslySetInnerHTML={{ __html: bandcampEmbed }} />
+            </BandcampSection>
           )}
 
-          {bio}
-        </Profile>
-      </LeftSide>
+          {videoEmbed && (
+            <WatchSection>
+              <h2>Watch: </h2>
+              <div dangerouslySetInnerHTML={{ __html: videoEmbed }} />
+            </WatchSection>
+          )}
 
-      <RightSide>
-        {bandcampEmbed && (
-          <BandcampSection>
-            <h2>Listen: </h2>
-            <div dangerouslySetInnerHTML={{ __html: bandcampEmbed }} />
-          </BandcampSection>
-        )}
+          {shows && shows.length > 0 && (
+            <ShowsSection>
+              <h2>Shows: </h2>
 
-        {videoEmbed && (
-          <WatchSection>
-            <h2>Watch: </h2>
-            <div dangerouslySetInnerHTML={{ __html: videoEmbed }} />
-          </WatchSection>
-        )}
+              {shows.map(({ id, name, location, date, description }) => (
+                <div key={`${id}-${name}`}>
+                  <p>{name}</p>
 
-        {shows && shows.length > 0 && (
-          <ShowsSection>
-            <h2>Shows: </h2>
+                  <p>{location}</p>
 
-            {shows.map(({ id, name, location, date, description }) => (
-              <div key={`${id}-${name}`}>
-                <p>{name}</p>
+                  <p> {moment(date).format('DD MM YYYY hh:mm:ss')}</p>
 
-                <p>{location}</p>
+                  {description && <Paragraph text={description} />}
+                </div>
+              ))}
+            </ShowsSection>
+          )}
 
-                <p> {moment(date).format('DD MM YYYY hh:mm:ss')}</p>
-
-                {description && <Paragraph text={description} />}
-              </div>
-            ))}
-          </ShowsSection>
-        )}
-
-        {/* // TODO: add merch and press */}
-      </RightSide>
-    </ArtistPageWrapper>
+          {/* // TODO: add merch and press */}
+        </RightSide>
+      </ArtistPageWrapper>
+    </Layout>
   );
 };

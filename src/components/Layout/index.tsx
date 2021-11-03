@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../../styled-components/defaultTheme';
 import GlobalStyles from '../../styled-components/globalStyles';
@@ -53,36 +53,26 @@ const SiteLayout = styled.div`
 
 type LayoutProps = {
   children: Array<JSX.Element> | JSX.Element;
-  location: Location;
-  // TODO: find locale type
-  pageContext: { locale: any };
 };
 
-export const LocaleContext = createContext({});
+const Layout = ({ children }: LayoutProps): JSX.Element => (
+  <ThemeProvider theme={theme}>
+    <GlobalStyles />
+    <SiteLayout>
+      <LeftSidebar />
 
-const Layout = ({
-  children,
-  pageContext: { locale },
-}: LayoutProps): JSX.Element => (
-  <LocaleContext.Provider value={locale}>
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <SiteLayout>
-        <LeftSidebar />
+      <Header />
 
-        <Header />
+      {/*
+       * 'children' will always either come
+       * from a 'page' or a 'template'
+       */}
+      <MainContent>{children}</MainContent>
 
-        {/*
-         * 'children' will always either come
-         * from a 'page' or a 'template'
-         */}
-        <MainContent>{children}</MainContent>
-
-        <Footer />
-        <RightSidebar />
-      </SiteLayout>
-    </ThemeProvider>
-  </LocaleContext.Provider>
+      <Footer />
+      <RightSidebar />
+    </SiteLayout>
+  </ThemeProvider>
 );
 
 export default Layout;
