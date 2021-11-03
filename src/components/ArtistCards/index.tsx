@@ -1,6 +1,11 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { ArtistCardsWrapper, ArtistCard, ArtistCardLink } from './styles';
+import {
+  ArtistCardsWrapper,
+  ArtistCard,
+  ArtistCardName,
+  ArtistCardWrapper,
+} from './styles';
 import { routes } from '../../../config';
 
 type ArtistCardProps = {
@@ -11,16 +16,16 @@ const ArtistCards = ({ artists }: ArtistCardProps): JSX.Element => {
   return (
     <ArtistCardsWrapper>
       {artists.map(({ id, name, profilePicture, slug }) => (
-        <ArtistCard key={`${name}${id}`}>
-          <GatsbyImage
-            image={profilePicture.imageFile.childImageSharp.gatsbyImageData}
-            alt={profilePicture.alternativeText}
-          />
-          {/* TODO: Replace with modal button */}
-          <ArtistCardLink href={`${routes.artists}/${slug}`}>
-            {name}
-          </ArtistCardLink>
-        </ArtistCard>
+        <ArtistCardWrapper key={`${name}${id}`}>
+          <ArtistCard href={`${routes.artists}/${slug}`}>
+            <GatsbyImage
+              image={profilePicture.imageFile.childImageSharp.gatsbyImageData}
+              alt={profilePicture.alternativeText}
+            />
+            {/* TODO: Replace with modal button */}
+            <ArtistCardName>{name}</ArtistCardName>
+          </ArtistCard>
+        </ArtistCardWrapper>
       ))}
     </ArtistCardsWrapper>
   );

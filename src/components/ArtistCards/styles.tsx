@@ -6,7 +6,7 @@ import {
 } from '../../styled-components/mixins';
 import styled from 'styled-components';
 
-export const ArtistCardsWrapper = styled.div`
+export const ArtistCardsWrapper = styled.ul`
   display: grid;
   justify-content: center;
   width: 100%;
@@ -17,7 +17,7 @@ export const ArtistCardsWrapper = styled.div`
   );
 `;
 
-export const ArtistCard = styled.div`
+export const ArtistCardWrapper = styled.li`
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -29,10 +29,18 @@ export const ArtistCard = styled.div`
   padding-bottom: 0;
 `;
 
-export const ArtistCardLink = styled.a`
+export const ArtistCardName = styled.span`
   text-transform: uppercase;
   text-decoration: none;
   color: ${color('black')};
   border: none;
   letter-spacing: 0.25rem;
+`;
+
+export const ArtistCard = styled.a`
+  &:hover {
+    ${ArtistCardName} {
+      color: ${color('gray')};
+    }
+  }
 `;
