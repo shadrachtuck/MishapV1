@@ -4,7 +4,6 @@ import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { Strapi } from '../../typings/strapi';
 import { PageSection } from './styles';
-import Layout from '../../components/Layout';
 
 export const query = graphql`
   query GET_ARTISTS {
@@ -32,7 +31,7 @@ const Home = (): JSX.Element => {
   } = useStaticQuery<Strapi>(query);
 
   return (
-    <Layout>
+    <>
       <PageSection id="home">
         <StaticImage src={BUNNY} alt="" />
         <h1>Mishap Records</h1>
@@ -41,7 +40,7 @@ const Home = (): JSX.Element => {
       <PageSection id="artists">
         <ArtistCards artists={artists} />
       </PageSection>
-    </Layout>
+    </>
   );
 };
 
