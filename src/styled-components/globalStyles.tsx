@@ -35,8 +35,25 @@ const GlobalStyles = styled.createGlobalStyle`
     list-style: none;
 
     li {
+      display: flex;
       border: none;
       text-decoration: none;
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: inherit;
+        height: inherit;
+
+        /* redefine hover styles here from it somehow being overwritten by the list-item */
+        &:hover {
+          &,
+          span {
+            color: ${color('gray')};
+          }
+        }
+      }
     }
   }
 

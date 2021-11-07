@@ -1,29 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import {
+  ContactInformationWrapper,
+  ContactInformationSection,
+  ContactInformationSubSection,
+} from './styles';
 
 type ContactInformationProps = {
   className?: string;
 };
-
-const ContactInformationWrapper = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 3rem;
-`;
-
-const ContactInformationSection = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-`;
-
-const ContactInformationSubSection = styled.div`
-  text-align: center;
-`;
 
 const ContactInformation = ({
   className,

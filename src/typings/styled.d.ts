@@ -57,6 +57,7 @@ declare module 'styled-components' {
     };
     timing: {
       fast: number;
+      medium: number;
     };
   }
 }

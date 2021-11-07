@@ -1,44 +1,12 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import styled, { DefaultTheme } from 'styled-components';
-import { color } from '../../../styled-components/mixins';
+import styled from 'styled-components';
 import { Button } from '../../Button';
-
-type InputProps = {
-  backgroundTheme?: keyof DefaultTheme['colors'];
-};
-
-const Input = styled.input<InputProps>`
-  background: ${({ backgroundTheme = 'black' }) => color(backgroundTheme)};
-  color: ${({ backgroundTheme = 'black' }) =>
-    color(backgroundTheme === 'black' ? 'white' : 'black')};
-  border-bottom: 1px solid
-    ${({ backgroundTheme = 'black' }) =>
-      color(backgroundTheme === 'black' ? 'white' : 'black')};
-  width: 100%;
-`;
-
-const Label = styled.label``;
-
-const InputSection = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: flex-start;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  gap: 3rem;
-
-  h2 {
-    align-self: center;
-  }
-`;
+import { Form, InputSection, Label, Input } from './styles';
 
 type ContactFormProps = {
   className?: string;
 };
+
 const encode = (data: Record<string, string | number | boolean>): string =>
   Object.keys(data)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
@@ -120,7 +88,7 @@ const ContactForm = ({ className }: ContactFormProps): JSX.Element => {
 
       <InputSection>
         <Label htmlFor="phone-number">Phone No.</Label>
-
+        {/* Not showing up? */}
         <Input
           type="text"
           name="phone-number"

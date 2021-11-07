@@ -69,6 +69,9 @@ export default (props: TemplateProps): JSX.Element => {
     },
   } = props;
 
+  const shouldDisplayGenreTags = genres && genres.length > 0;
+  const shouldDisplayShows = shows && shows.length > 0;
+
   const links = socialMedia.map(({ name, url }) => ({
     name,
     href: url,
@@ -89,13 +92,18 @@ export default (props: TemplateProps): JSX.Element => {
                   profilePicture.imageFile?.childImageSharp?.gatsbyImageData
                 }
               />
-              <SocialMediaLinks links={links} />
+              <SocialMediaLinks
+                links={links}
+                iconSize={25}
+                addVerticalSpacing={false}
+                displayHorizontally={false}
+              />
             </ImageWrapper>
 
             <h2>{artistName}</h2>
 
             {/* Add link to genres page? */}
-            {genres && genres.length > 0 && (
+            {shouldDisplayGenreTags && (
               <p>
                 {genres.map(({ id, name }, idx) => (
                   <strong key={`${id}-${name}`}>
@@ -125,7 +133,7 @@ export default (props: TemplateProps): JSX.Element => {
             </WatchSection>
           )}
 
-          {shows && shows.length > 0 && (
+          {shouldDisplayShows && (
             <ShowsSection>
               <h2>Shows: </h2>
 

@@ -38,9 +38,8 @@ export const ArtistCardName = styled.span`
 `;
 
 export const ArtistCard = styled.a`
-  &:hover {
-    ${ArtistCardName} {
-      color: ${color('gray')};
-    }
-  }
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
 `;

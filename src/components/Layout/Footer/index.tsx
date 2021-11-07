@@ -1,37 +1,31 @@
 import React from 'react';
-import ContactInformation from '../../../components/Contact/ContactInformation';
 import styled from 'styled-components';
+import config from '../../../../config';
 import Contact from '../../../components/Contact';
-import ContactForm from '../../../components/Contact/ContactForm';
-import { color, pxToRem } from '../../../styled-components/mixins';
+import useIsAboveMobileWidth from '../../../utils/hooks/useIsAboveMobileWidth';
+import SocialMediaLinks from '../../SocialMediaLinks';
+import { FooterWrapper } from './styles';
 
 type FooterProps = {
   className?: string;
 };
 
-export const FooterElement = styled.footer`
-  display: grid;
-  grid-template-columns: [left] 1fr [right] 1fr;
-  justify-content: center;
-
-  ${ContactInformation} {
-    grid-column: left;
-    padding: ${pxToRem(48)};
-  }
-
-  ${ContactForm} {
-    padding: ${pxToRem(48)};
-    background: ${color('black')};
-    color: ${color('white')};
-    grid-column: right;
-  }
-`;
-
 const Footer = ({ className }: FooterProps): JSX.Element => {
+  const isAboveMobile = useIsAboveMobileWidth();
+
   return (
-    <FooterElement id="contact" className={className}>
+    <FooterWrapper id="contact" className={className}>
       <Contact />
-    </FooterElement>
+
+      {!isAboveMobile && (
+        <SocialMediaLinks
+          links={config.socials}
+          iconSize={40}
+          addVerticalSpacing
+          displayHorizontally
+        />
+      )}
+    </FooterWrapper>
   );
 };
 

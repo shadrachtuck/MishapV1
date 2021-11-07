@@ -57,5 +57,6 @@ export const theme: DefaultTheme = {
   },
   timing: {
     fast: 300,
+    medium: 500,
   },
 };

@@ -1,17 +1,34 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import useIsAboveMobileWidth from '../../../utils/hooks/useIsAboveMobileWidth';
 import Menu from '../../Menu';
-
-export const HeaderElement = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-`;
+import { HeaderElement, MenuLabel, Icon, MobileMenu } from './styles';
 
 const Header = (): JSX.Element => {
+  const isAboveMobile = useIsAboveMobileWidth();
+
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleOnClick = (): void => setIsClicked(!isClicked);
+
   return (
     <HeaderElement>
-      <Menu />
+      {isAboveMobile ? (
+        <Menu color="black" displayHorizontally />
+      ) : (
+        <>
+          <MenuLabel onClick={handleOnClick}>
+            <Icon isClicked={isClicked} />
+          </MenuLabel>
+
+          <MobileMenu isClicked={isClicked}>
+            <MenuLabel onClick={handleOnClick}>
+              <Icon isClicked={isClicked} />
+            </MenuLabel>
+
+            <Menu color="white" displayHorizontally={false} />
+          </MobileMenu>
+        </>
+      )}
     </HeaderElement>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { DefaultTheme } from 'styled-components';
 import { pxToRem } from '../../styled-components/mixins';
 import { routes } from '../../../config';
 import isExternalLink from '../../utils/isExternalLink';
@@ -30,17 +30,28 @@ const menuItems: MenuItems = [
   },
 ];
 
-const Navbar = styled.nav`
-  ul {
-    display: flex;
-    gap: ${pxToRem(50)};
+type NavbarProps = {
+  color: keyof DefaultTheme['colors'];
+  displayHorizontally: boolean;
+};
+
+const Navbar = styled.ul<NavbarProps>`
+  display: flex;
+  gap: ${pxToRem(50)};
+  flex-flow: ${({ displayHorizontally }) =>
+    displayHorizontally ? 'row wrap' : 'column nowrap'};
+
+  li {
+    a {
+      color: ${({ color }) => color};
+    }
   }
 `;
 
-const Menu = (): JSX.Element => {
+const Menu = ({ color, displayHorizontally }: NavbarProps): JSX.Element => {
   return (
-    <Navbar>
-      <ul>
+    <nav>
+      <Navbar color={color} displayHorizontally={displayHorizontally}>
         {menuItems.map(({ id, name, href }) => (
           <li key={id}>
             {/* safely add # to non-external links by default 
@@ -54,8 +65,8 @@ const Menu = (): JSX.Element => {
             )}
           </li>
         ))}
-      </ul>
-    </Navbar>
+      </Navbar>
+    </nav>
   );
 };
 

@@ -1,13 +1,14 @@
 import React from 'react';
 import { TiSocialInstagram, TiSocialTwitter } from 'react-icons/ti';
 import { FaFacebook, FaBandcamp, FaTwitch } from 'react-icons/fa';
+import { SocialMediaLinksWrapper, SocialMediaNavWrapperProps } from './styles';
 
 type Link = {
   name: string;
   href: string;
 };
 
-export type SocialMediaLinksProps = {
+export type SocialMediaLinksProps = SocialMediaNavWrapperProps & {
   links: Array<Link>;
 };
 
@@ -28,9 +29,18 @@ const Icon = ({ name }: { name: string }): JSX.Element => {
   }
 };
 
-const SocialMediaLinks = ({ links }: SocialMediaLinksProps): JSX.Element => (
+const SocialMediaLinks = ({
+  links,
+  iconSize,
+  addVerticalSpacing,
+  displayHorizontally,
+}: SocialMediaLinksProps): JSX.Element => (
   <nav>
-    <ul>
+    <SocialMediaLinksWrapper
+      iconSize={iconSize}
+      addVerticalSpacing={addVerticalSpacing}
+      displayHorizontally={displayHorizontally}
+    >
       {links.map(({ name, href }) => (
         <li key={name}>
           <a href={href} target="_blank" rel="noreferrer">
@@ -38,7 +48,7 @@ const SocialMediaLinks = ({ links }: SocialMediaLinksProps): JSX.Element => (
           </a>
         </li>
       ))}
-    </ul>
+    </SocialMediaLinksWrapper>
   </nav>
 );
 
