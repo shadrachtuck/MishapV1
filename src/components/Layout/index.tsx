@@ -11,6 +11,7 @@ import { HeaderElement } from './Header/styles';
 import LeftSidebar from './Sidebar/LeftSidebar';
 import { LeftSidebarWrapper } from './Sidebar/LeftSidebar/styles';
 import RightSidebar, { RightSidebarElement } from './Sidebar/RightSidebar';
+import Subheader from './Subheader';
 
 const SiteLayout = styled.div`
   display: grid;
@@ -96,11 +97,12 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
 
         <Header />
 
-        {/*
-         * 'children' will always either come
-         * from a 'page' or a 'template'
-         */}
-        <MainContent>{children}</MainContent>
+        <MainContent>
+          {isAboveMobile && <Subheader />}
+
+          {/* 'children' will always either come from a 'page' or a 'template' */}
+          {children}
+        </MainContent>
 
         <Footer />
 

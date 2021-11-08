@@ -6,6 +6,7 @@ import { CloseButton } from '../../components/Button/';
 import Layout from '../../components/Layout';
 import Paragraph from '../../components/Paragraph';
 import SocialMediaLinks from '../../components/SocialMediaLinks';
+import useIsAboveMobileWidth from '../../utils/hooks/useIsAboveMobileWidth';
 import { TemplateProps } from '../types';
 import {
   ArtistPageWrapper,
@@ -51,6 +52,17 @@ export const query = graphql`
   }
 `;
 
+const getVideoEmbedLink = (videoEmbed: string): string => {
+  const srcTag = videoEmbed.indexOf('src');
+  const titleTag = videoEmbed.indexOf('title');
+  // start 5 indexes from the beginning of srcTag
+  const beginning = srcTag + 5;
+  // end 2 positions before beginning of titleTag
+  const end = titleTag - 2;
+
+  return videoEmbed.slice(beginning, end);
+};
+
 export default (props: TemplateProps): JSX.Element => {
   const {
     data: {
@@ -69,6 +81,7 @@ export default (props: TemplateProps): JSX.Element => {
     },
   } = props;
 
+  const isAboveMobile = useIsAboveMobileWidth();
   const shouldDisplayGenreTags = genres && genres.length > 0;
   const shouldDisplayShows = shows && shows.length > 0;
 
@@ -92,6 +105,7 @@ export default (props: TemplateProps): JSX.Element => {
                   profilePicture.imageFile?.childImageSharp?.gatsbyImageData
                 }
               />
+
               <SocialMediaLinks
                 links={links}
                 iconSize={25}
@@ -114,7 +128,7 @@ export default (props: TemplateProps): JSX.Element => {
               </p>
             )}
 
-            {bio}
+            <p>{bio}</p>
           </Profile>
         </LeftSide>
 
@@ -129,7 +143,13 @@ export default (props: TemplateProps): JSX.Element => {
           {videoEmbed && (
             <WatchSection>
               <h2>Watch: </h2>
-              <div dangerouslySetInnerHTML={{ __html: videoEmbed }} />
+
+              {/* only show video embed if screen is large enough */}
+              {isAboveMobile ? (
+                <div dangerouslySetInnerHTML={{ __html: videoEmbed }} />
+              ) : (
+                <a href={getVideoEmbedLink(videoEmbed)}>Video</a>
+              )}
             </WatchSection>
           )}
 
