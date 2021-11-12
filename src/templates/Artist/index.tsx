@@ -5,6 +5,7 @@ import React from 'react';
 import { CloseButton } from '../../components/Button/';
 import Paragraph from '../../components/Paragraph';
 import SocialMediaLinks from '../../components/SocialMediaLinks';
+import getVideoEmbedLink from '../../utils/functions/getVideoEmbedLink';
 import useIsAboveMobileWidth from '../../utils/hooks/useIsAboveMobileWidth';
 import { TemplateProps } from '../types';
 import {
@@ -50,17 +51,6 @@ export const query = graphql`
     }
   }
 `;
-
-const getVideoEmbedLink = (videoEmbed: string): string => {
-  const srcTag = videoEmbed.indexOf('src');
-  const titleTag = videoEmbed.indexOf('title');
-  // start 5 indexes from the beginning of srcTag
-  const beginning = srcTag + 5;
-  // end 2 positions before beginning of titleTag
-  const end = titleTag - 2;
-
-  return videoEmbed.slice(beginning, end);
-};
 
 export default (props: TemplateProps): JSX.Element => {
   const {
