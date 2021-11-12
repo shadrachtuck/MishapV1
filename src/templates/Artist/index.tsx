@@ -3,7 +3,6 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import moment from 'moment';
 import React from 'react';
 import { CloseButton } from '../../components/Button/';
-import Layout from '../../components/Layout';
 import Paragraph from '../../components/Paragraph';
 import SocialMediaLinks from '../../components/SocialMediaLinks';
 import useIsAboveMobileWidth from '../../utils/hooks/useIsAboveMobileWidth';
@@ -91,89 +90,85 @@ export default (props: TemplateProps): JSX.Element => {
   }));
 
   return (
-    <Layout>
-      <ArtistPageWrapper>
-        <CloseButton />
+    <ArtistPageWrapper>
+      <CloseButton />
 
-        <LeftSide>
-          <Profile>
-            <ImageWrapper>
-              <GatsbyImage
-                alt={profilePicture.alternativeText ?? ''}
-                title={profilePicture.caption ?? ''}
-                image={
-                  profilePicture.imageFile?.childImageSharp?.gatsbyImageData
-                }
-              />
+      <LeftSide>
+        <Profile>
+          <ImageWrapper>
+            <GatsbyImage
+              alt={profilePicture.alternativeText ?? ''}
+              title={profilePicture.caption ?? ''}
+              image={profilePicture.imageFile?.childImageSharp?.gatsbyImageData}
+            />
 
-              <SocialMediaLinks
-                links={links}
-                iconSize={25}
-                addVerticalSpacing={false}
-                displayHorizontally={false}
-              />
-            </ImageWrapper>
+            <SocialMediaLinks
+              links={links}
+              iconSize={25}
+              addVerticalSpacing={false}
+              displayHorizontally={false}
+            />
+          </ImageWrapper>
 
-            <h2>{artistName}</h2>
+          <h2>{artistName}</h2>
 
-            {/* Add link to genres page? */}
-            {shouldDisplayGenreTags && (
-              <p>
-                {genres.map(({ id, name }, idx) => (
-                  <strong key={`${id}-${name}`}>
-                    {name}
-                    {idx !== genres.length - 1 && ' / '}
-                  </strong>
-                ))}
-              </p>
-            )}
-
-            <p>{bio}</p>
-          </Profile>
-        </LeftSide>
-
-        <RightSide>
-          {bandcampEmbed && (
-            <BandcampSection>
-              <h2>Listen: </h2>
-              <div dangerouslySetInnerHTML={{ __html: bandcampEmbed }} />
-            </BandcampSection>
-          )}
-
-          {videoEmbed && (
-            <WatchSection>
-              <h2>Watch: </h2>
-
-              {/* only show video embed if screen is large enough */}
-              {isAboveMobile ? (
-                <div dangerouslySetInnerHTML={{ __html: videoEmbed }} />
-              ) : (
-                <a href={getVideoEmbedLink(videoEmbed)}>Video</a>
-              )}
-            </WatchSection>
-          )}
-
-          {shouldDisplayShows && (
-            <ShowsSection>
-              <h2>Shows: </h2>
-
-              {shows.map(({ id, name, location, date, description }) => (
-                <div key={`${id}-${name}`}>
-                  <p>{name}</p>
-
-                  <p>{location}</p>
-
-                  <p> {moment(date).format('DD MM YYYY hh:mm:ss')}</p>
-
-                  {description && <Paragraph text={description} />}
-                </div>
+          {/* Add link to genres page? */}
+          {shouldDisplayGenreTags && (
+            <p>
+              {genres.map(({ id, name }, idx) => (
+                <strong key={`${id}-${name}`}>
+                  {name}
+                  {idx !== genres.length - 1 && ' / '}
+                </strong>
               ))}
-            </ShowsSection>
+            </p>
           )}
 
-          {/* // TODO: add merch and press */}
-        </RightSide>
-      </ArtistPageWrapper>
-    </Layout>
+          <p>{bio}</p>
+        </Profile>
+      </LeftSide>
+
+      <RightSide>
+        {bandcampEmbed && (
+          <BandcampSection>
+            <h2>Listen: </h2>
+            <div dangerouslySetInnerHTML={{ __html: bandcampEmbed }} />
+          </BandcampSection>
+        )}
+
+        {videoEmbed && (
+          <WatchSection>
+            <h2>Watch: </h2>
+
+            {/* only show video embed if screen is large enough */}
+            {isAboveMobile ? (
+              <div dangerouslySetInnerHTML={{ __html: videoEmbed }} />
+            ) : (
+              <a href={getVideoEmbedLink(videoEmbed)}>Video</a>
+            )}
+          </WatchSection>
+        )}
+
+        {shouldDisplayShows && (
+          <ShowsSection>
+            <h2>Shows: </h2>
+
+            {shows.map(({ id, name, location, date, description }) => (
+              <div key={`${id}-${name}`}>
+                <p>{name}</p>
+
+                <p>{location}</p>
+
+                <p> {moment(date).format('DD MM YYYY hh:mm:ss')}</p>
+
+                {description && <Paragraph text={description} />}
+              </div>
+            ))}
+          </ShowsSection>
+        )}
+
+        {/* // TODO: add merch and press */}
+      </RightSide>
+    </ArtistPageWrapper>
   );
 };

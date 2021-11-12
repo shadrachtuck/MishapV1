@@ -1,7 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import ArtistCards from '../components/ArtistCards';
-import Layout from '../components/Layout';
 import { PageSection } from '../components/Sections';
 import { Strapi } from '../typings/strapi';
 
@@ -29,11 +28,9 @@ const Home = (): JSX.Element => {
   } = useStaticQuery<Strapi>(query);
 
   return (
-    <Layout>
-      <PageSection id="artists">
-        <ArtistCards artists={artists} />
-      </PageSection>
-    </Layout>
+    <PageSection id="artists">
+      <ArtistCards artists={artists} />
+    </PageSection>
   );
 };
 
