@@ -8,6 +8,6 @@ gatsby-config.js
 gatsby-browser.js
 gatsby-node.js
 gatsby-ssr.js
-postcss.config.js
 .eslintrc.js
 typings
+assets
