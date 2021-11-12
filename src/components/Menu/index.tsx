@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { DefaultTheme } from 'styled-components';
 import { pxToRem } from '../../styled-components/mixins';
 import { routes } from '../../../config';
-import isExternalLink from '../../utils/isExternalLink';
+import isExternalLink from '../../utils/functions/isExternalLink';
 
 type MenuItem = {
   id: number;
