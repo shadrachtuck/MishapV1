@@ -1,11 +1,14 @@
 import ContactInformation from '../../../components/Contact/ContactInformation';
 import styled from 'styled-components';
 import ContactForm from '../../../components/Contact/ContactForm';
-import { above, color, pxToRem } from '../../../styled-components/mixins';
+import { above, color, spacing } from '../../../styled-components/mixins';
 
 export const FooterWrapper = styled.footer`
+  ${ContactForm},${ContactInformation} {
+    padding: ${spacing('small')} ${spacing('medium')} ${spacing('xlarge')};
+  }
+
   ${ContactForm} {
-    padding: ${pxToRem(48)};
     background: ${color('black')};
     color: ${color('white')};
   }
@@ -16,12 +19,12 @@ export const FooterWrapper = styled.footer`
     justify-content: center;
 
     ${ContactInformation} {
-      padding: ${pxToRem(48)};
+      padding: ${spacing('xlarge')};
       grid-column: left;
     }
 
     ${ContactForm} {
-      padding: ${pxToRem(48)};
+      padding: ${spacing('xlarge')};
       grid-column: right;
     }
   `}

@@ -5,6 +5,7 @@ import {
   spacing,
 } from '../../styled-components/mixins';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
 export const ArtistCardsWrapper = styled.ul`
   display: grid;
@@ -37,7 +38,7 @@ export const ArtistCardName = styled.span`
   letter-spacing: 0.25rem;
 `;
 
-export const ArtistCard = styled.a`
+export const ArtistCard = styled(Link)`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
