@@ -10,7 +10,8 @@ import Header from './Header';
 import { HeaderElement } from './Header/styles';
 import LeftSidebar from './Sidebar/LeftSidebar';
 import { LeftSidebarWrapper } from './Sidebar/LeftSidebar/styles';
-import RightSidebar, { RightSidebarElement } from './Sidebar/RightSidebar';
+import RightSidebar from './Sidebar/RightSidebar';
+import { RightSidebarElement } from './Sidebar/RightSidebar/styles';
 import Subheader from './Subheader';
 
 const SiteLayout = styled.div`

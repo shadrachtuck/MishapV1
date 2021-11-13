@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { DefaultTheme } from 'styled-components';
-import { pxToRem } from '../../styled-components/mixins';
-import { routes } from '../../../config';
-import isExternalLink from '../../utils/functions/isExternalLink';
+import { pxToRem } from '../../../styled-components/mixins';
+import { routes } from '../../../../config';
+import isExternalLink from '../../../utils/functions/isExternalLink';
 
 type MenuItem = {
   id: number;
@@ -31,8 +31,9 @@ const menuItems: MenuItems = [
 ];
 
 type NavbarProps = {
-  color: keyof DefaultTheme['colors'];
   displayHorizontally: boolean;
+  color?: keyof DefaultTheme['colors'];
+  onMenuItemClick?: () => void;
 };
 
 const Navbar = styled.ul<NavbarProps>`
@@ -43,17 +44,21 @@ const Navbar = styled.ul<NavbarProps>`
 
   li {
     a {
-      color: ${({ color }) => color};
+      color: ${({ color = 'black' }) => color};
     }
   }
 `;
 
-const Menu = ({ color, displayHorizontally }: NavbarProps): JSX.Element => {
+const Menu = ({
+  color,
+  displayHorizontally,
+  onMenuItemClick,
+}: NavbarProps): JSX.Element => {
   return (
     <nav>
       <Navbar color={color} displayHorizontally={displayHorizontally}>
         {menuItems.map(({ id, name, href }) => (
-          <li key={id}>
+          <li key={id} onClick={onMenuItemClick}>
             {/* safely add # to non-external links by default 
                 because this is a single-page site */}
             {isExternalLink(href) ? (

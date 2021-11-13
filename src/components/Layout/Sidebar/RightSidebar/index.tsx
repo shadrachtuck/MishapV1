@@ -1,22 +1,15 @@
 import React from 'react';
 import { ScrollButton } from '../../../Button/';
-import styled from 'styled-components';
-
-export const RightSidebarElement = styled.aside`
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: flex-end;
-
-  position: sticky;
-  height: 100vh;
-  top: 0;
-  left: 0;
-`;
+import useShouldScrollToTop from '../../../../utils/hooks/useShouldScrollToTop';
+import HamburgerMenu from '../../../Menus/HamburgerMenu';
+import { RightSidebarElement } from './styles';
 
 const RightSidebar = (): JSX.Element => {
+  const shouldScrollTop = useShouldScrollToTop();
+
   return (
     <RightSidebarElement>
+      {shouldScrollTop && <HamburgerMenu />}
       <ScrollButton />
     </RightSidebarElement>
   );
