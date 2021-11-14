@@ -4,7 +4,11 @@ import { above, color } from '../../styled-components/mixins';
 
 const GRID_BORDER = '2rem';
 
-export const ImageWrapper = styled.div``;
+export const ImageWrapper = styled.div`
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+`;
 
 export const Profile = styled.div`
   display: flex;
@@ -33,9 +37,9 @@ export const RightSide = styled.div`
   gap: 4rem;
 
   grid-template-rows:
-    [bandcamp] minmax(100px, auto)
-    [watch] minmax(100px, auto)
-    [shows] minmax(100px, auto);
+    [bandcamp] auto
+    [watch] auto
+    [shows] auto;
 `;
 
 export const ArtistPageWrapper = styled.article`
@@ -66,8 +70,7 @@ export const ArtistPageWrapper = styled.article`
       grid-row: content;
 
       ${ImageWrapper} {
-        display: flex;
-        gap: 1rem;
+        flex-flow: row;
         align-items: flex-end;
       }
     }

@@ -35,9 +35,6 @@ export const query = graphql`
           location
           date
           description
-          # poster {
-          #   ...StrapiUploadFile
-          # }
         }
         bandcampEmbed: bandcamp_embed
         videoEmbed: video_embed
@@ -96,7 +93,7 @@ export default (props: TemplateProps): JSX.Element => {
               links={links}
               iconSize={25}
               addVerticalSpacing={false}
-              displayHorizontally={false}
+              displayHorizontally={!isAboveMobile}
             />
           </ImageWrapper>
 
