@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { color, padding, timing } from '../../../styled-components/mixins';
 import { HiddenButton } from '../../Button';
 
@@ -47,7 +47,7 @@ export const Icon = styled.span<ClickableProps>`
   }
 `;
 
-export const MobileMenu = styled.nav<ClickableProps>`
+const SHARED_MENU_PROPERTIES = css`
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
@@ -57,12 +57,26 @@ export const MobileMenu = styled.nav<ClickableProps>`
   color: ${color('white')};
   position: fixed;
   top: 0;
-  left: 0;
+  z-index: 999;
+  transition: ${timing('medium')};
+`;
+
+export const PopupMenu = styled.nav<ClickableProps>`
+  ${SHARED_MENU_PROPERTIES}
+  width: 30%;
+  height: 100%;
+  right: 0;
+  opacity: ${({ isClicked }) => (isClicked ? 1 : 0)};
+  transform: ${({ isClicked }) =>
+    isClicked ? 'translateX(0%)' : 'translateX(100%)'};
+`;
+
+export const MobilePopupMenu = styled.nav<ClickableProps>`
+  ${SHARED_MENU_PROPERTIES}
+  left:0;
   width: 100%;
   height: 100%;
-  z-index: 999;
   opacity: ${({ isClicked }) => (isClicked ? 1 : 0)};
-  transition: ${timing('medium')};
   transform: ${({ isClicked }) =>
     isClicked ? 'translateY(0%)' : 'translateY(100%)'};
 `;
