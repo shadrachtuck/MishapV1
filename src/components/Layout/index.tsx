@@ -32,7 +32,6 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
 
         <Footer />
 
-        {/* scroll to top */}
         {isAboveMobile && <RightSidebar />}
       </SiteLayout>
     </ThemeProvider>

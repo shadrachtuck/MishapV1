@@ -8,8 +8,9 @@ const RightSidebar = (): JSX.Element => {
   const shouldScrollTop = useShouldScrollToTop();
 
   return (
-    <RightSidebarElement>
+    <RightSidebarElement shouldScrollTop={shouldScrollTop}>
       {shouldScrollTop && <HamburgerMenu />}
+
       <ScrollButton />
     </RightSidebarElement>
   );

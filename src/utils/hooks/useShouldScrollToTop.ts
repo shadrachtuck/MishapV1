@@ -4,13 +4,15 @@ const useShouldScrollToTop = (): boolean => {
   const [shouldScrollTop, setShouldScrollTop] = useState(false);
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
+    const onScrollListener = (): void => {
+      if (window.pageYOffset > 45) {
         setShouldScrollTop(true);
       } else {
         setShouldScrollTop(false);
       }
-    });
+    };
+
+    window.addEventListener('scroll', onScrollListener);
   }, []);
 
   return shouldScrollTop;
