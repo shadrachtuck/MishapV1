@@ -14,6 +14,7 @@ import {
   BandcampSection,
   ImageWrapper,
   LeftSide,
+  PressSection,
   Profile,
   RightSide,
   ShowsSection,
@@ -26,6 +27,9 @@ export const query = graphql`
       artist(id: $id) {
         name
         bio
+        press {
+          link
+        }
         genres {
           id
           name
@@ -57,6 +61,7 @@ export default (props: TemplateProps): JSX.Element => {
         artist: {
           name: artistName,
           bio,
+          press,
           shows,
           profilePicture,
           socialMedia,
@@ -71,6 +76,7 @@ export default (props: TemplateProps): JSX.Element => {
   const isAboveMobile = useIsAboveMobileWidth();
   const shouldDisplayGenreTags = genres && genres.length > 0;
   const shouldDisplayShows = shows && shows.length > 0;
+  const shouldDisplayPress = press && press.length > 0;
 
   const links = socialMedia.map(({ name, url }) => ({
     name,
@@ -160,6 +166,19 @@ export default (props: TemplateProps): JSX.Element => {
                 </div>
               ))}
             </ShowsSection>
+          )}
+
+          {shouldDisplayPress && (
+            <PressSection>
+              <h2>Press: </h2>
+              {press.map(({ link }) => (
+                <p key={link}>
+                  <a href={link} target="_blank" rel="noreferrer">
+                    {link}
+                  </a>
+                </p>
+              ))}
+            </PressSection>
           )}
 
           {/* // TODO: add merch and press */}

@@ -28,6 +28,10 @@ export const ShowsSection = styled.div`
   grid-row: shows;
 `;
 
+export const PressSection = styled.div`
+  grid-row: press;
+`;
+
 export const LeftSide = styled.div`
   display: grid;
 `;
@@ -39,7 +43,8 @@ export const RightSide = styled.div`
   grid-template-rows:
     [bandcamp] auto
     [watch] auto
-    [shows] auto;
+    [shows] auto
+    [press] auto;
 `;
 
 export const ArtistPageWrapper = styled.article`

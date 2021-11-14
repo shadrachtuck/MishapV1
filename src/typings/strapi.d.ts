@@ -38,6 +38,7 @@ declare namespace Strapi {
   type Artist = CommonTypes & {
     bio: string;
     socialMedia: Array<ArtistComponents['socialMedia']>;
+    press: Array<ArtistComponents['press']>;
     profilePicture: UploadFile;
     genres?: Array<Genre>;
     shows?: Array<Show>;
@@ -60,6 +61,11 @@ declare namespace Strapi {
   // components
   type ArtistComponents = {
     socialMedia: SocialMedia;
+    press: Press;
+  };
+
+  type Press = {
+    link: string;
   };
 
   type SocialMedia = {
