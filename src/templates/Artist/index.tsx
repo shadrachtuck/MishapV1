@@ -4,6 +4,7 @@ import moment from 'moment';
 import React from 'react';
 import { CloseButton } from '../../components/Button/';
 import Paragraph from '../../components/Paragraph';
+import SEO from '../../components/SEO';
 import SocialMediaLinks from '../../components/SocialMediaLinks';
 import getVideoEmbedLink from '../../utils/functions/getVideoEmbedLink';
 import useIsAboveMobileWidth from '../../utils/hooks/useIsAboveMobileWidth';
@@ -76,86 +77,94 @@ export default (props: TemplateProps): JSX.Element => {
     href: url,
   }));
 
+  const shortBio = bio.slice(0, 159);
+
   return (
-    <ArtistPageWrapper>
-      <CloseButton />
+    <>
+      <SEO title={artistName} description={shortBio} image={profilePicture} />
 
-      <LeftSide>
-        <Profile>
-          <ImageWrapper>
-            <GatsbyImage
-              alt={profilePicture.alternativeText ?? ''}
-              title={profilePicture.caption ?? ''}
-              image={profilePicture.imageFile?.childImageSharp?.gatsbyImageData}
-            />
+      <ArtistPageWrapper>
+        <CloseButton />
 
-            <SocialMediaLinks
-              links={links}
-              iconSize={25}
-              addVerticalSpacing={false}
-              displayHorizontally={!isAboveMobile}
-            />
-          </ImageWrapper>
+        <LeftSide>
+          <Profile>
+            <ImageWrapper>
+              <GatsbyImage
+                alt={profilePicture.alternativeText ?? ''}
+                title={profilePicture.caption ?? ''}
+                image={
+                  profilePicture.imageFile?.childImageSharp?.gatsbyImageData
+                }
+              />
 
-          <h2>{artistName}</h2>
+              <SocialMediaLinks
+                links={links}
+                iconSize={25}
+                addVerticalSpacing={false}
+                displayHorizontally={!isAboveMobile}
+              />
+            </ImageWrapper>
 
-          {/* Add link to genres page? */}
-          {shouldDisplayGenreTags && (
-            <p>
-              {genres.map(({ id, name }, idx) => (
-                <strong key={`${id}-${name}`}>
-                  {name}
-                  {idx !== genres.length - 1 && ' / '}
-                </strong>
-              ))}
-            </p>
+            <h2>{artistName}</h2>
+
+            {/* Add link to genres page? */}
+            {shouldDisplayGenreTags && (
+              <p>
+                {genres.map(({ id, name }, idx) => (
+                  <strong key={`${id}-${name}`}>
+                    {name}
+                    {idx !== genres.length - 1 && ' / '}
+                  </strong>
+                ))}
+              </p>
+            )}
+
+            <p>{bio}</p>
+          </Profile>
+        </LeftSide>
+
+        <RightSide>
+          {bandcampEmbed && (
+            <BandcampSection>
+              <h2>Listen: </h2>
+              <div dangerouslySetInnerHTML={{ __html: bandcampEmbed }} />
+            </BandcampSection>
           )}
 
-          <p>{bio}</p>
-        </Profile>
-      </LeftSide>
+          {videoEmbed && (
+            <WatchSection>
+              <h2>Watch: </h2>
 
-      <RightSide>
-        {bandcampEmbed && (
-          <BandcampSection>
-            <h2>Listen: </h2>
-            <div dangerouslySetInnerHTML={{ __html: bandcampEmbed }} />
-          </BandcampSection>
-        )}
+              {/* only show video embed if screen is large enough */}
+              {isAboveMobile ? (
+                <div dangerouslySetInnerHTML={{ __html: videoEmbed }} />
+              ) : (
+                <a href={getVideoEmbedLink(videoEmbed)}>Video</a>
+              )}
+            </WatchSection>
+          )}
 
-        {videoEmbed && (
-          <WatchSection>
-            <h2>Watch: </h2>
+          {shouldDisplayShows && (
+            <ShowsSection>
+              <h2>Shows: </h2>
 
-            {/* only show video embed if screen is large enough */}
-            {isAboveMobile ? (
-              <div dangerouslySetInnerHTML={{ __html: videoEmbed }} />
-            ) : (
-              <a href={getVideoEmbedLink(videoEmbed)}>Video</a>
-            )}
-          </WatchSection>
-        )}
+              {shows.map(({ id, name, location, date, description }) => (
+                <div key={`${id}-${name}`}>
+                  <p>{name}</p>
 
-        {shouldDisplayShows && (
-          <ShowsSection>
-            <h2>Shows: </h2>
+                  <p>{location}</p>
 
-            {shows.map(({ id, name, location, date, description }) => (
-              <div key={`${id}-${name}`}>
-                <p>{name}</p>
+                  <p> {moment(date).format('DD MM YYYY hh:mm:ss')}</p>
 
-                <p>{location}</p>
+                  {description && <Paragraph text={description} />}
+                </div>
+              ))}
+            </ShowsSection>
+          )}
 
-                <p> {moment(date).format('DD MM YYYY hh:mm:ss')}</p>
-
-                {description && <Paragraph text={description} />}
-              </div>
-            ))}
-          </ShowsSection>
-        )}
-
-        {/* // TODO: add merch and press */}
-      </RightSide>
-    </ArtistPageWrapper>
+          {/* // TODO: add merch and press */}
+        </RightSide>
+      </ArtistPageWrapper>
+    </>
   );
 };

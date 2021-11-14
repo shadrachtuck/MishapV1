@@ -3,6 +3,7 @@ import React from 'react';
 import Bunny from '../assets/svg/mishap-rabbit.svg';
 import ArtistCards from '../components/ArtistCards';
 import { PageSection } from '../components/Sections';
+import SEO from '../components/SEO';
 import { Strapi } from '../typings/strapi';
 import useIsAboveMobileWidth from '../utils/hooks/useIsAboveMobileWidth';
 
@@ -32,6 +33,7 @@ const Home = (): JSX.Element => {
 
   return (
     <>
+      <SEO />
       {isAboveMobile && (
         <PageSection id="home">
           <Bunny />

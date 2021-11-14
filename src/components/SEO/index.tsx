@@ -3,12 +3,17 @@ import { UploadFile } from '../../typings/strapi';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
+type MetaDataIndex = {
+  name: string;
+  content: string;
+};
+
 export interface SEOProps {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   image?: UploadFile;
   lang?: string;
-  meta?: any[];
+  meta?: MetaDataIndex[];
 }
 
 type SiteMetaData = {
@@ -44,10 +49,18 @@ const SEO = ({
   lang,
   meta,
 }: SEOProps): JSX.Element => {
-  // TODO: add SiteData to useStaticQuery for type safety
-  const { site } = useStaticQuery<SiteData>(siteDataQuery);
+  const {
+    site: {
+      siteMetadata: {
+        title: defaultTitle,
+        description: defaultDescription,
+        author,
+      },
+    },
+  } = useStaticQuery<SiteData>(siteDataQuery);
 
-  const metaDescription = description || site.siteMetadata.description;
+  const siteTitle = title || defaultTitle;
+  const metaDescription = description || defaultDescription;
   const imageData = image?.imageFile.childImageSharp.gatsbyImageData;
 
   const metaData = [
@@ -66,7 +79,7 @@ const SEO = ({
     },
     {
       property: 'og:title',
-      content: title,
+      content: siteTitle,
     },
     {
       property: 'og:description',
@@ -78,7 +91,7 @@ const SEO = ({
     },
     {
       name: 'twitter:creator',
-      content: site.siteMetadata.author,
+      content: author,
     },
     {
       name: 'twitter:title',
@@ -91,6 +104,7 @@ const SEO = ({
   ];
 
   if (meta) metaData.concat(meta);
+
   if (image)
     metaData.concat([
       {

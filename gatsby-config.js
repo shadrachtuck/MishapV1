@@ -53,6 +53,16 @@ module.exports = {
       },
     },
     {
+      // browser tab thumbnail
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'mishap.com',
+        short_name: 'Mishap Records',
+        start_url: '/',
+        icon: `${__dirname}/static/rabbit.png`,
+      },
+    },
+    {
       resolve: 'gatsby-source-graphql',
       options: {
         typeName: 'STRAPI',
