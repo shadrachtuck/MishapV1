@@ -171,8 +171,8 @@ export default (props: TemplateProps): JSX.Element => {
           {shouldDisplayPress && (
             <PressSection>
               <h2>Press: </h2>
-              {press.map(({ link }) => (
-                <p key={link}>
+              {press.map(({ link }, idx) => (
+                <p key={`${link}-${idx}`}>
                   <a href={link} target="_blank" rel="noreferrer">
                     {link}
                   </a>
@@ -181,7 +181,7 @@ export default (props: TemplateProps): JSX.Element => {
             </PressSection>
           )}
 
-          {/* // TODO: add merch and press */}
+          {/* // TODO: add merch section */}
         </RightSide>
       </ArtistPageWrapper>
     </>

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { HiddenButton } from '..';
 import Times from '../../../assets/svg/times.svg';
+import { above } from '../../../styled-components/mixins';
 
 type CloseButtonProps = {
   className?: string;
@@ -21,4 +22,14 @@ const CloseButton = ({ className }: CloseButtonProps): JSX.Element => {
   );
 };
 
-export default styled(CloseButton)``;
+export default styled(CloseButton)`
+  /* explicitly larger on mobile.
+   Allow grid to size on desktop */
+  width: 4rem;
+  height: 4rem;
+
+  ${above.medium`
+    width: auto;
+    height: auto;
+  `}
+`;

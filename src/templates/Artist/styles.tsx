@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { CloseButton } from '../../components/Button';
-import { above, color } from '../../styled-components/mixins';
+import { above, color, spacing } from '../../styled-components/mixins';
 
 const GRID_BORDER = '2rem';
 
@@ -48,9 +48,14 @@ export const RightSide = styled.div`
 `;
 
 export const ArtistPageWrapper = styled.article`
+  border: 2px solid ${color('black')};
+  margin: 0 ${spacing('xsmall')};
+
   ${above.medium`
-    display: grid;
     border: 4px solid ${color('black')};
+    margin: 0;
+    padding: 0;
+    display: grid;
 
     grid-template-columns:
       [border-left] ${GRID_BORDER}

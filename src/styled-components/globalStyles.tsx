@@ -1,6 +1,6 @@
 // import styled identifier for prettier to know how to format/lint
 import * as styled from 'styled-components';
-import { color, font, getFontProperties, timing } from './mixins';
+import { above, color, font, getFontProperties, timing } from './mixins';
 
 const GlobalStyles = styled.createGlobalStyle`
   // Reset
@@ -98,21 +98,29 @@ const GlobalStyles = styled.createGlobalStyle`
   textarea {
     ${getFontProperties({
       family: 'roboto',
-      size: 'md',
+      size: 'sm',
       fontColor: 'black',
       weight: 'light',
-      lineHeight: 28,
+      lineHeight: 24,
       letterSpacing: 'base',
     })}
+
+    ${above.medium`
+      ${getFontProperties({
+        size: 'md',
+        lineHeight: 28,
+      })}
+    `}
   }
 
   a {
     ${getFontProperties({
       fontColor: 'black',
-      size: 'md',
-      lineHeight: 32,
+      size: 'sm',
+      lineHeight: 24,
       letterSpacing: 'spread',
     })}
+
     text-transform: uppercase;
     background-color: transparent;
     text-decoration: none;
@@ -136,6 +144,13 @@ const GlobalStyles = styled.createGlobalStyle`
     &:hover {
       color: ${color('gray')};
     }
+
+    ${above.medium`
+      ${getFontProperties({
+        size: 'md',
+        lineHeight: 32,
+      })}
+    `}
   }
 
   p {
@@ -171,19 +186,42 @@ const GlobalStyles = styled.createGlobalStyle`
   }
 
   h1 {
-    font-size: ${font('size', 'xxl')};
-    line-height: 1.171875; // 75px
-    letter-spacing: ${font('letterSpacing', 'spread')};
+    ${getFontProperties({
+      size: 'xl',
+      lineHeight: 56,
+      letterSpacing: 'spread',
+    })}
+
+    ${above.medium`  
+      ${getFontProperties({
+        size: 'xxl',
+        lineHeight: 75,
+      })}
+    `}
   }
 
   h2 {
-    font-size: ${font('size', 'xl')};
-    line-height: 1.15;
+    ${getFontProperties({
+      size: 'lg',
+      lineHeight: 36,
+      letterSpacing: 'spread',
+    })}
+
+    ${above.medium`  
+      ${getFontProperties({
+        size: 'xl',
+        lineHeight: 52,
+      })}
+    `}
   }
 
   h3 {
     text-decoration: underline;
-    font-size: ${font('size', 'lg')};
+    ${getFontProperties({ size: 'md' })}
+
+    ${above.medium`
+      ${getFontProperties({ size: 'lg' })}
+    `}
   }
 
   h4 {
