@@ -3,6 +3,7 @@ import {
   padding,
   pxToRem,
   spacing,
+  timing,
 } from '../../styled-components/mixins';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
@@ -28,6 +29,12 @@ export const ArtistCardWrapper = styled.li`
   border: 2px solid ${color('black')};
   padding: ${padding('medium')};
   padding-bottom: 0;
+
+  &:hover {
+    transform: scale(1.01);
+    transition: transform ${timing('fast')} ease-out;
+    box-shadow: 1px 1px 5px ${color('gray')};
+  }
 `;
 
 export const ArtistCardName = styled.span`
