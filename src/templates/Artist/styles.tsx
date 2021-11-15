@@ -49,7 +49,7 @@ export const RightSide = styled.div`
 
 export const ArtistPageWrapper = styled.article`
   border: 2px solid ${color('black')};
-  margin: 0 ${spacing('xsmall')};
+  margin: 0 ${spacing('xxsmall')};
 
   ${above.medium`
     border: 4px solid ${color('black')};
