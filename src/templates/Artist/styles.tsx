@@ -41,10 +41,10 @@ export const RightSide = styled.div`
   gap: 4rem;
 
   grid-template-rows:
-    [bandcamp] auto
-    [watch] auto
-    [shows] auto
-    [press] auto;
+    [bandcamp] minmax(0, auto)
+    [watch] minmax(0, auto)
+    [shows] minmax(0, auto)
+    [press] minmax(0, auto);
 `;
 
 export const ArtistPageWrapper = styled.article`
