@@ -42,8 +42,8 @@ declare namespace Strapi {
     profilePicture: UploadFile;
     genres?: Array<Genre>;
     shows?: Array<Show>;
+    videos?: Array<MediaComponents['video']>;
     bandcampEmbed?: string;
-    videoEmbed?: string;
   };
 
   type Genre = CommonTypes & {
@@ -62,6 +62,14 @@ declare namespace Strapi {
   type ArtistComponents = {
     socialMedia: SocialMedia;
     press: Press;
+  };
+
+  type MediaComponents = {
+    video: VideoEmbed;
+  };
+
+  type VideoEmbed = {
+    embedLink: string;
   };
 
   type Press = {

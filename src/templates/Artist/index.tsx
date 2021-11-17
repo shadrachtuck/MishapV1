@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import moment from 'moment';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { CloseButton } from '../../components/Button/';
 import Paragraph from '../../components/Paragraph';
 import SEO from '../../components/SEO';
@@ -42,7 +42,9 @@ export const query = graphql`
           description
         }
         bandcampEmbed: bandcamp_embed
-        videoEmbed: video_embed
+        videos {
+          embedLink: embed_link
+        }
         socialMedia: social_media {
           ...StrapiArtistSocialMedia
         }
@@ -67,7 +69,7 @@ export default (props: TemplateProps): JSX.Element => {
           socialMedia,
           bandcampEmbed,
           genres,
-          videoEmbed,
+          videos,
         },
       },
     },
@@ -77,6 +79,7 @@ export default (props: TemplateProps): JSX.Element => {
   const shouldDisplayGenreTags = genres && genres.length > 0;
   const shouldDisplayShows = shows && shows.length > 0;
   const shouldDisplayPress = press && press.length > 0;
+  const shouldDisplayVideos = videos && videos.length > 0;
 
   const links = socialMedia.map(({ name, url }) => ({
     name,
@@ -137,16 +140,21 @@ export default (props: TemplateProps): JSX.Element => {
             </BandcampSection>
           )}
 
-          {videoEmbed && (
+          {shouldDisplayVideos && (
             <WatchSection>
               <h2>Watch: </h2>
-
-              {/* only show video embed if screen is large enough */}
-              {isAboveMobile ? (
-                <div dangerouslySetInnerHTML={{ __html: videoEmbed }} />
-              ) : (
-                <a href={getVideoEmbedLink(videoEmbed)}>Video</a>
-              )}
+              {videos.map(({ embedLink }) => (
+                <Fragment key={embedLink}>
+                  {/* only show video embed if screen is large enough */}
+                  {isAboveMobile ? (
+                    <div dangerouslySetInnerHTML={{ __html: embedLink }} />
+                  ) : (
+                    <p>
+                      <a href={getVideoEmbedLink(embedLink)}>Video</a>
+                    </p>
+                  )}
+                </Fragment>
+              ))}
             </WatchSection>
           )}
 
