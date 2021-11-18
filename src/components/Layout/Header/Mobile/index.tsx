@@ -5,10 +5,12 @@ import Bunny from '../../../../assets/svg/mishap-rabbit.svg';
 import config from '../../../../../config';
 import MishapLogo from '../../../../assets/svg/mishap-text-clear-bg.svg';
 import { LinkToHome } from '../../Sidebar/LeftSidebar/styles';
+import { DefaultLayoutProps } from '../../types';
+import styled from 'styled-components';
 
-const MobileHeader = (): JSX.Element => {
+const MobileHeader = ({ className }: DefaultLayoutProps): JSX.Element => {
   return (
-    <MobileHeaderElement>
+    <MobileHeaderElement className={className}>
       <Bunny width={100} height={100} />
 
       <LinkToHome href={config.routes.home}>
@@ -22,4 +24,4 @@ const MobileHeader = (): JSX.Element => {
   );
 };
 
-export default MobileHeader;
+export default styled(MobileHeader)``;

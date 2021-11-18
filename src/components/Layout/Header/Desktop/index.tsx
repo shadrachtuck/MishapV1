@@ -1,13 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
 import Menu from '../../../Menus/MenuBar';
+import { DefaultLayoutProps } from '../../types';
 import { HeaderElement } from '../styles';
 
-const DesktopHeader = (): JSX.Element => {
+const DesktopHeader = ({ className }: DefaultLayoutProps): JSX.Element => {
   return (
-    <HeaderElement>
+    <HeaderElement className={className}>
       <Menu color="black" displayHorizontally />
     </HeaderElement>
   );
 };
 
-export default DesktopHeader;
+export default styled(DesktopHeader)``;

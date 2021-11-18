@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { above } from '../../styled-components/mixins';
 import { MainContent } from '../Sections';
 import { DesktopFooter, MobileFooter } from './Footer';
-import { HeaderElement } from './Header/styles';
+import { DesktopHeader, MobileHeader } from './Header';
 import { LeftSidebarWrapper } from './Sidebar/LeftSidebar/styles';
 import { RightSidebarElement } from './Sidebar/RightSidebar/styles';
 
@@ -19,7 +19,7 @@ export const SiteLayout = styled.div`
     grid-column: main;
   }
 
-  ${HeaderElement} {
+  ${DesktopHeader},${MobileHeader} {
     grid-column: main;
   }
 
@@ -58,7 +58,7 @@ export const SiteLayout = styled.div`
       grid-row: main / span footer-end;
     }
 
-    ${HeaderElement} {
+    ${DesktopHeader} {
       grid-column: middle / span gutter-right;
       grid-row: header;
     }
@@ -68,7 +68,7 @@ export const SiteLayout = styled.div`
       grid-row: main;
     }
 
-    ${DesktopFooter},${MobileFooter} {
+    ${DesktopFooter} {
       grid-column: middle;
       grid-row: footer;
     }
