@@ -10,7 +10,7 @@ import useIsAboveMobileWidth from '../utils/hooks/useIsAboveMobileWidth';
 export const query = graphql`
   query GET_ARTISTS {
     strapi {
-      artists {
+      artists(sort: "name:asc") {
         slug
         name
         bio
