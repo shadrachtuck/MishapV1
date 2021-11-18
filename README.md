@@ -31,7 +31,7 @@ port `1337`. This is the API that houses all artist data.
 To start the development server, run `yarn start`. This will open up a web page
 on port `3000`.
 
-## Gatsby build
+### Gatsby build
 
 If you need a production build of the site (example, for testing xml generated
 only on a production build), you may run `yarn build`. Under the hood, this runs
@@ -48,3 +48,9 @@ for testing or a deployed instance of Strapi.
 ```
 STRAPI_URL=example.site/graphql
 ```
+
+### Writing Graphql queries
+
+If you are querying data from the strapi cms, to find out how to write custom
+sort/filer queries in your graphql, check out the
+[STRAPI DOCS](https://strapi.io/documentation/developer-docs/latest/development/plugins/graphql.html#query-api)

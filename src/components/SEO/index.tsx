@@ -38,7 +38,7 @@ const siteDataQuery = graphql`
         title
         description
         author
-        # image
+        image
       }
     }
   }
