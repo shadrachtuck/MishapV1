@@ -73,6 +73,7 @@ declare namespace Strapi {
   };
 
   type Press = {
+    title: string;
     link: string;
   };
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { above } from '../../styled-components/mixins';
 import { MainContent } from '../Sections';
-import Footer from './Footer';
+import { DesktopFooter, MobileFooter } from './Footer';
 import { HeaderElement } from './Header/styles';
 import { LeftSidebarWrapper } from './Sidebar/LeftSidebar/styles';
 import { RightSidebarElement } from './Sidebar/RightSidebar/styles';
@@ -27,7 +27,7 @@ export const SiteLayout = styled.div`
     grid-column: main;
   }
 
-  ${Footer} {
+  ${DesktopFooter},${MobileFooter} {
     grid-column: main;
   }
 
@@ -68,7 +68,7 @@ export const SiteLayout = styled.div`
       grid-row: main;
     }
 
-    ${Footer} {
+    ${DesktopFooter},${MobileFooter} {
       grid-column: middle;
       grid-row: footer;
     }

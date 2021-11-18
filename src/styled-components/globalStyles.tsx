@@ -1,6 +1,13 @@
 // import styled identifier for prettier to know how to format/lint
 import * as styled from 'styled-components';
-import { above, color, font, getFontProperties, timing } from './mixins';
+import {
+  above,
+  color,
+  font,
+  getFontProperties,
+  spacing,
+  timing,
+} from './mixins';
 
 const GlobalStyles = styled.createGlobalStyle`
   // Reset
@@ -201,6 +208,7 @@ const GlobalStyles = styled.createGlobalStyle`
   }
 
   h2 {
+    margin-bottom: ${spacing('small')};
     ${getFontProperties({
       size: 'lg',
       lineHeight: 36,

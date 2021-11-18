@@ -57,6 +57,17 @@ export const padding =
   (props: ThemeProps<DefaultTheme>): string =>
     props.theme.padding[label];
 
+export const border =
+  (label: keyof DefaultTheme['border']) =>
+  (props: ThemeProps<DefaultTheme>): string =>
+    props.theme.border[label];
+
+export const boxShadow =
+  (label: keyof DefaultTheme['boxShadow']) =>
+  (props: ThemeProps<DefaultTheme>): string =>
+    props.theme.boxShadow[label];
+
+// TODO: remove addMilliseconds
 export const timing =
   (
     label: keyof DefaultTheme['timing'],
@@ -84,6 +95,18 @@ export const font =
   ) =>
   (props: ThemeProps<DefaultTheme>) =>
     props.theme.font[variant][label];
+
+export const container =
+  <
+    Variant extends keyof DefaultTheme['container'],
+    Label extends Extract<keyof DefaultTheme['container'][Variant], string>,
+  >(
+    variant: Variant,
+    label: Label,
+    /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+  ) =>
+  (props: ThemeProps<DefaultTheme>) =>
+    props.theme.container[variant][label];
 
 export const pxToRem = (px: number): string | number => {
   const baseFontSize = 16;

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { above } from '../../styled-components/mixins';
+import { above, container } from '../../styled-components/mixins';
 
 const MainContent = styled.main`
   display: grid;
   gap: 7.5rem;
-  margin-top: 7.5rem;
+  margin-top: calc(${container('height', 'mobileHeader')} * 1.3);
   margin-bottom: 7.5rem;
 
   ${above.medium`

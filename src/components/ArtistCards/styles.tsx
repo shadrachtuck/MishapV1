@@ -1,4 +1,7 @@
 import {
+  above,
+  border,
+  boxShadow,
   color,
   padding,
   pxToRem,
@@ -26,15 +29,20 @@ export const ArtistCardWrapper = styled.li`
   align-items: center;
   gap: 1rem;
   max-width: ${pxToRem(350)};
-  border: 2px solid ${color('black')};
-  padding: ${padding('medium')};
+  border: ${border('solidBlack')};
+  padding: ${padding('xsmall')};
   padding-bottom: 0;
 
   &:hover {
     transform: scale(1.01);
-    transition: transform ${timing('fast')} ease-out;
-    box-shadow: 1px 1px 5px ${color('gray')};
+    box-shadow: ${boxShadow('medium')};
+    transition: transform ${timing('fast')} ease-out,
+      box-shadow ${timing('fast')} ease-out;
   }
+
+  ${above.medium`
+    padding: ${padding('medium')};
+  `}
 `;
 
 export const ArtistCardName = styled.span`

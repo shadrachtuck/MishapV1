@@ -8,7 +8,13 @@ declare module 'styled-components' {
       small: string;
       xsmall: string;
     };
+    container: {
+      height: {
+        mobileHeader: string;
+      };
+    };
     colors: {
+      shadow: string;
       black: string;
       white: string;
       gray: string;
@@ -58,6 +64,14 @@ declare module 'styled-components' {
     timing: {
       fast: number;
       medium: number;
+    };
+    border: {
+      solidBlack: string;
+    };
+    boxShadow: {
+      low: string;
+      medium: string;
+      high: string;
     };
   }
 }

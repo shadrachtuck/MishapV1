@@ -28,6 +28,7 @@ export const query = graphql`
         name
         bio
         press {
+          title
           link
         }
         genres {
@@ -114,7 +115,7 @@ export default (props: TemplateProps): JSX.Element => {
               />
             </ImageWrapper>
 
-            <h2>{artistName}</h2>
+            <h1>{artistName}</h1>
 
             {/* Add link to genres page? */}
             {shouldDisplayGenreTags && (
@@ -179,10 +180,10 @@ export default (props: TemplateProps): JSX.Element => {
           {shouldDisplayPress && (
             <PressSection>
               <h2>Press: </h2>
-              {press.map(({ link }, idx) => (
-                <p key={`${link}-${idx}`}>
+              {press.map(({ title, link }, idx) => (
+                <p key={`${title}-${idx}`}>
                   <a href={link} target="_blank" rel="noreferrer">
-                    {link}
+                    {title}
                   </a>
                 </p>
               ))}

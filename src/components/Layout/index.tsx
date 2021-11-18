@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../styled-components/defaultTheme';
 import GlobalStyles from '../../styled-components/globalStyles';
 import useIsAboveMobileWidth from '../../utils/hooks/useIsAboveMobileWidth';
 import MainContent from '../Sections/MainContent';
-import Footer from './Footer';
-import Header from './Header';
+import { DesktopFooter, MobileFooter } from './Footer';
+import { DesktopHeader, MobileHeader } from './Header';
 import LeftSidebar from './Sidebar/LeftSidebar';
 import RightSidebar from './Sidebar/RightSidebar';
 import { SiteLayout } from './styles';
@@ -13,26 +13,34 @@ import { SiteLayout } from './styles';
 type LayoutProps = {
   children: Array<JSX.Element> | JSX.Element;
 };
+const Main = ({ children }: LayoutProps): JSX.Element => (
+  <MainContent>
+    {/* 'children' will always either come from a 'page' or a 'template' */}
+    {children}
+  </MainContent>
+);
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   const isAboveMobile = useIsAboveMobileWidth();
-
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <SiteLayout>
-        <LeftSidebar />
-
-        <Header />
-
-        <MainContent>
-          {/* 'children' will always either come from a 'page' or a 'template' */}
-          {children}
-        </MainContent>
-
-        <Footer />
-
-        {isAboveMobile && <RightSidebar />}
+        {isAboveMobile ? (
+          <Fragment>
+            <LeftSidebar />
+            <DesktopHeader />
+            <Main>{children}</Main>
+            <DesktopFooter />
+            <RightSidebar />
+          </Fragment>
+        ) : (
+          <Fragment>
+            <MobileHeader />
+            <Main>{children}</Main>
+            <MobileFooter />
+          </Fragment>
+        )}
       </SiteLayout>
     </ThemeProvider>
   );
