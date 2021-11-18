@@ -3,13 +3,10 @@ import styled from 'styled-components';
 import config from '../../../../../config';
 import Contact from '../../../../components/Contact';
 import SocialMediaLinks from '../../../SocialMediaLinks';
+import { DefaultLayoutProps } from '../../types';
 import { FooterWrapper } from '../styles';
 
-type FooterProps = {
-  className?: string;
-};
-
-const MobileFooter = ({ className }: FooterProps): JSX.Element => {
+const MobileFooter = ({ className }: DefaultLayoutProps): JSX.Element => {
   return (
     <FooterWrapper id="contact" className={className}>
       <Contact />
