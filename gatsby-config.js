@@ -10,9 +10,10 @@ module.exports = {
     DEV_SSR: false,
   },
   siteMetadata: {
-    siteUrl: config.siteURl,
     title: config.siteTitle,
     description: config.siteDescription,
+    image: config.siteImage,
+    siteUrl: config.siteURl,
     author: config.author,
   },
 
@@ -42,6 +43,12 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/assets/mishap-designs`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/assets/png`,
       },
     },
     {

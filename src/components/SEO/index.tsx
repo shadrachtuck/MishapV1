@@ -1,7 +1,7 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
-import { UploadFile } from '../../typings/strapi';
 import Helmet from 'react-helmet';
-import { useStaticQuery, graphql } from 'gatsby';
+import { UploadFile } from '../../typings/strapi';
 
 type MetaDataIndex = {
   name: string;
@@ -19,6 +19,7 @@ export interface SEOProps {
 type SiteMetaData = {
   title: string;
   description: string;
+  image: string;
   author: string;
 };
 
@@ -37,6 +38,7 @@ const siteDataQuery = graphql`
         title
         description
         author
+        # image
       }
     }
   }
@@ -54,13 +56,14 @@ const SEO = ({
       siteMetadata: {
         title: defaultTitle,
         description: defaultDescription,
+        image: defaultImage,
         author,
       },
     },
   } = useStaticQuery<SiteData>(siteDataQuery);
 
-  const siteTitle = title || defaultTitle;
-  const metaDescription = description || defaultDescription;
+  const siteTitle = title ?? defaultTitle;
+  const metaDescription = description ?? defaultDescription;
   const imageData = image?.imageFile.childImageSharp.gatsbyImageData;
 
   const metaData = [
@@ -126,6 +129,7 @@ const SEO = ({
             : '628',
       },
     ]);
+  else metaData.concat([{ property: 'og:image', content: defaultImage }]);
 
   return (
     <Helmet
