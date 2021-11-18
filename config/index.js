@@ -1,8 +1,9 @@
 module.exports = {
   siteTitle: 'Mishap Records',
-  siteURl: 'https://mishap-records.com',
+  siteURl: 'https://mishaprecords.com',
   author: 'Shadrach Tuck',
-  siteDescription: 'A recording label in Boise, Idaho',
+  siteDescription:
+    'Cool music band label from PNW hot-bed Boise, ID featuring like-minded, dead-sexy individuals from here and throughout the modern urban/sub-urban bland-scape. Founded in 2017 and launched in 2021. Subsidiary of Earth Libraries',
   socials: [
     {
       name: 'facebook',
@@ -21,7 +22,7 @@ module.exports = {
     home: '/',
     artists: 'artists',
     shows: 'shows',
-    store: 'https://mishaprecordings.bandcamp.com/',
+    store: 'https://mishaprecordings.bandcamp.com/merch',
     contact: 'contact',
   },
 };
