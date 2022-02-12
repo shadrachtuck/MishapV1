@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { above } from '../../styled-components/mixins';
+import { above } from '../../styled-components/utils/mixins';
 import { MainContent } from '../Sections';
 import { DesktopFooter, MobileFooter } from './Footer';
 import { DesktopHeader, MobileHeader } from './Header';

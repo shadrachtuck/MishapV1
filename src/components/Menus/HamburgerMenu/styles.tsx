@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
-import { color, padding, timing } from '../../../styled-components/mixins';
+import {
+  color,
+  padding,
+  timing,
+} from '../../../styled-components/utils/mixins';
 import { HiddenButton } from '../../Button';
 
 export const MenuLabel = styled(HiddenButton)`

@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { boxShadow, color, container } from '../../../styled-components/mixins';
+import {
+  boxShadow,
+  color,
+  container,
+} from '../../../styled-components/utils/mixins';
 
 export const HeaderElement = styled.header`
   display: flex;

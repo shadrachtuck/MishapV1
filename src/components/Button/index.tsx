@@ -4,7 +4,7 @@ import {
   getFontProperties,
   padding,
   timing,
-} from '../../styled-components/mixins';
+} from '../../styled-components/utils/mixins';
 
 type ButtonProps = {
   addHoverStyles?: boolean;

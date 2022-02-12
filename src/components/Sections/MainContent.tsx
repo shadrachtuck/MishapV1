@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { above, container } from '../../styled-components/mixins';
+import { above, container } from '../../styled-components/utils/mixins';
 
 const MainContent = styled.main`
   display: grid;

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { HiddenButton } from '..';
 import Times from '../../../assets/svg/times.svg';
-import { above } from '../../../styled-components/mixins';
+import { above } from '../../../styled-components/utils/mixins';
 
 type CloseButtonProps = {
   className?: string;

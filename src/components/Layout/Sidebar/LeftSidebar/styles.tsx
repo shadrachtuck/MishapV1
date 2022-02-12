@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { above } from '../../../../styled-components/mixins';
+import { above, padding } from '../../../../styled-components/utils/mixins';
 import config from '../../../../../config';
 
 export const LinkToHome = styled.a.attrs({
@@ -16,7 +16,7 @@ export const LeftSidebarWrapper = styled.aside`
   flex-flow: column nowrap;
 
   ${above.medium`
-    padding: 1.5rem 0;
+    padding: ${padding('small')} 0;
     justify-content: space-between;
     position: sticky;
     height: 100vh;

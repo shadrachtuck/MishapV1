@@ -5,7 +5,7 @@ import {
   border,
   padding,
   spacing,
-} from '../../styled-components/mixins';
+} from '../../styled-components/utils/mixins';
 
 const GRID_BORDER = '2rem';
 

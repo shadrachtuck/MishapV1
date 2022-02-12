@@ -1,5 +1,5 @@
 import styled, { DefaultTheme } from 'styled-components';
-import { color } from '../../../styled-components/mixins';
+import { color } from '../../../styled-components/utils/mixins';
 
 type InputProps = {
   backgroundTheme?: keyof DefaultTheme['colors'];

@@ -1,7 +1,7 @@
 import ContactInformation from '../../../components/Contact/ContactInformation';
 import styled from 'styled-components';
 import ContactForm from '../../../components/Contact/ContactForm';
-import { above, color, spacing } from '../../../styled-components/mixins';
+import { above, color, spacing } from '../../../styled-components/utils/mixins';
 
 export const FooterWrapper = styled.footer`
   ${ContactForm},${ContactInformation} {

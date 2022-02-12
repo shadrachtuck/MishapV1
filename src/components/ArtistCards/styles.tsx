@@ -7,7 +7,7 @@ import {
   pxToRem,
   spacing,
   timing,
-} from '../../styled-components/mixins';
+} from '../../styled-components/utils/mixins';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 

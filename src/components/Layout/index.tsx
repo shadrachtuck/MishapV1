@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '../../styled-components/defaultTheme';
+import { theme } from '../../styled-components/utils/defaultTheme';
 import GlobalStyles from '../../styled-components/globalStyles';
 import useIsAboveMobileWidth from '../../utils/hooks/useIsAboveMobileWidth';
 import MainContent from '../Sections/MainContent';
@@ -13,6 +13,8 @@ import { SiteLayout } from './styles';
 type LayoutProps = {
   children: Array<JSX.Element> | JSX.Element;
 };
+
+// TODO: Extract into own page?
 const Main = ({ children }: LayoutProps): JSX.Element => (
   <MainContent>
     {/* 'children' will always either come from a 'page' or a 'template' */}
@@ -22,6 +24,7 @@ const Main = ({ children }: LayoutProps): JSX.Element => (
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   const isAboveMobile = useIsAboveMobileWidth();
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />

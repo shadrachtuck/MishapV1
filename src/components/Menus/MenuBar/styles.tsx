@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { NavbarProps } from '.';
-import { pxToRem } from '../../../styled-components/mixins';
+import { pxToRem } from '../../../styled-components/utils/mixins';
 
 export const Navbar = styled.ul<NavbarProps>`
   display: flex;
