@@ -37,13 +37,24 @@ const Home = (): JSX.Element => {
       {isAboveMobile && (
         <PageSection id="home">
           <Bunny />
-
           <h1>Mishap Records</h1>
+          <h2>Boise, Idaho</h2>
         </PageSection>
       )}
 
       <PageSection id="artists">
+        <h2>Artists</h2>
         <ArtistCards artists={artists} />
+      </PageSection>
+
+      <PageSection id="about">
+        <h2>About</h2>
+        <p>
+          <strong>Mishap Records</strong> is a cool music band label from PNW
+          hot-bed Boise, ID featuring like-minded, dead-sexy individuals from
+          here and throughout the modern urban/sub-urban bland-scape. Founded in
+          2017 and launched in 2021. Subsidiary of Earth Libraries.
+        </p>
       </PageSection>
     </>
   );
