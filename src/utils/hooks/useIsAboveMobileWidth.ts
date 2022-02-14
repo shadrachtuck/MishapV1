@@ -10,7 +10,8 @@ const useIsAboveMobileWidth = (): boolean | undefined => {
 
   useMemo(() => {
     if (!isSSR) {
-      if (window.innerWidth > mobileBreakpoint) setIsAboveMobile(true);
+      if (typeof window !== undefined && window.innerWidth > mobileBreakpoint)
+        setIsAboveMobile(true);
       else setIsAboveMobile(false);
     }
   }, [mobileBreakpoint]);
