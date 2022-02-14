@@ -12,6 +12,12 @@ const GRID_BORDER = '2rem';
 export const ImageWrapper = styled.div`
   display: flex;
   flex-flow: column;
+  ${above.medium`
+    .gatsby-image-wrapper {
+      max-width: 90%;
+      max-height: 90%;
+    }
+  `}
   gap: 1rem;
 `;
 
