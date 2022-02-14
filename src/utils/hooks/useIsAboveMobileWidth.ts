@@ -9,11 +9,12 @@ const useIsAboveMobileWidth = (): boolean | undefined => {
   const mobileBreakpoint = removeRemFromString(theme.breakpoints.medium) * 16;
 
   useMemo(() => {
-    if (window?.innerWidth > mobileBreakpoint) setIsAboveMobile(true);
-    else setIsAboveMobile(false);
+    if (!isSSR) {
+      if (window.innerWidth > mobileBreakpoint) setIsAboveMobile(true);
+      else setIsAboveMobile(false);
+    }
   }, [mobileBreakpoint]);
 
-  if (isSSR) return;
   if (!mobileBreakpoint) return;
   return isAboveMobile;
 };
