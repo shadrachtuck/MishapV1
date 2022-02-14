@@ -42,14 +42,9 @@ export const LeftSide = styled.div`
 `;
 
 export const RightSide = styled.div`
-  display: grid;
+  display: flex;
+  flex-flow: column nowrap;
   gap: 4rem;
-
-  grid-template-rows:
-    [bandcamp] minmax(0, auto)
-    [watch] minmax(0, auto)
-    [shows] minmax(0, auto)
-    [press] minmax(0, auto);
 `;
 
 export const ArtistPageWrapper = styled.article`

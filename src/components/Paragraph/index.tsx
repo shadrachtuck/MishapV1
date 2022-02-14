@@ -1,117 +1,71 @@
-import React from 'react';
-import parse, { HTMLReactParserOptions } from 'html-react-parser';
 import { Element } from 'domhandler/lib/node';
+import parse, { domToReact, HTMLReactParserOptions } from 'html-react-parser';
+import React from 'react';
+import { Anchor, Span } from '../Elements';
 
 export interface Props {
-  text: string;
+  text: string | null;
 }
 
-const Paragraph: React.FC<Props> = ({ text }: Props) => {
-  // TODO: Add images to parser
-  const options: HTMLReactParserOptions = {
-    replace: domNode => {
-      if (!(domNode instanceof Element)) return null;
+const options: HTMLReactParserOptions = {
+  replace: domNode => {
+    if (!(domNode instanceof Element)) return null;
+    const { name, children, attribs } = domNode;
+    switch (name) {
+      case 'a':
+        return (
+          <strong>
+            <Anchor to={attribs.href}>{domToReact(children, options)}</Anchor>
+          </strong>
+        );
 
-      // if (name === 'a') {
-      //   return (
-      //     <strong>
-      //       <a href={attribs.href}>{domToReact(children, options)}</a>
-      //     </strong>
-      //   );
-      // }
+      case 'h1':
+        return <h1>{domToReact(children, options)}</h1>;
 
-      // if (name === 'h1') {
-      //   return (
-      //     <TextWrapper
-      //       as={H1}
-      //       alignParagraph={alignParagraph}
-      //       justifyParagraph={justifyParagraph}
-      //     >
-      //       {domToReact(children, options)}
-      //     </TextWrapper>
-      //   );
-      // }
+      case 'h2':
+        return <h2>{domToReact(children, options)}</h2>;
 
-      // if (name === 'h2')
-      //   return (
-      //     <TextWrapper
-      //       as={H2}
-      //       alignParagraph={alignParagraph}
-      //       justifyParagraph={justifyParagraph}
-      //     >
-      //       {domToReact(children, options)}
-      //     </TextWrapper>
-      //   );
+      case 'h3':
+        return <h3>{domToReact(children, options)}</h3>;
 
-      // if (name === 'h3')
-      //   return (
-      //     <TextWrapper
-      //       as={H3}
-      //       alignParagraph={alignParagraph}
-      //       justifyParagraph={justifyParagraph}
-      //     >
-      //       {domToReact(children, options)}
-      //     </TextWrapper>
-      //   );
+      case 'h4':
+        return <h4>{domToReact(children, options)}</h4>;
 
-      // if (name === 'p')
-      //   return (
-      //     <TextWrapper
-      //       alignParagraph={alignParagraph}
-      //       justifyParagraph={justifyParagraph}
-      //     >
-      //       {domToReact(children, options)}
-      //     </TextWrapper>
-      //   );
-      // if (name === 'ul')
-      //   return (
-      //     <TextWrapper
-      //       as="ul"
-      //       alignParagraph={alignParagraph}
-      //       justifyParagraph={justifyParagraph}
-      //     >
-      //       {domToReact(children, options)}
-      //     </TextWrapper>
-      //   );
-      // if (name === 'ol')
-      //   return (
-      //     <TextWrapper
-      //       as="ol"
-      //       alignParagraph={alignParagraph}
-      //       justifyParagraph={justifyParagraph}
-      //     >
-      //       {domToReact(children, options)}
-      //     </TextWrapper>
-      //   );
-      // if (name === 'blockquote')
-      //   return (
-      //     <TextWrapper
-      //       as="blockquote"
-      //       style={{display: 'flex', alignItems:"center", minHeight: '50px'}}
-      //       alignParagraph={alignParagraph}
-      //       justifyParagraph={justifyParagraph}
-      //     >
-      //       <YangQuotes width={20} height={20} style={{ alignSelf: 'flex-start' }} />
-      //       {/* Arbitrary div to group any html that may split up 'children' */}
-      //       <div>
-      //         {domToReact(children, options)}
-      //       </div>
-      //       <YinQuotes width={20} height={20} style={{ alignSelf: 'flex-end' }} />
-      //     </TextWrapper>
-      //   );
+      case 'h5':
+        return <h5>{domToReact(children, options)}</h5>;
 
-      // if (attribs.class === 'ql-size-huge')
-      //   return <Span size="huge">{domToReact(children, options)}</Span>;
+      case 'h6':
+        return <h6>{domToReact(children, options)}</h6>;
 
-      // if (attribs.class === 'ql-size-large')
-      //   return <Span size="large">{domToReact(children, options)}</Span>;
+      case 'strong':
+        return <strong>{domToReact(children, options)}</strong>;
 
-      // if (attribs.class === 'ql-size-small')
-      //   return <Span size="small">{domToReact(children, options)}</Span>;
-    },
-  };
+      case 'p':
+        return <p>{domToReact(children, options)}</p>;
 
-  return <article>{parse(text, options)}</article>;
+      case 'ul':
+        return <ul>{domToReact(children, options)}</ul>;
+      case 'ol':
+        return <ol>{domToReact(children, options)}</ol>;
+    }
+
+    if (attribs.class === 'ql-size-huge')
+      return <Span size="huge">{domToReact(children, options)}</Span>;
+
+    if (attribs.class === 'ql-size-large')
+      return <Span size="large">{domToReact(children, options)}</Span>;
+
+    if (attribs.class === 'ql-size-small')
+      return <Span size="small">{domToReact(children, options)}</Span>;
+
+    return null;
+  },
+};
+
+const Paragraph = ({ text }: Props): JSX.Element | null => {
+  if (text === null) return null;
+
+  return <>{parse(text, options)}</>;
 };
 
 export default Paragraph;

@@ -3,6 +3,7 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import moment from 'moment';
 import React, { Fragment } from 'react';
 import { CloseButton } from '../../components/Button/';
+import { Anchor } from '../../components/Elements';
 import Paragraph from '../../components/Paragraph';
 import SEO from '../../components/SEO';
 import SocialMediaLinks from '../../components/SocialMediaLinks';
@@ -77,6 +78,7 @@ export default (props: TemplateProps): JSX.Element => {
   } = props;
 
   const isAboveMobile = useIsAboveMobileWidth();
+  const shouldDisplayBandcampEmbed = bandcampEmbed && bandcampEmbed.length > 0;
   const shouldDisplayGenreTags = genres && genres.length > 0;
   const shouldDisplayShows = shows && shows.length > 0;
   const shouldDisplayPress = press && press.length > 0;
@@ -129,12 +131,12 @@ export default (props: TemplateProps): JSX.Element => {
               </p>
             )}
 
-            <p>{bio}</p>
+            <Paragraph text={bio} />
           </Profile>
         </LeftSide>
 
         <RightSide>
-          {bandcampEmbed && (
+          {shouldDisplayBandcampEmbed && (
             <BandcampSection>
               <h2>Listen: </h2>
               <div dangerouslySetInnerHTML={{ __html: bandcampEmbed }} />
@@ -150,9 +152,13 @@ export default (props: TemplateProps): JSX.Element => {
                   {isAboveMobile ? (
                     <div dangerouslySetInnerHTML={{ __html: embedLink }} />
                   ) : (
-                    <p>
-                      <a href={getVideoEmbedLink(embedLink)}>Video</a>
-                    </p>
+                    <div>
+                      <strong>
+                        <Anchor href={getVideoEmbedLink(embedLink)}>
+                          Video
+                        </Anchor>
+                      </strong>
+                    </div>
                   )}
                 </Fragment>
               ))}
@@ -181,11 +187,11 @@ export default (props: TemplateProps): JSX.Element => {
             <PressSection>
               <h2>Press: </h2>
               {press.map(({ title, link }, idx) => (
-                <p key={`${title}-${idx}`}>
-                  <a href={link} target="_blank" rel="noreferrer">
-                    {title}
-                  </a>
-                </p>
+                <div key={`${title}-${idx}`}>
+                  <strong>
+                    <Anchor href={link}>{title}</Anchor>
+                  </strong>
+                </div>
               ))}
             </PressSection>
           )}
