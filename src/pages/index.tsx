@@ -49,11 +49,23 @@ const Home = (): JSX.Element => {
 
       <PageSection id="about">
         <h2>About</h2>
+
         <p>
           <strong>Mishap Records</strong> is a cool music band label from PNW
-          hot-bed Boise, ID featuring like-minded, dead-sexy individuals from
+          hot-bed, Boise, ID featuring like-minded, dead-sexy individuals from
           here and throughout the modern urban/sub-urban bland-scape. Founded in
-          2017 and launched in 2021. Subsidiary of Earth Libraries.
+          2017 by Shadrach Tuck and his comrades, Mishap launched in 2021 as a
+          subsidiary of Earth Libraries.
+        </p>
+
+        <p>
+          Mishap was made with the shared vision of pushing each other to finish
+          projects and release music/art. We provide art direction for
+          individuals who are ready to take that next step in their craft. The
+          label releases everything from singer-songwriter and experimental art
+          rock, to noise, jazz, and metal. We produce videos and merchandise and
+          are focused on the idea of pushing the boundaries of what art looks
+          and sounds like in this small town and beyond.
         </p>
       </PageSection>
     </>
