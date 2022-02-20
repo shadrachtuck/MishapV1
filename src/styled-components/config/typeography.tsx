@@ -117,6 +117,9 @@ const typography = css`
 
   p {
     font-weight: ${font('weight', 'light')};
+    &:not(p:last-of-type) {
+      margin-bottom: ${spacing('medium')};
+    }
   }
 
   b,
