@@ -12,19 +12,42 @@ const GRID_BORDER = '2rem';
 export const ImageWrapper = styled.div`
   display: flex;
   flex-flow: column;
+
   ${above.medium`
     .gatsby-image-wrapper {
       max-width: 90%;
       max-height: 90%;
     }
   `}
+
   gap: 1rem;
 `;
+
+export const BandBio = styled.article``;
 
 export const Profile = styled.div`
   display: flex;
   flex-flow: column nowrap;
   gap: 1rem;
+  h1 {
+    align-self: center;
+  }
+
+  ${above.medium`
+  // Reorder on on larger screens
+  ${ImageWrapper} {
+    order: 0;
+  }
+
+  h1 {
+    order: 1;
+    align-self: flex-start;
+  }
+
+  ${BandBio} {
+    order: 2;
+  }
+  `}
 `;
 
 export const BandcampSection = styled.div`

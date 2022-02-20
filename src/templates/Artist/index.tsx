@@ -12,6 +12,7 @@ import useIsAboveMobileWidth from '../../utils/hooks/useIsAboveMobileWidth';
 import { TemplateProps } from '../types';
 import {
   ArtistPageWrapper,
+  BandBio,
   BandcampSection,
   ImageWrapper,
   LeftSide,
@@ -96,10 +97,12 @@ export default (props: TemplateProps): JSX.Element => {
       <SEO title={artistName} description={shortBio} image={profilePicture} />
 
       <ArtistPageWrapper>
-        <CloseButton />
+        {isAboveMobile && <CloseButton />}
 
         <LeftSide>
           <Profile>
+            <h1>{artistName}</h1>
+
             <ImageWrapper>
               <GatsbyImage
                 alt={profilePicture.alternativeText ?? ''}
@@ -117,21 +120,21 @@ export default (props: TemplateProps): JSX.Element => {
               />
             </ImageWrapper>
 
-            <h1>{artistName}</h1>
+            <BandBio>
+              {/* Add link to genres page? */}
+              {shouldDisplayGenreTags && (
+                <p>
+                  {genres.map(({ id, name }, idx) => (
+                    <strong key={`${id}-${name}`}>
+                      {name}
+                      {idx !== genres.length - 1 && ' / '}
+                    </strong>
+                  ))}
+                </p>
+              )}
 
-            {/* Add link to genres page? */}
-            {shouldDisplayGenreTags && (
-              <p>
-                {genres.map(({ id, name }, idx) => (
-                  <strong key={`${id}-${name}`}>
-                    {name}
-                    {idx !== genres.length - 1 && ' / '}
-                  </strong>
-                ))}
-              </p>
-            )}
-
-            <Paragraph text={bio} />
+              <Paragraph text={bio} />
+            </BandBio>
           </Profile>
         </LeftSide>
 
