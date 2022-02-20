@@ -63,6 +63,8 @@ export const ArtistPageWrapper = styled.article`
   border: ${border('solidBlack')};
 
   ${above.medium`
+    height: 88vh;
+    overflow: auto;
     margin: 0;
     padding: 0;
     gap: 0;
