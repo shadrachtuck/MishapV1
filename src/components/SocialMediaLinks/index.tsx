@@ -1,6 +1,6 @@
 import React from 'react';
-import { TiSocialInstagram, TiSocialTwitter } from 'react-icons/ti';
-import { FaFacebook, FaBandcamp, FaTwitch } from 'react-icons/fa';
+import { TiLink, TiSocialInstagram, TiSocialTwitter } from 'react-icons/ti';
+import { FaFacebook, FaBandcamp, FaTwitch, FaSoundcloud } from 'react-icons/fa';
 import { SocialMediaLinksWrapper, SocialMediaNavWrapperProps } from './styles';
 
 type Link = {
@@ -13,7 +13,8 @@ export type SocialMediaLinksProps = SocialMediaNavWrapperProps & {
 };
 
 const Icon = ({ name }: { name: string }): JSX.Element => {
-  switch (name.toLowerCase()) {
+  const lowerCaseName = name.toLowerCase();
+  switch (lowerCaseName) {
     case 'facebook':
       return <FaFacebook />;
     case 'instagram':
@@ -22,10 +23,12 @@ const Icon = ({ name }: { name: string }): JSX.Element => {
       return <TiSocialTwitter />;
     case 'twitch':
       return <FaTwitch />;
+    case 'soundcloud':
+      return <FaSoundcloud />;
     case 'bandcamp':
       return <FaBandcamp />;
     default:
-      return <></>;
+      return <TiLink />;
   }
 };
 
