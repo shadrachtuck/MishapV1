@@ -13,6 +13,7 @@ const useIsAboveMobileWidth = (): boolean | undefined => {
 
   useEffect(() => {
     if (!isSSR) {
+      setWidth(window.innerWidth);
       const handleWindowResize = (): void => setWidth(window.innerWidth);
       window.addEventListener('resize', handleWindowResize);
       return () => window.removeEventListener('resize', handleWindowResize);
