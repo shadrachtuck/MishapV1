@@ -8,7 +8,7 @@ const useIsAboveMobileWidth = (): boolean | undefined => {
   const [isAboveMobile, setIsAboveMobile] = useState<boolean | undefined>(
     undefined,
   );
-  const [width, setWidth] = useState(isSSR ? undefined : window.innerWidth);
+  const [width, setWidth] = useState<number | undefined>(undefined);
   const mobileBreakpoint = removeRemFromString(theme.breakpoints.medium) * 16;
 
   useEffect(() => {
