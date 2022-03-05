@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { theme } from '../../styled-components/utils/defaultTheme';
 import removeRemFromString from '../functions/removeRemFromString';
 
-const isSSR = window === undefined;
+const isSSR = typeof window === undefined;
 
 const useIsAboveMobileWidth = (): boolean | undefined => {
   const [isAboveMobile, setIsAboveMobile] = useState<boolean | undefined>(
