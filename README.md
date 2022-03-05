@@ -28,6 +28,17 @@ Before you start the development server, ensure you are running the
 [Strap cms](https://github.com/shadrachtuck/MishapApi#strapi-application) on
 port `1337`. This is the API that houses all artist data.
 
+Create a `.env.development` file with the following:
+
+```
+STRAPI_URL=http://localhost:<port>/graphql
+
+```
+
+Usually, the <port> will be `1337`, as that is Strapi's default port. But if you
+have changed it in your the MishapApi config, you will need to update it here as
+well.
+
 To start the development server, run `yarn start`. This will open up a web page
 on port `3000`.
 

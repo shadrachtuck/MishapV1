@@ -74,10 +74,7 @@ module.exports = {
       options: {
         typeName: 'STRAPI',
         fieldName: 'strapi',
-        url:
-          process.env.NODE_ENV === 'production'
-            ? process.env.STRAPI_URL
-            : 'http://localhost:1337/graphql',
+        url: process.env.STRAPI_URL,
       },
     },
   ],

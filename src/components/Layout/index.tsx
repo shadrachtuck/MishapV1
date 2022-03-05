@@ -25,6 +25,8 @@ const Main = ({ children }: LayoutProps): JSX.Element => (
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   const isAboveMobile = useIsAboveMobileWidth();
 
+  if (isAboveMobile === undefined) return <></>;
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
