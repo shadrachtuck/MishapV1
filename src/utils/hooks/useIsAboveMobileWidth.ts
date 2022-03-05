@@ -12,9 +12,11 @@ const useIsAboveMobileWidth = (): boolean | undefined => {
   const mobileBreakpoint = removeRemFromString(theme.breakpoints.medium) * 16;
 
   useEffect(() => {
-    const handleWindowResize = (): void => setWidth(window.innerWidth);
-    window.addEventListener('resize', handleWindowResize);
-    return () => window.removeEventListener('resize', handleWindowResize);
+    if (!isSSR) {
+      const handleWindowResize = (): void => setWidth(window.innerWidth);
+      window.addEventListener('resize', handleWindowResize);
+      return () => window.removeEventListener('resize', handleWindowResize);
+    }
   }, []);
 
   useEffect(() => {
