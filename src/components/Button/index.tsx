@@ -26,6 +26,7 @@ export const Button = styled.button<ButtonProps>`
         background: ${color('gray')};
         transform: scale(1.01);
         transition-duration: ${timing('fast')};
+        transition-timing-function: cubic-bezier(0.27, 0.14, 0.54, 1.24);
       }
 
       &:active {

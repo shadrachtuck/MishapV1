@@ -6,7 +6,10 @@ import { CloseButton } from '../../components/Button/';
 import { Anchor } from '../../components/Elements';
 import Paragraph from '../../components/Paragraph';
 import SEO from '../../components/SEO';
-import SocialMediaLinks from '../../components/SocialMediaLinks';
+import {
+  SocialMediaButtons,
+  SocialMediaIcons,
+} from '../../components/SocialMediaLinks';
 import getVideoEmbedLink from '../../utils/functions/getVideoEmbedLink';
 import useIsAboveMobileWidth from '../../utils/hooks/useIsAboveMobileWidth';
 import { TemplateProps } from '../types';
@@ -112,7 +115,7 @@ export default (props: TemplateProps): JSX.Element => {
                 }
               />
 
-              <SocialMediaLinks
+              <SocialMediaIcons
                 links={links}
                 iconSize={25}
                 addVerticalSpacing={false}
@@ -145,6 +148,8 @@ export default (props: TemplateProps): JSX.Element => {
               <div dangerouslySetInnerHTML={{ __html: bandcampEmbed }} />
             </BandcampSection>
           )}
+
+          {<SocialMediaButtons links={links} />}
 
           {shouldDisplayVideos && (
             <WatchSection>

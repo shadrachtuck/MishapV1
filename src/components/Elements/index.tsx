@@ -1,2 +1,2 @@
 export { default as Span } from './Span';
-export { default as Anchor } from './Anchor';
+export { Anchor } from './Anchor';

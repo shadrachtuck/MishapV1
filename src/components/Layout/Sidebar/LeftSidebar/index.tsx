@@ -1,5 +1,5 @@
 import React from 'react';
-import SocialMediaLinks from '../../../SocialMediaLinks';
+import { SocialMediaIcons } from '../../../SocialMediaLinks';
 import config from '../../../../../config';
 import { LeftSidebarWrapper, LinkToHome } from './styles';
 import MishapLogo from '../../../../assets/svg/mishap-text-clear-bg.svg';
@@ -11,7 +11,7 @@ const LeftSidebar = (): JSX.Element => {
         <MishapLogo title="Mishap Records" />
       </LinkToHome>
 
-      <SocialMediaLinks
+      <SocialMediaIcons
         iconSize={25}
         links={config.socials}
         addVerticalSpacing={false}

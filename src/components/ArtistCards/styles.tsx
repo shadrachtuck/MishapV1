@@ -9,7 +9,7 @@ import {
   timing,
 } from '../../styled-components/utils/mixins';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
+import { Anchor } from '../../components/Elements';
 
 export const ArtistCardsWrapper = styled.ul`
   display: grid;
@@ -53,7 +53,7 @@ export const ArtistCardName = styled.span`
   letter-spacing: 0.25rem;
 `;
 
-export const ArtistCard = styled(Link)`
+export const ArtistCard = styled(Anchor)`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;

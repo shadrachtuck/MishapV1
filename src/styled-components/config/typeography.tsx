@@ -3,7 +3,6 @@ import {
   color,
   getFontProperties,
   above,
-  timing,
   font,
   spacing,
 } from '../utils/mixins';
@@ -17,22 +16,6 @@ const typography = css`
       display: flex;
       border: none;
       text-decoration: none;
-
-      a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: inherit;
-        height: inherit;
-
-        /* redefine hover styles here from it somehow being overwritten by the list-item */
-        &:hover {
-          &,
-          span {
-            color: ${color('gray')};
-          }
-        }
-      }
     }
   }
 
@@ -71,46 +54,6 @@ const typography = css`
       ${getFontProperties({
         size: 'md',
         lineHeight: 28,
-      })}
-    `}
-  }
-
-  a {
-    ${getFontProperties({
-      fontColor: 'black',
-      size: 'sm',
-      lineHeight: 24,
-      letterSpacing: 'spread',
-    })}
-
-    text-transform: uppercase;
-    background-color: transparent;
-    text-decoration: none;
-
-    transition: color ${timing('fast')} ease-in-out,
-      border-color ${timing('fast')} ease-in-out,
-      background-color ${timing('fast')} ease-in-out;
-
-    &:active,
-    &:hover,
-    &:visited {
-      text-decoration: none;
-      outline: 0;
-      border-bottom-color: transparent;
-    }
-
-    &:visited {
-      color: ${color('black')};
-    }
-
-    &:hover {
-      color: ${color('gray')};
-    }
-
-    ${above.medium`
-      ${getFontProperties({
-        size: 'md',
-        lineHeight: 32,
       })}
     `}
   }

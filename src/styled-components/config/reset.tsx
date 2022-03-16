@@ -16,15 +16,15 @@ const reset = css`
   html,
   body {
     height: 100%;
-  }
-  body {
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
 
     @media (prefers-reduced-motion) {
       scroll-behavior: none;
     }
+  }
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
   }
   img,
   picture,

@@ -2,6 +2,7 @@ import React from 'react';
 import { DefaultTheme } from 'styled-components';
 import { routes } from '../../../../config';
 import isExternalLink from '../../../utils/functions/isExternalLink';
+import { Anchor } from '../../Elements';
 import { Navbar } from './styles';
 type MenuItem = {
   id: number;
@@ -48,11 +49,9 @@ const Menu = ({
             {/* safely add # to non-external links by default 
                 because this is a single-page site */}
             {isExternalLink(href) ? (
-              <a href={href} target="_blank" rel="noreferrer">
-                {name}
-              </a>
+              <Anchor href={href}>{name}</Anchor>
             ) : (
-              <a href={`/#${href}`}>{name}</a>
+              <Anchor href={`/#${href}`}>{name}</Anchor>
             )}
           </li>
         ))}
