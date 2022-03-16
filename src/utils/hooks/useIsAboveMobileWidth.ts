@@ -25,6 +25,7 @@ const useIsAboveMobileWidth = (): boolean | undefined => {
     else setIsAboveMobile(false);
   }, [mobileBreakpoint, width]);
 
+  if (width === undefined) return undefined;
   return isAboveMobile;
 };
 
