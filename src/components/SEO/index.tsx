@@ -98,7 +98,7 @@ const SEO = ({
     },
     {
       name: 'twitter:title',
-      content: title,
+      content: siteTitle,
     },
     {
       name: 'twitter:description',
@@ -136,7 +136,7 @@ const SEO = ({
       htmlAttributes={{
         lang: lang,
       }}
-      title={title}
+      title={siteTitle}
       titleTemplate="%s"
       meta={metaData}
     />

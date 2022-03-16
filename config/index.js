@@ -4,7 +4,7 @@ module.exports = {
   siteImage: 'https://mishaprecords.com/images/mishap-records-ryason-poster',
   author: 'Shadrach Tuck',
   siteDescription:
-    'Cool music band label from PNW hot-bed Boise, ID featuring like-minded, dead-sexy individuals from here and throughout the modern urban/sub-urban bland-scape. Founded in 2017 and launched in 2021. Subsidiary of Earth Libraries',
+    'Mishap Records is a music band label from Boise, Idaho, made with the shared vision of pushing each other to finish projects and release music/art',
   socials: [
     {
       name: 'facebook',
