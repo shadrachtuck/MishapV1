@@ -5,7 +5,6 @@ import ArtistCards from '../components/ArtistCards';
 import { PageSection } from '../components/Sections';
 import SEO from '../components/SEO';
 import { Strapi } from '../typings/strapi';
-import useIsAboveMobileWidth from '../utils/hooks/useIsAboveMobileWidth';
 
 export const query = graphql`
   query GET_ARTISTS {
@@ -29,18 +28,16 @@ const Home = (): JSX.Element => {
   const {
     strapi: { artists },
   } = useStaticQuery<Strapi>(query);
-  const isAboveMobile = useIsAboveMobileWidth();
 
   return (
     <>
       <SEO />
-      {isAboveMobile && (
-        <PageSection id="home">
-          <Bunny />
-          <h1>Mishap Records</h1>
-          <h2>Boise, Idaho</h2>
-        </PageSection>
-      )}
+
+      <PageSection id="home">
+        <Bunny />
+        <h1>Mishap Records</h1>
+        <h2>Boise, Idaho</h2>
+      </PageSection>
 
       <PageSection id="artists">
         <h2>Artists</h2>

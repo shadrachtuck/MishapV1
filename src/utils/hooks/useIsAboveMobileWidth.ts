@@ -21,7 +21,7 @@ const useIsAboveMobileWidth = (): boolean | undefined => {
   }, []);
 
   useEffect(() => {
-    if (width && width > mobileBreakpoint) setIsAboveMobile(true);
+    if (width && width >= mobileBreakpoint) setIsAboveMobile(true);
     else setIsAboveMobile(false);
   }, [mobileBreakpoint, width]);
 
