@@ -14,6 +14,9 @@ const typography = css`
 
     li {
       display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       border: none;
       text-decoration: none;
     }

@@ -1,8 +1,7 @@
 import React from 'react';
-import Icon from './icons';
-import { ButtonLinksWrapper, ButtonListItem } from './styles';
-import { Anchor } from '../Elements';
+import { ButtonLinksWrapper } from './styles';
 import { AnchorProps } from '../Elements/Anchor/anchor';
+import ButtonLink from './buttonLink';
 
 type Link = {
   name: string;
@@ -20,12 +19,9 @@ const SocialMediaLinks = ({
   <nav>
     <ButtonLinksWrapper>
       {links.map(({ name, href }) => (
-        <ButtonListItem key={name}>
-          <Anchor href={href} color={color} target="_blank" styleAsButton>
-            <Icon name={name} aria-hidden />
-            {name}
-          </Anchor>
-        </ButtonListItem>
+        <li key={name}>
+          <ButtonLink href={href} name={name} color={color} />
+        </li>
       ))}
     </ButtonLinksWrapper>
   </nav>

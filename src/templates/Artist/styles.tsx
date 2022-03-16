@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { CloseButton } from '../../components/Button';
+import { SocialMediaLinksWrapper } from '../../components/SocialMediaLinks/styles';
 import {
   above,
   border,
@@ -9,16 +10,27 @@ import {
 
 const GRID_BORDER = '2rem';
 
+export const ResponsiveIFrameWrapper = styled.div`
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+`;
 export const ImageWrapper = styled.div`
   display: flex;
   flex-flow: column;
 
-  ${above.medium`
-    .gatsby-image-wrapper {
-      max-width: 90%;
-      max-height: 90%;
-    }
-  `}
+  ${SocialMediaLinksWrapper} {
+    min-width: 1.5625rem; // matches icon size
+  }
 
   gap: 1rem;
 `;
@@ -29,12 +41,13 @@ export const Profile = styled.div`
   display: flex;
   flex-flow: column nowrap;
   gap: 1rem;
+
   h1 {
     align-self: center;
   }
 
   ${above.medium`
-  // Reorder on on larger screens
+  // Reorder on larger screens
   ${ImageWrapper} {
     order: 0;
   }
@@ -47,23 +60,11 @@ export const Profile = styled.div`
   ${BandBio} {
     order: 2;
   }
+
+  .store-link {
+    order: 3;
+  }
   `}
-`;
-
-export const BandcampSection = styled.div`
-  grid-row: bandcamp;
-`;
-
-export const WatchSection = styled.div`
-  grid-row: watch;
-`;
-
-export const ShowsSection = styled.div`
-  grid-row: shows;
-`;
-
-export const PressSection = styled.div`
-  grid-row: press;
 `;
 
 export const LeftSide = styled.div`

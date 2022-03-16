@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaFacebook, FaTwitch, FaSoundcloud, FaBandcamp } from 'react-icons/fa';
 import { TiSocialInstagram, TiSocialTwitter, TiLink } from 'react-icons/ti';
+import { BiStore } from 'react-icons/bi';
 
 const Icon = ({ name }: { name: string }): JSX.Element => {
   const lowerCaseName = name.toLowerCase();
@@ -17,6 +18,8 @@ const Icon = ({ name }: { name: string }): JSX.Element => {
       return <FaSoundcloud />;
     case 'bandcamp':
       return <FaBandcamp />;
+    case 'store':
+      return <BiStore />;
     default:
       return <TiLink />;
   }

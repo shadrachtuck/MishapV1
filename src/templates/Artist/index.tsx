@@ -7,23 +7,20 @@ import { Anchor } from '../../components/Elements';
 import Paragraph from '../../components/Paragraph';
 import SEO from '../../components/SEO';
 import {
+  ButtonLink,
   SocialMediaButtons,
   SocialMediaIcons,
 } from '../../components/SocialMediaLinks';
-import getVideoEmbedLink from '../../utils/functions/getVideoEmbedLink';
 import useIsAboveMobileWidth from '../../utils/hooks/useIsAboveMobileWidth';
 import { TemplateProps } from '../types';
 import {
   ArtistPageWrapper,
   BandBio,
-  BandcampSection,
   ImageWrapper,
   LeftSide,
-  PressSection,
   Profile,
+  ResponsiveIFrameWrapper,
   RightSide,
-  ShowsSection,
-  WatchSection,
 } from './styles';
 
 export const query = graphql`
@@ -92,6 +89,9 @@ export default (props: TemplateProps): JSX.Element => {
     name,
     href: url,
   }));
+  const storeUrl =
+    socialMedia.find(link => link.name.toLowerCase() === 'bandcamp')?.url ??
+    'https://mishaprecordings.bandcamp.com/merch';
 
   const shortBio = bio.slice(0, 159);
 
@@ -138,43 +138,46 @@ export default (props: TemplateProps): JSX.Element => {
 
               <Paragraph text={bio} />
             </BandBio>
+
+            {/* TODO: Eventually change this to in-house shopify link */}
+            <ButtonLink
+              id="store"
+              name="SHOP"
+              href={storeUrl}
+              className="store-link"
+            />
           </Profile>
         </LeftSide>
 
         <RightSide>
           {shouldDisplayBandcampEmbed && (
-            <BandcampSection>
+            <section>
               <h2>Listen: </h2>
               <div dangerouslySetInnerHTML={{ __html: bandcampEmbed }} />
-            </BandcampSection>
+            </section>
           )}
 
-          {<SocialMediaButtons links={links} />}
+          <section>
+            <h2>Links: </h2>
+            <SocialMediaButtons links={links} />
+          </section>
 
           {shouldDisplayVideos && (
-            <WatchSection>
+            <section>
               <h2>Watch: </h2>
+
               {videos.map(({ embedLink }) => (
                 <Fragment key={embedLink}>
-                  {/* only show video embed if screen is large enough */}
-                  {isAboveMobile ? (
-                    <div dangerouslySetInnerHTML={{ __html: embedLink }} />
-                  ) : (
-                    <div>
-                      <strong>
-                        <Anchor href={getVideoEmbedLink(embedLink)}>
-                          Video
-                        </Anchor>
-                      </strong>
-                    </div>
-                  )}
+                  <ResponsiveIFrameWrapper
+                    dangerouslySetInnerHTML={{ __html: embedLink }}
+                  />
                 </Fragment>
               ))}
-            </WatchSection>
+            </section>
           )}
 
           {shouldDisplayShows && (
-            <ShowsSection>
+            <section>
               <h2>Shows: </h2>
 
               {shows.map(({ id, name, location, date, description }) => (
@@ -188,11 +191,11 @@ export default (props: TemplateProps): JSX.Element => {
                   {description && <Paragraph text={description} />}
                 </div>
               ))}
-            </ShowsSection>
+            </section>
           )}
 
           {shouldDisplayPress && (
-            <PressSection>
+            <section>
               <h2>Press: </h2>
               {press.map(({ title, link }, idx) => (
                 <div key={`${title}-${idx}`}>
@@ -201,7 +204,7 @@ export default (props: TemplateProps): JSX.Element => {
                   </strong>
                 </div>
               ))}
-            </PressSection>
+            </section>
           )}
 
           {/* // TODO: add merch section */}

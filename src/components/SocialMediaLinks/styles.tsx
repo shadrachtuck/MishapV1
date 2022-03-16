@@ -1,18 +1,10 @@
 import styled, { css } from 'styled-components';
-import { spacing } from '../../styled-components/utils/mixins';
 
 export type SocialMediaNavWrapperProps = {
   displayHorizontally: boolean;
   addVerticalSpacing: boolean;
   iconSize: number;
 };
-
-export const ButtonListItem = styled.li`
-  svg {
-    min-width: 1.375rem;
-    margin-right: ${spacing('xxsmall')};
-  }
-`;
 
 export const ButtonLinksWrapper = styled.ul`
   display: grid;
