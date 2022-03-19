@@ -61,9 +61,10 @@ const SEO = ({
       },
     },
   } = useStaticQuery<SiteData>(siteDataQuery);
-
-  const siteTitle = title ?? defaultTitle;
-  const metaDescription = description ?? defaultDescription;
+  const siteTitle = `${title} | Mishap Records` ?? defaultTitle;
+  const metaDescription =
+    new DOMParser().parseFromString(description ?? '', 'text/html')
+      .textContent ?? defaultDescription;
   const imageData = image?.imageFile.childImageSharp.gatsbyImageData;
 
   const metaData = [
