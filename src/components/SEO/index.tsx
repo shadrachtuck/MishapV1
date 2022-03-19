@@ -61,7 +61,7 @@ const SEO = ({
       },
     },
   } = useStaticQuery<SiteData>(siteDataQuery);
-  const siteTitle = `${title} | Mishap Records` ?? defaultTitle;
+  const siteTitle = title ? `${title} | Mishap Records` : defaultTitle;
   const metaDescription =
     new DOMParser().parseFromString(description ?? '', 'text/html')
       .textContent ?? defaultDescription;
